@@ -1,2 +1,0 @@
-# dataengineerclub
-Otus DE
