@@ -6,30 +6,8 @@
 Фиксация целей на процесс обучения
 Рекомендуем сдать до: 03.12.2019
 
-image:http://www.plantuml.com/plantuml/svg/VLF1RjD04BtxAqOv9OUggbeuK0areXmgGP6W1mv8aPLi6gkEgUojuEXIA4IgMiGF8Fx0JR9WajZzXTa_ukrkGg9WciD8dddpvhsPx5uY_LYUzKClEGcYKp_s-zGHNVyib4VYlMo6mN7K5v6aDeA8FQyd_8w8gSObt-gKCxxbKd_W2MV4OoGd-e9dhBX0CgEj7U8XAvtgSyuvfmSrpmxq2Bz7_9qpSEGe5ZoYry-VLN3iph53p9g2P8oUI_JS45gL_c9mvjFXtlM2K53T8A1fIdp79IHWWk8P8LLQLiM_qQMi0QI7_yvLqDwmb7RyGPI8M1eaQZ1jfEXBVL55MG9LR-xljvwyE3ng7Xm-VVcgiMcfHDIn0kUMe4sVMxx2DDsxH0BsiwLNFDPNpctGfJgwXu2LEbrR2C4qJgDJa8rDYYTE_0mJVff4WsHFHA30JbUyeWnbzcu3HyOAP6IpQDO3VQMlAvK-t7diZ8Q9CEAGpVbkNTW6rVWR2h_mbIwSruXpMZ73NtdaYFydymTmd-m9YnMPRgU8DsvQfSvjiYkTeZ8222lIrx25k7RVDr5dQxibOxzzqcht_EXO99j_7IwrcDE0gTmma-TRtbsSFEXw3lJH68ECXUjiBjg-8AmRiR2AIkl3Fh71yl-ToBUddhS7HhpNFm00[diagram]
+* Выделил все в некоторую структурную схему
+* Отметил сердечком те области, которые мне нравятся
+* Отметил 
 
-[plantuml, format="svg"]
-----
-@startuml
-skinparam defaultTextAlignment center
-
-header "обработка документа 14 версии 5"
-start
-    :Париснг XML документа;
-    :валидация решения;
-    while (цикл по всем контейнерам в документе 14)
-        :Insert в таблицу контейнеров (ADD_CONTAINERS)/
-    endwhile
-    :постановка документа 14 в очередь;
-    if (автор решения сотрудник таможни) then (да)
-        :оповещение с помощью документа 164>
-    elseif (тип решения - "Визировка" и автор Агент) then (да)
-        :Сохранение состояния документа 13  в логирующую таблицу\nd13_track_changes/
-    else
-        :чего-то там;
-    endif
-    :формирование ответного сообщения;
-stop
-
-@enduml
-----
+image:http://www.plantuml.com/plantuml/svg/dLNDJYD74BxxALfxs8FZVG4hYXROA4A2a61GBhuqTcD6Z6UiyHZ2BPWG4Xd52KcaA8du8Jn0unyOi1c_GlKRvUlgSOoGkUnXjztLzNrLzLLDyRuPooZUtshcSirTBsZ8IDP5LMtBbXzlg6_Z1T-h1NKLnAA2_rJqp6kX4djxNdomA2kxjIXi1TMbq0yZyKKa3tAv7IMhAXBqEwKq9cr-f2SQqb3GFMaQaCOreM4kbuSBdjka1IKmti4BdkOxIamNptY_1iL4q8HIquPzIBVmICqXG4Dw4BWcOBMWGz900781lvJDFPm3ziKlX10qWENMTCm9wQ9ONWut2eBEmNm2WlQKsPmMCXPEzeuIHtn9YGjBe-8BXu9OMby5wXTmQ1gnOqAFf67x6svzM0wdDiVsgzK1rmHSLpXJMpOiVKTZdSttBWQplvhf9Ltb7UKraXlX7yXeN7GWVfwNcOFy0_S139hbERC25oq6973MjdslrfQfCWt8pHjmFv66EKKD7JGTZKcoVerDns7-C3_nY_c1GPfBHtmusbOp-Xvdpsh4mv1dt1aO9-m5tNWgG999Wbmphtzf0a8DzCZIstT6QDCLbCxLKC-hZUL9EO7sh3rYLLKz2SnlDWXQrB4bzamN6MCs7739zogxfJXIibx8P7ttMf1r9VrtiLTNu7an1_hb7D2OnNha0jWB71_NXJpFVt5kZV_FVz-gXC8IllLcdouOX1qHyxDLatek2EZDCKD637PD5UR8vJNjfA2_R1dyuRCcW7FsFPVOfs-nGQBuitBmGSPoIpPLioXANw-8j-BB4AVpMckeICPU63JT_OFQMsjalqlXThml8sMDoWyRTejDEnEsgk8hNyRROLJFt1Uzch2Xn4OO-ixcxj-0OoTiDRsWnbPapYAFKTAJQo9cU3QW5qvBU6HApTbGo26iDrgnYaIfugcWefnrTKLy8XQNdRQEoNJjVDgrDSBiWW1pPBhbWFem3LbQg_uOKJ26t9znEK0BKjT-dl1JjtUpj2mXZ6wzpaQIxWKQqk6DfCl16_hp-Jx6dcPNp98vViCjpDEvpG5KhYp-xXxvkyC8pPR33V_OB2tm-VccYtjZjGCoKq_WSAlh0SK1BVWJJc7c28BNzX4NwwOezru5LVpf-Wy0[diagram]
