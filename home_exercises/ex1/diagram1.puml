@@ -1,9 +1,15 @@
 @startwbs
 
-skinparam defaultTextAlignment center
-skinparam ActivityBackgroundColor Gray
+centerheader
+= Домашнее задание
+endheader
 
-header Домашнее задание
+legend top left
+Отметки
+<&heart> - Нравится, хотелось бы заниматься
+<&check> - Есть знания и опыт
+<&plus> - Есть какие-то знания
+endlegend
 
 * Дата инженерия
 
@@ -26,28 +32,35 @@ header Домашнее задание
 
 ** ключевые технологии и умения
 *** Карта навыков
-**** <&heart>\nDatabases: SQL & NoSQL
-**** Operations
+**** <&heart>\nDatabases
+***** <&check>\nSQL
+***** NoSQL
+**** <&question-mark>\nOperations
 **** DevOps
-**** Software Development
+**** <&check>\nSoftware Development
 **** Cloud Platforms
 **** Big Data Tools
 **** Data Warehousing
 **** Коммуникация
 **** Понимание бизнеса
-**** Computer Science
+**** <&plus>\nComputer Science
 **** ML + BI
 
 
 ** Понять для себя\nгде и чем бы вам\nхотелось заниматься
 
 ** анализ рынка\n"Инженер Данных"
-*** *Одесса
-*** Украина
-*** РФ
-*** USA
-*** EU
+*** Источник
+**** LinkedIn
+**** work.ua
+*** Область анализа
+**** <&heart>\nОдесса
+**** Украина
+**** РФ
+**** USA
+**** EU
 
 ** Фиксация целей\nна процесс обучения
+*** Пока не выполнена
 
 @endwbs
