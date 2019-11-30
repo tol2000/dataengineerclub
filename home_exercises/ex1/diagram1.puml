@@ -1,7 +1,5 @@
 @startwbs
 
-scale 2
-
 centerheader
 = Домашнее задание
 endheader
@@ -37,7 +35,7 @@ endlegend
 **** <&heart>\nDatabases
 ***** <&check>\nSQL
 ***** NoSQL
-**** <&question-mark>\nOperations
+**** <&plus>\nOperations
 **** DevOps
 **** <&check>\nSoftware Development
 **** Cloud Platforms
