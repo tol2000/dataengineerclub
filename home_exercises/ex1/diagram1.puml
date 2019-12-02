@@ -34,20 +34,22 @@ endlegend
 ** ключевые технологии и умения
 *** Карта навыков
 **** <&heart>\nDatabases
-***** <&check>\nSQL
-***** NoSQL
+***** <&heart><&check>\nSQL
+***** <&heart>\nNoSQL
 **** <&plus>\nOperations
 **** DevOps
 **** <&check>\nSoftware Development
 **** Cloud Platforms
-**** Big Data Tools
-**** Data Warehousing
-**** Коммуникация
+**** <&heart>\nBig Data Tools
+**** <&heart>\nData Warehousing
+**** <&heart> :)\nКоммуникация
 **** Понимание бизнеса
 **** <&plus>\nComputer Science
-**** ML + BI
+**** <&heart>\nML + BI
 
 ** Понять для себя\nгде и чем бы вам\nхотелось заниматься
+***< IIoT, сбор и обработка данных (ELT)\n----\nЗдесь можно применить мои знания и опыт в SQL
+***> ...
 
 ** анализ рынка\n"Инженер Данных"
 *** К-во предложений
