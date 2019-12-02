@@ -22,3 +22,5 @@ image:http://www.plantuml.com/plantuml/svg/fLT1RrD74BxxLunoo27OX40Wo6eA0YeH2KeBj
 == Задачи
 
 * link:https://habr.com/ru/company/otus/blog/452670/
+* поставить в топ потребностях и навыках маркеры с сердечком)
+* на основе этого сформировать где и чем хотелось бы заниматься...
