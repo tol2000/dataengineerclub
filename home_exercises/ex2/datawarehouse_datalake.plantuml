@@ -1,14 +1,13 @@
 @startuml
-
 skinparam defaultTextAlignment center
 skinparam noteTextAlignment center
 
 centerheader
-= Хранилище типа Data Lake
+home exercise 2
 endheader
 
 legend top left
-
+Хранилище данных типа Data Lake
 endlegend
 
 cloud "Оперативная OLTP БД компании" as oltp_orders_db {
@@ -65,5 +64,4 @@ frame "Хранилище типа Data Lake" as stor {
     (dailyplan_batch_refresh) --> db_daily_plan_table
 
 }
-
 @enduml
