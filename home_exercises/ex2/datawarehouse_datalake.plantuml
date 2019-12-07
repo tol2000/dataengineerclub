@@ -1,0 +1,69 @@
+@startuml
+
+skinparam defaultTextAlignment center
+skinparam noteTextAlignment center
+
+centerheader
+= Хранилище типа Data Lake
+endheader
+
+legend top left
+
+endlegend
+
+cloud "Оперативная OLTP БД компании" as oltp_orders_db {
+
+}
+
+frame "Хранилище типа Data Lake" as stor {
+
+    frame "Витрины" as stor_dm {
+        database "Реляционная БД\n" as db_datamart {
+            [Таблица для ежедневного\nпланирования в диспетчерской] as db_daily_plan_table
+            [Таблица заказанных\nпользователем отчетов] as db_ordered_reports_table
+        }
+    }
+
+    frame "Обработанные данные" as stor_stage {
+        database "Реляционная БД\n" as db_stage {
+            [Таблица заказов такси\nза неделю] as db_orders_week_table
+        }
+    }
+
+    frame "Сырые данные" as stor_rawdata {
+        database "БД Типа Key-Value" as db_raw {
+            [**Таблица заказов**\n**за все время**\n----\n**Ключ**\nДата поездки\nНомер заказа\nГосномер авто\nКод страны\n----\n**Данные**\nДанные геолокации\nДругие данные] as db_raw_orders_table
+        }
+
+    }
+
+    (**Batch**\nЗагрузка данных\nНесколько раз в день) as daily_batch_load
+
+    (**Batch**\nОбновление\ndb_daily_plan_table\nЕжедневно) as dailyplan_batch_refresh
+
+    (**Batch**\nОбновление поездок\nза неделю\nЕжедневно) as week_batch_refresh
+    note right of week_batch_refresh
+        - добавление нового из источника
+        - удаление в приемнике всего старше недели
+    end note
+
+    (Заказ\nпользователем\nотчета) as user_report_order
+
+    (Получение\nпользователем\nотчета\nи удаление отчета\nиз бд отчетов) as user_report_get_delete
+
+    oltp_orders_db --> (daily_batch_load)
+    (daily_batch_load) --> db_raw_orders_table
+
+    db_raw_orders_table --> (week_batch_refresh)
+    (week_batch_refresh) --> db_orders_week_table
+
+    db_raw_orders_table --> (user_report_order)
+    (user_report_order) --> db_ordered_reports_table
+    (user_report_get_delete) <-- db_ordered_reports_table
+
+    db_orders_week_table --> (dailyplan_batch_refresh)
+    (dailyplan_batch_refresh) --> db_daily_plan_table
+
+}
+
+@enduml
