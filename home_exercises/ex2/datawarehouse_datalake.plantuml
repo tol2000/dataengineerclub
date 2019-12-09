@@ -36,7 +36,11 @@ frame "Хранилище типа Data Lake" as stor {
 
     }
 
-    (**Batch**\nЗагрузка данных\nНесколько раз в день) as daily_batch_load
+    (**Batch**\ndaily_batch_load) as daily_batch_load
+    note right of 
+        Загрузка данных\nНесколько раз в день
+
+    end note
 
     (**Batch**\nОбновление\ndb_daily_plan_table\nЕжедневно) as dailyplan_batch_refresh
 
