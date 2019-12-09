@@ -1,4 +1,4 @@
-@startuml
+@startuml DataWarehouse
 skinparam defaultTextAlignment center
 skinparam noteTextAlignment center
 
