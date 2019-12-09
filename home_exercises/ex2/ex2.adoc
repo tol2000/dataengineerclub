@@ -1,5 +1,18 @@
 = Домашнее задание №2
 
+== Преамбула
+
+Попытался сделать задачу сугубо на основе занятия №2 Антона Задорожного и того, что я из него понял и усвоил.
+
+Поскольку многими понятиями я до этого не владел или знал только понаслышке,
+скорее всего, ДЗ получилось далеким от того, что требовалось.
+
+Просьба все, что нужно уточнить, дополнить или переделать, написать мне подробно.
+
+Хочу набрать все необходимые баллы самостоятельно.
+
+ДЗ выполнено при помощи asciidoc+plantuml.
+
 == Постановка задачи
 
 [source]
@@ -66,18 +79,18 @@
 
 Архитектуру выбираем типа Data Lake, поскольку будем хранить всю слабоструктурированную информацию о заказах на нижнем уровне (raw), парсить и преобразовывать ее на среднем (stage) и отдавать в виде решений для бизнес-кейсов на витрины.
 
-image:http://www.plantuml.com/plantuml/svg/dLLDQ-jM4DthLmnP9GPlkYubBTqrq2v2DtKGSdJzGMJ9I399A874eKrBGqFRb4AWQL_WxMN7UjRBXzvVkFf7xzpnTMHBYZ5F8CkwCtFEd9cvLzj1QFdXeESOmK7NxLk-rIDRjAo14-wAe_1BfzjsUy8DQHy_mb_mShrGLBeOisT7M3RUEbvFa3WI_dut4FIP8LnRMmn7jF56eTSdHxH2GxxDJcKadsKY7sMI_IfZaXDUUCv-otwYR0ZB1ndHrrPeqOvr81JQ30MiZZUmQKFUmYLMGEm-HdIKNT6tExlVaVn3NfDyaAbyKZZCb6oG5P3dX7tJyv5MODfD-j4mJWoZ1Pa2YEMqofamIX1wleebNFFWFn4o142YHBnucNOFZgGl6oXDAr3k_yjOFcPNsSy8IC79sNFY3PUZxQQft7leMex0rm_o3ccEL988Zr0xXKG0V8Tx0gYOov7AUvasNEJ_E9E5x59O-ByA62CK_ywuaCFiGfKJRwfkx_TUSkWwnsRViLmJkJjYTIPJl3xWdkRTv0HIP7Y9LQP7KQ4TznF9LFCEbMdEoVqHjkcBlkU7GO7unE3VvUhVoX4tRwGGv-JvNF5BtXJiXRRuzBxey7LB0MN4IJsWk0dg0HDnboPCzlkIxi0y5E9W7SrlKDxJ5Ifzwr09gzR9E-HEJ_StuhZ-lUKCn5mXGelwQhML2ckrXWiNbZQ6pbWzJbMJiojbg-DYZnkbEBjGQ_AQXo4Ydf0OmHC0gWhzoriNuxWqKZ3y9LE0F-Vc23H37lCRB4ueE-DT6AbYBB1UvmMQC-SpSWzkJ2Xk477d4-M2ufx3bXGAl9VNI7UirAp5RctMQbzPuNw7QVy1p3tZJXNNqh77icFUVxnTr9DOobHlrHYEbrjCpxkogN1DnxFi2Yhi2AxJ6C8Gg6Gqt8eD3TU_YmT7pg7yD8ylMhu8EkjHBROKPQqO-bTvUVoNAK78do7ok-rEI5whqabVTMBEaOoM4j8Pyg58M9dYHmqB1kg2NT2F1Goq2BrPZ1z34v_lc6aT4EjPPqm6Yz3SNx2UAvK9emhNPWcwV3m9FDQhpaVOyWCoukeC0k7hWt4sVNF0_nZa7Cuwu_M1yPQK1HSyk68ZEIcSsQMasY8qRU48BRNunQtNlw3DulXkiMTvcRshjXhxLnXcyENXO89A0qTKdhshEKfzO8ggTVPV-LNRhAxV5drUhxyUoQ5LcUiQLszVJlDrAyTMVVQD4sCRCppeEHy1[Схема]
+image:http://www.plantuml.com/plantuml/svg/fLTTRnj557tVNp7g4rZuXKU4KFbuen9885wQQBN9RccKzTfQhobH5QbEL09Ar409GghKbbRYtN7iU9iFvo_S-KUSEHw7tR6zXcGhr-kPU-wzS-wPEvExxIn8iquZzhpsvaRI2jAWeJvlDbhD94goRxAjE5AO_T3prkDc9rHtv9LSoL0_aPxUaLpwSectG_NLlM-_LlAR72avax5SmAY7gLpoEofeAuBzPfor_6OQHcbRFVQyRS_xT3rhfd3w7BP3_JCHxrOIUGqVv_f0HlZkCzJG_AQlwCUiquvIptk0N2E0_pRP47ekkVv5Xegf8GFrHP05wbwm6H59W1_6RHCK2IWyKoVF0Ts1ermkzVwCjHys053sMP_oWxSaIvjn7AM-JSjFerOppThg_jISZ_ogk_Jz5376Seb_OvFehbmn-pvo7t8Dmp9kZApsmCqEZ2uaLt8rbvh34kezpFRa39_H1qhwUby6iDoJ7k5ATu4zrlk69lrCqRXlYeeAC0bz-FwrlzNhjn1ahWLjmzPVaw3w9ycv6eg0zLz9I5wuLgBCeMt2aHy66_6Mtug3n66BAtyrNRcIWGcc4FCKdu7HYlJ9u8cCPu5Nu99w8DLz-mvy7vxmrgM2wHnBxbAmxsRTlC7mW58_DTfGfax4zWoAH44gAA8XT_g3P2fcE217pqgELwi9SJLKpSfrZQVXzLFNVe5SyBaeIWjJ2zBSdYFwjI1RV-ZFr10Z3zAe_T39kbRxpDZNQgNHEXwll30vPaaBEw6a_h8r5R6mr4j2lMPLeLpAOS-4rLr4ElX8oH-knjoDC4k5KxP9XxiX2tzEQseswJaoF9tgt27Z_oOLHl763r6wTREyR4FUHNnR6qT-bLdoCRrhQ4rWa1l63HuJCcBhS1QrNMxGq0SxvJ7Wy3rtzytsRHnltqVgyGrxc0ldSr_UCWqSDi3sYaH0Weh9dPbklvBCD8DLupTRYoUEGtiO-e-YQFC_R3a0YuXRRpZt81zpoytPXyosRfbcerdIvnWHfQ6tNicNTKwrsDfJ2qOLD06LStpfNOOl-EahdfsvQMOJ84TrrygCJdkJGwsGgUJLEdkZzu5PhgmqU3HVLxm4lRKNa2-ZhVftGTo9hA88S_HKgrKggbPRIM12lhawy_N4h5eVcZbJMLgyC6NGUsPCZbZMoNaFqn7MSaP5lkJj37KlRM1C_6wQ88jZfr4sKnLClJ2Tadno1uAGGjIZVqcoaGjxymInn-nZ2CITbXiJ4BoBkTmXURex34bMwCjt1OtZPX3UekEUCA6HIHBBf02eyOBWRt6alCGSRnayYF6jIEF8NaY6270mLvEprsP4_iHPDYsTCPevHDAiF4QpojP2KAK5VIpeQ4JFdoDioKM2y2Ksz3CpEubiJq2QB3weQRfmckYAQpxH_6-nZVguNdUONueeBCkDk0mBQFKLW0ugBUZ3pfc_q-v6ITXfnFy0[Схема]
 
 
 ===== Пример бизнес-кейса
 
-====== Постановка
-
 Аналитические отчеты
 
-* 1. Распределение плотности заказов по районам за последнюю неделю
-* 2. Статистика заказов по будням и выходным за год
+* 1. Распределение плотности заказов по районам за последнюю неделю +
+  Реализуется при помощи батча "Обновление отчета для планирования"
+* 2. Статистика заказов по будням и выходным за год +
+  Реализуется при помощи батча "Заказ сложного отчета" +
 * 3. Статистика заказов на новогодние праздники за последние 10 лет
+  Реализуется при помощи батча "Заказ сложного отчета"
 
-====== Решение
-
+Возможна реализация п.2 как в п.1, для этого необходимо добавить еще одну оперативную витрину и обновляющий ее каждый день батч в режиме CDC.
