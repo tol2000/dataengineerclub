@@ -1,0 +1,59 @@
+= Process for CentOS 7
+
+== Pre
+
+[source, bash]
+----
+create VM, 15G mem, 30G disk, 4 virt proc
+
+sudo usermod -aG wheel user
+
+# :)))
+sudo yum install mc
+
+sudo mcedit /etc/ssh/sshd_config
+PasswordAuthentication yes
+
+sudo systemctl restart sshd
+
+sudo passwd root
+sudo passwd user
+
+ssh-copy-id user@ip
+
+#sudo firewall-cmd --set-default-zone=work
+#sudo firewall-cmd --zone=work --add-service ssh
+#sudo firewall-cmd --zone=work --add-service ssh --permanent
+
+
+mcedit ~/.ssh/config
+# my google cloud vm cdh-cloudera-2
+host cdh-cloudera-2
+  HostName see_in_web
+  User user
+  IdentityFile ~/.ssh/id_rsa
+
+
+
+----
+
+
+== Cloudera
+
+https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_cdh.html
+
+
+[source, bash]
+----
+sudo yum install wget
+sudo wget https://archive.cloudera.com/cm6/6.3.1/redhat7/yum/cloudera-manager.repo -P /etc/yum.repos.d/
+sudo rpm --import https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPM-GPG-KEY-cloudera
+
+#recommended 1.8
+sudo yum install java-1.8.0-openjdk-devel
+
+sudo yum install cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server
+
+
+
+----
