@@ -1,71 +1,97 @@
 @startuml DataWarehouse
-skinparam defaultTextAlignment center
-skinparam noteTextAlignment center
 
-centerheader
-home exercise 2
-endheader
+skinparam ComponentStyle uml2
 
-legend top left
-Хранилище данных типа Data Lake
-endlegend
-
-cloud "Оперативная OLTP БД компании" as oltp_orders_db {
+cloud "Оперативная OLTP БД компании" as cloud_oltp_orders {
 
 }
 
-frame "Хранилище типа Data Lake" as stor {
+Actor "Внешний\nПользователь" as extuser
 
-    frame "Витрины" as stor_dm {
-        database "Реляционная БД\n" as db_datamart {
-            [Таблица для ежедневного\nпланирования в диспетчерской] as db_daily_plan_table
-            [Таблица заказанных\nпользователем отчетов] as db_ordered_reports_table
+frame "Хранилище типа Data Lake" as frame_dlstor {
+
+    frame "Витрины" as frame_dlstor_dm {
+        component controller_extuser_reports [
+            Асинхронное управление
+            отчетами пользователя
+            (заказ, выдача по событию завершения)
+        ]
+        database "Реляционная БД\n" as db_dm {
+            component report_daily_plan [
+                Отчет для ежедневного
+                планирования в диспетчерской
+                Содержит распарсенные данные за неделю
+            ]
+            component report_extuser_reports [
+                Отчет заказанных
+                пользователем отчетов
+            ]
         }
+        component batch_report_daily_plan_refresh [
+            **Batch**
+            ----
+            Обновление отчета
+            для планирования
+            ----
+            Периодичность: Ежедневно
+        ]
+        component batch_extuser_report_order [
+            **Batch**
+            ----
+            Заказ сложного отчета
+        ]
+        component batch_extuser_report_delivery [
+            **Batch**
+            ----
+            Получение заказанного отчета
+            и его очистка из БД
+        ]
     }
 
-    frame "Обработанные данные" as stor_stage {
+    frame "Обработанные данные" as frame_dlstor_stage {
         database "Реляционная БД\n" as db_stage {
-            [Таблица заказов такси\nза неделю] as db_orders_week_table
+            [Таблица заказов такси\nза неделю] as tbl_staged_orders_week
         }
+        component batch_tbl_orders_week_refresh [
+            **Batch**
+            ----
+            Оперативное обновление stage-данных за неделю
+                - добавление нового из источника
+                - удаление в приемнике всего старше недели
+        ]
     }
 
-    frame "Сырые данные" as stor_rawdata {
+    frame "Сырые данные" as frame_dlstor_raw {
         database "БД Типа Key-Value" as db_raw {
-            [**Таблица заказов**\n**за все время**\n----\n**Ключ**\nДата поездки\nНомер заказа\nГосномер авто\nКод страны\n----\n**Данные**\nДанные геолокации\nДругие данные] as db_raw_orders_table
+            [**Таблица заказов**\n**за все время**\n----\n**Ключ**\nДата поездки\nНомер заказа\nГосномер авто\nКод страны\n----\n**Данные**\nДанные геолокации\nДругие данные] as tbl_raw_orders
         }
-
+        component batch_raw_load [
+            **Batch**
+            ----
+            Загрузка сырых данных
+            ----
+            Периодичность: Несколько раз в день
+        ]
     }
 
-    (**Batch**\ndaily_batch_load) as daily_batch_load
-    note right of 
-        Загрузка данных\nНесколько раз в день
+    cloud_oltp_orders --> batch_raw_load
 
-    end note
+    batch_raw_load --> tbl_raw_orders
 
-    (**Batch**\nОбновление\ndb_daily_plan_table\nЕжедневно) as dailyplan_batch_refresh
+    tbl_raw_orders --> batch_tbl_orders_week_refresh
+    batch_tbl_orders_week_refresh --> tbl_staged_orders_week
 
-    (**Batch**\nОбновление поездок\nза неделю\nЕжедневно) as week_batch_refresh
-    note right of week_batch_refresh
-        - добавление нового из источника
-        - удаление в приемнике всего старше недели
-    end note
+    tbl_staged_orders_week --> batch_report_daily_plan_refresh
+    batch_report_daily_plan_refresh --> report_daily_plan
 
-    (Заказ\nпользователем\nотчета) as user_report_order
+    extuser --> batch_extuser_report_order
+    batch_extuser_report_order --> controller_extuser_reports
+    
+    controller_extuser_reports <-- tbl_raw_orders
+    controller_extuser_reports <--> report_extuser_reports
 
-    (Получение\nпользователем\nотчета\nи удаление отчета\nиз бд отчетов) as user_report_get_delete
-
-    oltp_orders_db --> (daily_batch_load)
-    (daily_batch_load) --> db_raw_orders_table
-
-    db_raw_orders_table --> (week_batch_refresh)
-    (week_batch_refresh) --> db_orders_week_table
-
-    db_raw_orders_table --> (user_report_order)
-    (user_report_order) --> db_ordered_reports_table
-    (user_report_get_delete) <-- db_ordered_reports_table
-
-    db_orders_week_table --> (dailyplan_batch_refresh)
-    (dailyplan_batch_refresh) --> db_daily_plan_table
+    controller_extuser_reports --> batch_extuser_report_delivery
+    batch_extuser_report_delivery --> extuser
 
 }
 @enduml
