@@ -187,3 +187,11 @@ reboot
 
 After rebooting repeat step "Inspect cluster"
 
+== Result
+
+image:Screenshot_20191211_174327.png[]
+
+image:Screenshot_20191211_174425.png[]
+
+image:Screenshot_20191211_174514.png[]
+
