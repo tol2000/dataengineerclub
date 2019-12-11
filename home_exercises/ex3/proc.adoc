@@ -124,6 +124,7 @@ PasswordAuthentication yes
 sudo systemctl restart sshd
 sudo mcedit /etc/sudoers
 uncomment %wheel  ALL=(ALL)       NOPASSWD: ALL
+sudo usermod -aG wheel user
 
 # adding second node to firewall rules
 sudo firewall-cmd --zone=work --add-source=10.128.0.3/32
