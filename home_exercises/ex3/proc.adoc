@@ -1,6 +1,43 @@
-= Process for CentOS 7
+= ДЗ 3
 
-== Pre
+== Описание выполненного
+
+* С докером не хотел завязываться, хотел настроить по-взрослому, т.к. потом может пригодиться этот опыт.
+* Развернул в GCP три машины на центосе 7
+
+=== Попытка 1
+
+* Попытался сделать систему из трех машин: одна менеджер и две в кластере.
+* Не получилось, т.к. в гугле ограничения на ресурсы, и если с процессором
+  и памятью я ужался, то для веб-интерфейса hue нужен был стат. ip,
+  а гугл позволяет только один в регионе (этот один уже у клаудера менеджера)
+
+=== Попытка 2
+
+* Сделал кластер из одной машины, на этой же машине и клаудера менеджер
+* В реале это, конечно, утопичная система, но для теста, думаю, подойдет :) +
+  ----
+  image:Screenshot_20191212_225432.png[]
+  ----
+  image:Screenshot_20191212_225517.png[]
+  ----
+* В hue не получилось создать папку именно по тому пути, по которому требовалось в задании, видимо, не было прав суперпользователя на HDFS. +
+  Я уже не стал возиться и загрузил паркетный файл в папку по умолчанию. +
+  Но если для выполнения задания на отлично это критично, я разберусь и создам там, где нужно. +
+  ----
+  image:Screenshot_20191212_225338.png[]
+  ----
+* В итоге файл загрузился и я создал внешнюю таблицу, которая на этот файл ссылается. +
+  ----
+  image:Screenshot_20191212_225352.png[]
+  ----
+* В качестве факультатива выполнил сложнейший запрос к таблице и посмотрел, кто там числится в списке атлетов :) +
+  ----
+  image:Screenshot_20191212_225825.png[]
+
+
+
+=== Моя история команд, если придется потом повторить
 
 [source, bash]
 ----
@@ -71,6 +108,7 @@ sudo mcedit /var/lib/pgsql/12/data/pg_hba.conf
   then the host line specifying md5 authentication shown above must be inserted before this ident line.
 
 sudo mcedit /var/lib/pgsql/12/data/postgresql.conf
+uncomment listen_addresses and set it to *
 max_connection = 150
 shared_buffers = 256MB
 # wal_buffers now based on shared_buffers, so instruction tells us 8MB, but we leave -1
@@ -109,7 +147,8 @@ sudo systemctl start cloudera-scm-server
 
 sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 
-sudo firewall-cmd --zone=work --add-source=85.238.106.134/32
+# also add to GCP firewall settings if it on GCP
+sudo firewall-cmd --zone=work --add-source=your_external_ip/32
 sudo firewall-cmd --zone=work --add-port=7180/tcp
 sudo firewall-cmd --zone=work --add-port=7182/tcp
 sudo firewall-cmd --zone=work --add-port=80/tcp
@@ -194,32 +233,3 @@ ssh-copy-id tolicheg@10.128.0.4
   ** set localhost as a host
   ** set for each service its own db, user and pass (created before with rhis manual):
   *** rman for resource manager, nav, amon etc...
-
-=== Add node to cluster
-
-NOTE: Created before, some actions upper in source )
-
-image:Screenshot_20191211_144750.png[Screen1]
-
-image:Screenshot_20191211_145521.png[]
-
-image:Screenshot_20191211_145548.png[]
-
-image:Screenshot_20191211_145702.png[]
-
-image:Screenshot_20191211_152725.png[]
-
-image:Screenshot_20191211_154446.png[]
-
-== Result
-
-image:Screenshot_20191211_174327.png[]
-
-image:Screenshot_20191211_174425.png[]
-
-image:Screenshot_20191211_174514.png[]
-
--rw-rw-r--  1 aklyusa aklyusa 176K Dec 12 16:48 Screenshot_20191212_164826.png                                                                                                  
--rw-rw-r--  1 aklyusa aklyusa  61K Dec 12 16:51 Screenshot_20191212_165104.png
--rw-rw-r--  1 aklyusa aklyusa  62K Dec 12 16:53 Screenshot_20191212_165352.png
--rw-rw-r--  1 aklyusa aklyusa 119K Dec 12 16:57 Screenshot_20191212_165704.png

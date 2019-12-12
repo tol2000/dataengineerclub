@@ -46,6 +46,11 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             Получение заказанного отчета
             и его очистка из БД
         ]
+        component tbl_last_orders_cache [
+            Кэш последних заказов
+            по каждой из областей
+        ]
+        note top of tbl_last_orders_cache: **Добавлено**
     }
 
     frame "Обработанные данные" as frame_dlstor_stage {
@@ -72,6 +77,23 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             ----
             Периодичность: Несколько раз в день
         ]
+        database "In-memory БД\nреляционного типа" as db_cache {
+            component tbl_cache_orders [
+                Кэш последних заказов
+                по клиенту
+                ----
+                Код клиента
+                Последние n заказов
+            ]
+        }
+        component stream_cache_proc [
+            **Stream**
+            ----
+            Стриминг-пайп, который
+            в режиме реального времени
+            буферизирует минимум данных
+            по событию "new data available"
+        ]
     }
 
     cloud_oltp_orders --> batch_raw_load
@@ -92,6 +114,9 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
 
     controller_extuser_reports --> batch_extuser_report_delivery
     batch_extuser_report_delivery --> extuser
+
+    cloud_oltp_orders --> stream_cache_proc
+    stream_cache_proc --> tbl_last_orders_cache
 
 }
 @enduml
