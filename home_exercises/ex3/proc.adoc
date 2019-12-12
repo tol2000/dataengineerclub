@@ -29,6 +29,7 @@ sudo passwd user
 
 https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_cdh.html
 
+=== cdh-cloudera-2
 
 [source, bash]
 ----
@@ -113,9 +114,20 @@ sudo firewall-cmd --zone=work --add-port=7180/tcp
 sudo firewall-cmd --zone=work --add-port=7182/tcp
 sudo firewall-cmd --zone=work --add-port=80/tcp
 sudo firewall-cmd --zone=work --add-port=8888/tcp
+# for postgre access from nodes 3,4
+sudo firewall-cmd --zone=work --add-port=5432/tcp
 sudo firewall-cmd --runtime-to-permanent
 
-# on the cdh-cloudera-3,4
+sudo mcedit /etc/hosts
+10.128.0.3 cdh-cloudera-3
+10.128.0.4 cdh-cloudera-4
+
+----
+
+=== cdh-cloudera-2,3,4
+
+[source, bash]
+----
 sudo passwd tolicheg
 #passwd the same as tolicheg
 sudo passwd root
@@ -125,40 +137,9 @@ sudo systemctl restart sshd
 sudo mcedit /etc/sudoers
 uncomment %wheel  ALL=(ALL)       NOPASSWD: ALL
 sudo usermod -aG wheel user
-
-# adding second node to firewall rules
-sudo firewall-cmd --zone=work --add-source=10.128.0.3/32
-sudo firewall-cmd --zone=work --add-source=10.128.0.3/32 --permanent
-do the same for .4 address
-# Also add to GCP firewall (VPC network firewall rules)
-
-# for access to cdh-cloudera-3,4 claster node ()
-ssh-keygen -t rsa
-# 10.128.0.3,4 - cluster nodes
-ssh-copy-id tolicheg@10.128.0.3
-ssh-copy-id tolicheg@10.128.0.4
-
 ----
 
-== Web-interface
-
-=== Add node to cluster
-
-NOTE: Created before, some actions upper in source )
-
-image:Screenshot_20191211_144750.png[Screen1]
-
-image:Screenshot_20191211_145521.png[]
-
-image:Screenshot_20191211_145548.png[]
-
-image:Screenshot_20191211_145702.png[]
-
-image:Screenshot_20191211_152725.png[]
-
-image:Screenshot_20191211_154446.png[]
-
-As recommended after inspecting hosts on *chd-cloudera-3 and -4*
+==== As recommended after inspecting hosts on *chd-cloudera-3 and -4*
 
 [source, bash]
 ----
@@ -185,7 +166,50 @@ systemctl enable disable-thp
 reboot
 ----
 
-After rebooting repeat step "Inspect cluster"
+=== cdh-cloudera-2
+
+[source, bash]
+----
+# adding second node to firewall rules
+sudo firewall-cmd --zone=work --add-source=10.128.0.3/32
+sudo firewall-cmd --zone=work --add-source=10.128.0.3/32 --permanent
+do the same for .4 address
+# Also add to GCP firewall (VPC network firewall rules)
+
+# for access to cdh-cloudera-3,4 claster node ()
+ssh-keygen -t rsa
+# 10.128.0.3,4 - cluster nodes
+ssh-copy-id tolicheg@10.128.0.3
+ssh-copy-id tolicheg@10.128.0.4
+----
+
+== Web-interface
+
+=== Add nodes to manager
+
+* Add cdh-cloudera-2 as cloudera-manager
+* Add all roles to cdh-cloudera-2
+* When adding roles of rman, nav etc. and setting database
+  ** set postgre db
+  ** set localhost as a host
+  ** set for each service its own db, user and pass (created before with rhis manual):
+  *** rman for resource manager, nav, amon etc...
+
+=== Add node to cluster
+
+NOTE: Created before, some actions upper in source )
+
+image:Screenshot_20191211_144750.png[Screen1]
+
+image:Screenshot_20191211_145521.png[]
+
+image:Screenshot_20191211_145548.png[]
+
+image:Screenshot_20191211_145702.png[]
+
+image:Screenshot_20191211_152725.png[]
+
+image:Screenshot_20191211_154446.png[]
 
 == Result
 
