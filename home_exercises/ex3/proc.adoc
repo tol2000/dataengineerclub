@@ -219,3 +219,7 @@ image:Screenshot_20191211_174425.png[]
 
 image:Screenshot_20191211_174514.png[]
 
+-rw-rw-r--  1 aklyusa aklyusa 176K Dec 12 16:48 Screenshot_20191212_164826.png                                                                                                  
+-rw-rw-r--  1 aklyusa aklyusa  61K Dec 12 16:51 Screenshot_20191212_165104.png
+-rw-rw-r--  1 aklyusa aklyusa  62K Dec 12 16:53 Screenshot_20191212_165352.png
+-rw-rw-r--  1 aklyusa aklyusa 119K Dec 12 16:57 Screenshot_20191212_165704.png
