@@ -2,15 +2,20 @@
 
 skinparam ComponentStyle uml2
 
-cloud "Оперативная OLTP БД компании" as cloud_oltp_orders {
+' left to right direction
+' top to bottom direction
+
+cloud "Оперативная OLTP БД компании" as cloud_oltp_orders #LightBlue {
 
 }
 
 Actor "Внешний\nПользователь" as extuser
+'bc4
+Actor "Прием\nзаказов" as extuser4 #Tomato
 
-frame "Хранилище типа Data Lake" as frame_dlstor {
+frame "Хранилище\nтипа Data Lake" as frame_dlstor {
 
-    frame "Витрины" as frame_dlstor_dm {
+    frame "Витрины" as frame_dlstor_dm #Gold {
         component controller_extuser_reports [
             Асинхронное управление
             отчетами пользователя
@@ -46,12 +51,19 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             Получение заказанного отчета
             и его очистка из БД
         ]
-        component tbl_last_orders [
-            Последние заказы клиента
+        'bc4
+        component report_drivers_online #Tomato [
+            Отчет
+            ----
+            Таксисты на линии
+        ]
+        'bc4
+        component control_report_drivers_online #Tomato [
+            Управление отчетом
         ]
     }
 
-    frame "Обработанные данные" as frame_dlstor_stage {
+    frame "Обработанные данные" as frame_dlstor_stage #LightGreen {
         database "Реляционная БД\n" as db_stage {
             [Таблица заказов такси\nза неделю] as tbl_staged_orders_week
         }
@@ -62,9 +74,19 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
                 - добавление нового из источника
                 - удаление в приемнике всего старше недели
         ]
+        'bc4
+        database "In-memory БД" as db_drivers_online #Tomato {
+            component tbl_drivers_online [
+                Таксисты на линии
+                ----
+                Код области
+                Код автомобиля
+                Краткая информация
+            ]
+        }
     }
 
-    frame "Сырые данные" as frame_dlstor_raw {
+    frame "Сырые данные" as frame_dlstor_raw #LightGray {
         database "БД Типа Key-Value" as db_raw {
             [**Таблица заказов**\n**за все время**\n----\n**Ключ**\nДата поездки\nНомер заказа\nГосномер авто\nКод страны\n----\n**Данные**\nДанные геолокации\nДругие данные] as tbl_raw_orders
         }
@@ -75,27 +97,14 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             ----
             Периодичность: Несколько раз в день
         ]
-        database "БД" as db_cache {
-            component tbl_cache_orders [
-                Кэш последних заказов
-                по клиенту
-                ----
-                Код клиента
-                Последние n заказов
-            ]
-        }
-        component stream_cache_proc [
-            **Stream**
+        'bc4
+        component batch_driver_status_proc #Tomato [
+            **MicroBatch**
             ----
-            Стриминг-пайп, который
-            в режиме реального времени
-            буферизирует минимум данных
-            по событию "new data available"
+            Обновление таблицы
+            В режиме change data capture
         ]
     }
-
-    (**Stream**\nОбновление в режиме\nchange data capture) as stream_last_orders_to_datamart
-    (Запрос последних заказов) as query_last_orders
 
     cloud_oltp_orders --> batch_raw_load
 
@@ -107,29 +116,39 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
     tbl_staged_orders_week --> batch_report_daily_plan_refresh
     batch_report_daily_plan_refresh --> report_daily_plan
 
-    extuser --> batch_extuser_report_order
+    extuser -right-> batch_extuser_report_order
     batch_extuser_report_order --> controller_extuser_reports
     
     controller_extuser_reports <-- tbl_raw_orders
     controller_extuser_reports <--> report_extuser_reports
 
     controller_extuser_reports --> batch_extuser_report_delivery
-    batch_extuser_report_delivery --> extuser
+    batch_extuser_report_delivery -left-> extuser
 
-    cloud_oltp_orders --> stream_cache_proc
-    stream_cache_proc --> tbl_cache_orders
 
-    extuser --> (query_last_orders)
-    (query_last_orders) --> tbl_last_orders
+    'bc4
 
-    tbl_cache_orders --> (stream_last_orders_to_datamart)
-    (stream_last_orders_to_datamart) --> tbl_last_orders
+    (Водитель\nна линии) as driver_online #Tomato
+    (Водитель\nснялся с линии) as driver_offline #Tomato
+    (Водитель\nпереместился\nна другую линию) as driver_moved #Tomato
+    (выборка\nданных) as select_drivers_online #Tomato
+    (insert/update/delete) as insupddel_drivers_online #Tomato
+    
+    cloud_oltp_orders --> driver_online
+    cloud_oltp_orders --> driver_offline
+    cloud_oltp_orders --> driver_moved
 
-    note top of query_last_orders: **Бизнес-кейс #4**
-    note top of stream_last_orders_to_datamart: **Бизнес-кейс #4**
-    note top of tbl_cache_orders: **Бизнес-кейс #4**
-    note top of tbl_last_orders: **Бизнес-кейс #4**
+    driver_online --> batch_driver_status_proc : stream ins
+    driver_offline --> batch_driver_status_proc : stream del
+    driver_moved --> batch_driver_status_proc : stream upd
 
+    batch_driver_status_proc --> insupddel_drivers_online
+    insupddel_drivers_online --> tbl_drivers_online
+
+    extuser4 <--> control_report_drivers_online : онлайн-запрос отчета
+    tbl_drivers_online --> select_drivers_online
+    select_drivers_online <--> control_report_drivers_online
+    control_report_drivers_online <--> report_drivers_online : формирование отчета
 
 }
 @enduml
