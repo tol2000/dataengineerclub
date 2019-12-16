@@ -1,21 +1,33 @@
 = ДЗ 3
 
-== Описание выполненного
+== Описание
 
-* С докером не хотел завязываться, хотел настроить по-взрослому, т.к. потом может пригодиться этот опыт.
-* Развернул в GCP три машины на центосе 7
+=== Глобальный план
 
-=== Попытка 1
+* Развернуть кластер на центосе 7 (8 побоялся) с клаудерой последней версии 6.13 (тут не побоялся))
 
-* Попытался сделать систему из трех машин: одна менеджер и две в кластере.
-* Не получилось, т.к. в гугле ограничения на ресурсы, и если с процессором
-  и памятью я ужался, то для веб-интерфейса hue нужен был стат. ip,
-  а гугл позволяет только один в регионе (этот один уже у клаудера менеджера)
+=== Попытка 1 (неудачная)
+
+* Был план развернуть на трех машинах
+  ** Машина1 - клаудера манагер + постгрес БД
+  ** Машины 2, 3 - собственно кластер с HDFS, Hive, Hue, etc...
+
+Не получилось, т.к. в гугле ограничения на ресурсы
+(памяти, кажется, не больше 30, процессоров не больше 8, внешний IP в регионе только один).
+
+С процессором и памятью я ужался, сделав  машины 2 и 3 с 2мя процессорами и по 7.5 гигов оперы
+
+Но для веб-интерфейса hue, который в составе кластера находился на машине 2 или 3, нужен был стат. ip
+в этом регионе, который уже был у клаудера-менеджера. +
+Я не стал уже читтинговать и пробовать переносить машины 2,3 в другой регион или под другой аккаунт.
+
+Думаю, чуть позже, когда прослушаю больше занятий, разверну это дело внутри компании, где сейчас работаю,
+на реальных машинах внутри сети, так будет проще и надежнее.
 
 === Попытка 2
 
-* Сделал кластер из одной машины, на этой же машине и клаудера менеджер
-* В реале это, конечно, утопичная система, но для теста, думаю, подойдет :) +
+* Сделал кластер из одной машины, на этой же машине и клаудера менеджер и БД постгреса, в общем все.
+* В реале это, конечно, утопичная система, но для тестов, думаю, подойдет :) +
   ----
   image:Screenshot_20191212_225432.png[]
   ----
@@ -31,205 +43,20 @@
   ----
   image:Screenshot_20191212_225352.png[]
   ----
-* В качестве факультатива выполнил сложнейший запрос к таблице и посмотрел, кто там числится в списке атлетов :) +
+* В качестве факультатива выполнил select (*) к таблице и посмотрел, кто там числится в списке атлетов :) +
   ----
   image:Screenshot_20191212_225825.png[]
 
+=== Дополнительная попытка 3 (более сложные запросы)
 
+[qanda]
+Захотел выполнить аналитический запрос с участием first_value() partition by, order by...::
+  Резульат - упал хью в кластере
+Захотел выполнить простой select count(*)::
+  Результат тот же
+
+Подозреваю, что система не смогла добраться до конца датафайла, т.к. select count(*) - запрос с одной стороны простой, но, видимо, читает последовательно файл данных до конца.
 
 === Моя история команд, если придется потом повторить
 
-[source, bash]
-----
-create VM, 15G mem, 30G disk, 4 virt proc
-
-sudo usermod -aG wheel user
-
-# :)))
-sudo yum install mc
-
-sudo mcedit /etc/ssh/sshd_config
-PasswordAuthentication yes
-sudo systemctl restart sshd
-
-sudo passwd user
-
-#sudo firewall-cmd --set-default-zone=work
-#sudo firewall-cmd --zone=work --add-service ssh
-#sudo firewall-cmd --zone=work --add-service ssh --permanent
-
-
-----
-
-
-== Cloudera
-
-https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_cdh.html
-
-=== cdh-cloudera-2
-
-[source, bash]
-----
-sudo yum install wget
-sudo wget https://archive.cloudera.com/cm6/6.3.1/redhat7/yum/cloudera-manager.repo -P /etc/yum.repos.d/
-sudo rpm --import https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPM-GPG-KEY-cloudera
-
-#recommended 1.8
-sudo yum install java-1.8.0-openjdk-devel
-
-sudo yum install cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server
-
-#postgres12 (from of site)
-sudo yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-sudo yum install postgresql12
-sudo yum install postgresql12-server
-sudo /usr/pgsql-12/bin/postgresql-12-setup initdb
-sudo systemctl enable postgresql-12
-sudo systemctl start postgresql-12
-
-sudo passwd postgres
-
-sudo yum install python-pip
-sudo pip install --upgrade pip
-
-#sudo under user does not help
-su
-echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
-exit
-
-sudo mcedit /var/lib/pgsql/12/data/pg_hba.conf
-- change local   all             all                                     peer
-         to
-         local   all             all                                     md5
-- Add the following line:
-  host all all 127.0.0.1/32 md5
-  If the default pg_hba.conf file contains the following line:
-  host all all 127.0.0.1/32 ident
-  then the host line specifying md5 authentication shown above must be inserted before this ident line.
-
-sudo mcedit /var/lib/pgsql/12/data/postgresql.conf
-uncomment listen_addresses and set it to *
-max_connection = 150
-shared_buffers = 256MB
-# wal_buffers now based on shared_buffers, so instruction tells us 8MB, but we leave -1
-
-sudo usermod -aG postgres tolicheg
-
-sudo systemctl restart postgresql-12
-
-su postgres
-psql
-CREATE ROLE scm LOGIN PASSWORD 'scm';
-CREATE DATABASE scm OWNER scm ENCODING 'UTF8';
-CREATE ROLE amon LOGIN PASSWORD 'amon';
-CREATE DATABASE amon OWNER amon ENCODING 'UTF8';
-CREATE ROLE rman LOGIN PASSWORD 'rman';
-CREATE DATABASE rman OWNER rman ENCODING 'UTF8';
-CREATE ROLE hue LOGIN PASSWORD 'hue';
-CREATE DATABASE hue OWNER hue ENCODING 'UTF8';
-CREATE ROLE hive LOGIN PASSWORD 'hive';
-CREATE DATABASE metastore OWNER hive ENCODING 'UTF8';
-CREATE ROLE sentry LOGIN PASSWORD 'sentry';
-CREATE DATABASE sentry OWNER sentry ENCODING 'UTF8';
-CREATE ROLE nav LOGIN PASSWORD 'nav';
-CREATE DATABASE nav OWNER nav ENCODING 'UTF8';
-CREATE ROLE navms LOGIN PASSWORD 'navms';
-CREATE DATABASE navms OWNER navms ENCODING 'UTF8';
-CREATE ROLE oozie LOGIN PASSWORD 'oozie';
-CREATE DATABASE oozie OWNER oozie ENCODING 'UTF8';
-ALTER DATABASE oozie SET standard_conforming_strings=off;
-exit from psql
-exit from user postgres
-
-sudo /opt/cloudera/cm/schema/scm_prepare_database.sh postgresql scm scm
-
-sudo systemctl start cloudera-scm-server
-
-sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
-
-# also add to GCP firewall settings if it on GCP
-sudo firewall-cmd --zone=work --add-source=your_external_ip/32
-sudo firewall-cmd --zone=work --add-port=7180/tcp
-sudo firewall-cmd --zone=work --add-port=7182/tcp
-sudo firewall-cmd --zone=work --add-port=80/tcp
-sudo firewall-cmd --zone=work --add-port=8888/tcp
-# for postgre access from nodes 3,4
-sudo firewall-cmd --zone=work --add-port=5432/tcp
-sudo firewall-cmd --runtime-to-permanent
-
-sudo mcedit /etc/hosts
-10.128.0.3 cdh-cloudera-3
-10.128.0.4 cdh-cloudera-4
-
-----
-
-=== cdh-cloudera-2,3,4
-
-[source, bash]
-----
-sudo passwd tolicheg
-#passwd the same as tolicheg
-sudo passwd root
-sudo mcedit /etc/ssh/sshd_config
-PasswordAuthentication yes
-sudo systemctl restart sshd
-sudo mcedit /etc/sudoers
-uncomment %wheel  ALL=(ALL)       NOPASSWD: ALL
-sudo usermod -aG wheel user
-----
-
-==== As recommended after inspecting hosts on *chd-cloudera-3 and -4*
-
-[source, bash]
-----
-su
-
-mcedit /etc/sysctl.conf
-vm.swappiness=10
-
-mcedit /etc/systemd/system/disable-thp.service
-[Unit]
-Description=Disable Transparent Huge Pages (THP)
-
-[Service]
-Type=simple
-ExecStart=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled && echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag"
-
-[Install]
-WantedBy=multi-user.target
-
-systemctl daemon-reload
-systemctl start disable-thp
-systemctl enable disable-thp
-
-reboot
-----
-
-=== cdh-cloudera-2
-
-[source, bash]
-----
-# adding second node to firewall rules
-sudo firewall-cmd --zone=work --add-source=10.128.0.3/32
-sudo firewall-cmd --zone=work --add-source=10.128.0.3/32 --permanent
-do the same for .4 address
-# Also add to GCP firewall (VPC network firewall rules)
-
-# for access to cdh-cloudera-3,4 claster node ()
-ssh-keygen -t rsa
-# 10.128.0.3,4 - cluster nodes
-ssh-copy-id tolicheg@10.128.0.3
-ssh-copy-id tolicheg@10.128.0.4
-----
-
-== Web-interface
-
-=== Add nodes to manager
-
-* Add cdh-cloudera-2 as cloudera-manager
-* Add all roles to cdh-cloudera-2
-* When adding roles of rman, nav etc. and setting database
-  ** set postgre db
-  ** set localhost as a host
-  ** set for each service its own db, user and pass (created before with rhis manual):
-  *** rman for resource manager, nav, amon etc...
+link:proc_detail_commands.adoc[Команды]
