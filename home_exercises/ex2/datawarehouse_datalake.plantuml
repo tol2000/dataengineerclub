@@ -46,11 +46,9 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             Получение заказанного отчета
             и его очистка из БД
         ]
-        component tbl_last_orders_cache [
-            Кэш последних заказов
-            по каждой из областей
+        component tbl_last_orders [
+            Последние заказы клиента
         ]
-        note top of tbl_last_orders_cache: **Добавлено**
     }
 
     frame "Обработанные данные" as frame_dlstor_stage {
@@ -77,7 +75,7 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             ----
             Периодичность: Несколько раз в день
         ]
-        database "In-memory БД\nреляционного типа" as db_cache {
+        database "БД" as db_cache {
             component tbl_cache_orders [
                 Кэш последних заказов
                 по клиенту
@@ -95,6 +93,9 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
             по событию "new data available"
         ]
     }
+
+    (**Stream**\nОбновление в режиме\nchange data capture) as stream_last_orders_to_datamart
+    (Запрос последних заказов) as query_last_orders
 
     cloud_oltp_orders --> batch_raw_load
 
@@ -116,7 +117,19 @@ frame "Хранилище типа Data Lake" as frame_dlstor {
     batch_extuser_report_delivery --> extuser
 
     cloud_oltp_orders --> stream_cache_proc
-    stream_cache_proc --> tbl_last_orders_cache
+    stream_cache_proc --> tbl_cache_orders
+
+    extuser --> (query_last_orders)
+    (query_last_orders) --> tbl_last_orders
+
+    tbl_cache_orders --> (stream_last_orders_to_datamart)
+    (stream_last_orders_to_datamart) --> tbl_last_orders
+
+    note top of query_last_orders: **Бизнес-кейс #4**
+    note top of stream_last_orders_to_datamart: **Бизнес-кейс #4**
+    note top of tbl_cache_orders: **Бизнес-кейс #4**
+    note top of tbl_last_orders: **Бизнес-кейс #4**
+
 
 }
 @enduml
