@@ -1,0 +1,17 @@
+= ДЗ по практике в хайве
+
+== My dh-cloudera in GCP
+
+== beeline
+
+[source, bash]
+----
+beeline
+!connect jdbc:hive2://10.0.X.X:10001/default hive hive org.apache.hive.jdbc.HiveDriver
+
+----
+
+Urls
+
+* http://35.225.3.217:7180/cmf/clusters/2/status
+* http://35.225.3.217:8088/cluster/scheduler
