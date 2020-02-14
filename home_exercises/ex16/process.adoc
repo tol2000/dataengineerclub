@@ -8,6 +8,7 @@ https://ois2.ttu.ee/uusois/!uus_ois2.ois_public.page_?_page=DF9175AB402E2383E097
 
 Выбрать, скажем, транзакции за последние сутки...
 Добавить условие даты
+GCP BigQuery: name bitok_query_trans_1
 
 -- Таблица секционирована по полю block_timestamp_month, пользуемся этим, обрабатывая последний месяц
 select count(*) from `bigquery-public-data.crypto_bitcoin.transactions` t
