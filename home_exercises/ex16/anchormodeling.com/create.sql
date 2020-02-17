@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS hex16.RE_Repo (
 -- RE_WCH_Repo_Watches table (on RE_Repo)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.RE_WCH_Repo_Watches (
-    RE_WCH_RE_ID int not null,
-    RE_WCH_Repo_Watches int not null,
+    RE_WCH_RE_ID INTEGER not null,
+    RE_WCH_Repo_Watches INTEGER not null,
     RE_WCH_ChangedAt datetime not null,
     constraint fkRE_WCH_Repo_Watches foreign key (
         RE_WCH_RE_ID
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS hex16.RE_WCH_Repo_Watches (
 -- RE_NAM_Repo_Name table (on RE_Repo)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.RE_NAM_Repo_Name (
-    RE_NAM_RE_ID int not null,
-    RE_NAM_Repo_Name varchar(120) not null,
+    RE_NAM_RE_ID INTEGER not null,
+    RE_NAM_Repo_Name STRING not null,
     constraint fkRE_NAM_Repo_Name foreign key (
         RE_NAM_RE_ID
     ) references hex16.RE_Repo(RE_ID),
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS hex16.CO_Commit (
 -- CO_DAT_Commit_Date table (on CO_Commit)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_DAT_Commit_Date (
-    CO_DAT_CO_ID int not null,
-    CO_DAT_Commit_Date date not null,
+    CO_DAT_CO_ID INTEGER not null,
+    CO_DAT_Commit_Date DATETIME not null,
     constraint fkCO_DAT_Commit_Date foreign key (
         CO_DAT_CO_ID
     ) references hex16.CO_Commit(CO_ID),
@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS hex16.CO_DAT_Commit_Date (
 -- CO_AUT_Commit_Author table (on CO_Commit)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_AUT_Commit_Author (
-    CO_AUT_CO_ID int not null,
-    CO_AUT_Commit_Author varchar(100) not null,
+    CO_AUT_CO_ID INTEGER not null,
+    CO_AUT_Commit_Author STRING not null,
     constraint fkCO_AUT_Commit_Author foreign key (
         CO_AUT_CO_ID
     ) references hex16.CO_Commit(CO_ID),
@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS hex16.CO_AUT_Commit_Author (
 -- CO_MSG_Commit_Message table (on CO_Commit)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_MSG_Commit_Message (
-    CO_MSG_CO_ID int not null,
-    CO_MSG_Commit_Message varchar(4000) not null,
+    CO_MSG_CO_ID INTEGER not null,
+    CO_MSG_Commit_Message STRING not null,
     constraint fkCO_MSG_Commit_Message foreign key (
         CO_MSG_CO_ID
     ) references hex16.CO_Commit(CO_ID),
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS hex16.CO_MSG_Commit_Message (
 -- CO_COM_Commit_Commit table (on CO_Commit)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_COM_Commit_Commit (
-    CO_COM_CO_ID int not null,
-    CO_COM_Commit_Commit varchar(150) not null,
+    CO_COM_CO_ID INTEGER not null,
+    CO_COM_Commit_Commit STRING not null,
     constraint fkCO_COM_Commit_Commit foreign key (
         CO_COM_CO_ID
     ) references hex16.CO_Commit(CO_ID),
@@ -128,8 +128,8 @@ CREATE TABLE IF NOT EXISTS hex16.CO_COM_Commit_Commit (
 -- RE_has_CO_belongsTo table (having 2 roles)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.RE_has_CO_belongsTo (
-    RE_ID_has int not null, 
-    CO_ID_belongsTo int not null, 
+    RE_ID_has INTEGER not null, 
+    CO_ID_belongsTo INTEGER not null, 
     constraint RE_has_CO_belongsTo_fkRE_has foreign key (
         RE_ID_has
     ) references hex16.RE_Repo(RE_ID), 
