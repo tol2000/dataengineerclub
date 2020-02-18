@@ -34,7 +34,7 @@ https://cloud.google.com/bigquery/docs/reference/standard-sql/uuid_functions#gen
 
 [source, sql]
 ----
-include::anchormodeling.com/create.sql[]
+include::./anchormodeling.com/create.sql[]
 ----
 
 == Создаем представления для заполнения
