@@ -76,21 +76,19 @@ CREATE TABLE IF NOT EXISTS hex16.RE_has_CO_belongsTo (
 -- Представления для заполнения хранилища
 -----------------------------------------------------------------------------------------------------------------------
 
--- Заполнение репозиториев
--- Представление-источник
--- Здесь считаем, что имя репозитория (бизнес-ключ) постоянно
--- и мы не пишем репозиторий с тем же именем, а только обновляем
--- его исторические данные (просмотры)
------------------------------------------------------------------------------------------------------------------------
-create or replace view hex16.etl_repo_source as
-select t.*, GENERATE_UUID() as re_id
--- Репозиторий не должен существовать (repo_name not in hex16.RE_NAM_Repo_Name)
+create or replace view hex16.etl_nonhistorical_repository as
+-- Неисторические данные по репозиториям
+-- Добавляются только одиин раз
+-- Изменение имени репозитория - новая сущность (запись в якоре)
+select GENERATE_UUID() as re_id, t.repo_name
   from `bigquery-public-data.github_repos.sample_repos` t
-  left outer join `hex16.RE_NAM_Repo_Name` re on t.repo_name <> re.RE_NAM_Repo_Name 
+  left outer join `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` re on t.repo_name = re.RE_NAM_Repo_Name 
   where repo_name in (
+    -- для примера берем несколько наиболее часто просматриваемых репозиториев
     'FreeCodeCamp/FreeCodeCamp',
     'firehol/netdata',
     'joshbuchea/HEAD'
   )
+  and re.RE_NAM_RE_ID is null -- выбираем только несуществующие у нас репозитории
 ;
 
