@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS hex16.RE_Repo (
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.RE_WCH_Repo_Watches (
     RE_WCH_RE_ID STRING not null,
-    RE_WCH_Repo_Watches STRING not null,
+    RE_WCH_Repo_Watches INT64 not null,
     RE_WCH_ChangedAt datetime not null
 );
 -- Static attribute table ---------------------------------------------------------------------------------------------
@@ -111,10 +111,8 @@ select *
   inner join `hex16.RE_NAM_Repo_Name` rn on r.RE_ID = rn.RE_NAM_RE_ID;
 
 -- Загрузка исторических данных по репозиториям (просмотры)
--- Загружаем оптом всю историю всех репозиториев, что есть у нас в хранилище
--- В реальном мире, наверное, это будет слишком, можно грузить только измененные
---   просмотры или распараллелить...
 -----------------------------------------------------------------------------------------------------------------------
+-- Представление-источник исторических данных по репозиториям
 --create or replace view hex16.etl_historical_repository_watches as
 -- Исторические данные по репозиториям
 -- Только по тем репозиториям, что у нас уже есть.
@@ -132,3 +130,13 @@ select rn.RE_NAM_RE_ID as RE_ID, t.watch_count, current_datetime() as changed_at
   -- Возможно, в реальной системе я бы для надежности попытался выбрать его где-то в одном месте, но тогда это был бы скрипт, а не представление-источник
   left outer join `crafty-centaur-261609.hex16.RE_WCH_Repo_Watches` rw on rn.RE_NAM_RE_ID = rw.RE_WCH_RE_ID and current_datetime() = rw.RE_WCH_ChangedAt 
 ;
+-- Загружаем оптом всю историю всех репозиториев, что есть у нас в хранилище
+-- В реальном мире, наверное, это будет слишком, можно грузить только измененные
+--   просмотры или распараллелить...
+-- Запрос можно выполнить несколько раз, чтобы создалась история
+insert into `hex16.RE_WCH_Repo_Watches` ( RE_WCH_RE_ID, RE_WCH_Repo_Watches, RE_WCH_ChangedAt )
+select RE_ID
+       -- при помощи секунд имитируем изменения в просмотрах, т.к. датасет меняется не часто.
+       , watch_count + extract(second from current_datetime())
+       , changed_at from `hex16.etl_historical_repository_watches`;
+
