@@ -140,3 +140,29 @@ select RE_ID
        , watch_count + extract(second from current_datetime())
        , changed_at from `hex16.etl_historical_repository_watches`;
 
+-- Витрина. Просмотры
+-----------------------------------------------------------------------------------------------------------------------
+create or replace view hex16.mart_repository_watches_view as
+select * from
+(
+  select rn.RE_NAM_Repo_Name
+         , first_value('First watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by null order by rw.RE_WCH_ChangedAt) as first_watches
+         , first_value('Max watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by null order by rw.RE_WCH_Repo_Watches desc) max_watches
+    from `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn
+      left outer join `crafty-centaur-261609.hex16.RE_WCH_Repo_Watches` rw on rn.RE_NAM_RE_ID = rw.RE_WCH_RE_ID
+) group by 1,2,3
+;
+-- Просмотр витрины
+select * from `hex16.mart_repository_watches_view`;
+
+
+-- Коммиты. ETL-источник
+-----------------------------------------------------------------------------------------------------------------------
+--
+! ограничить коммиты какой-то датой, чтобы было немного)
+select t.repo_name, count(*) from `bigquery-public-data.github_repos.sample_commits` t
+group by t.repo_name 
+order by count(*) desc
+limit 3
+
+--  inner join `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn on t.repo_name  = rn.RE_NAM_Repo_Name 
