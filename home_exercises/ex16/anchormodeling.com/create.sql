@@ -108,10 +108,12 @@ set (pp_re_id, pp_re_name) =
 );
 insert into `hex16.RE_Repo` (re_id) values (pp_re_id);
 insert into `hex16.RE_NAM_Repo_Name` (RE_NAM_RE_ID, RE_NAM_Repo_Name) values (pp_re_id, pp_re_name);
+
 -- Просмотр хранилища репозиториев
 select *
   from `hex16.RE_Repo` r
-  inner join `hex16.RE_NAM_Repo_Name` rn on r.RE_ID = rn.RE_NAM_RE_ID;
+  inner join `hex16.RE_NAM_Repo_Name` rn on r.RE_ID = rn.RE_NAM_RE_ID
+;
 
 -- Загрузка исторических данных по репозиториям (просмотры)
 -----------------------------------------------------------------------------------------------------------------------
@@ -149,8 +151,8 @@ create or replace view hex16.mart_repository_watches_view as
 select * from
 (
   select rn.RE_NAM_Repo_Name
-         , first_value('First watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by null order by rw.RE_WCH_ChangedAt) as first_watches
-         , first_value('Max watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by null order by rw.RE_WCH_Repo_Watches desc) max_watches
+         , first_value('First watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by rn.RE_NAM_RE_ID order by rw.RE_WCH_ChangedAt) as first_watches
+         , first_value('Max watches: '||rw.RE_WCH_Repo_Watches||' at '||rw.RE_WCH_ChangedAt) over (partition by rn.RE_NAM_RE_ID order by rw.RE_WCH_Repo_Watches desc) max_watches
     from `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn
       left outer join `crafty-centaur-261609.hex16.RE_WCH_Repo_Watches` rw on rn.RE_NAM_RE_ID = rw.RE_WCH_RE_ID
 ) group by 1,2,3
@@ -176,6 +178,11 @@ select as struct GENERATE_UUID() as co_id, rn.RE_NAM_RE_ID as re_id, t.committer
 select 'Will be added ', array_length(a), ' commits';
 set i = array_length(a)-1;
 loop
+  -- Хотел сделать обработку ошибок при добавлении в эти таблицы
+  -- при помощи одной атомарной транзакции, но с удивлением узнал из документации,
+  -- что big query не поддерживает составную транзакцию из нескольких dml операторов.
+  -- Возможно, в таких случаях бест практис - это какой-то составной инсерт
+  -- или удаление из таблиц, куда уже записались данные.
   insert into `hex16.CO_Commit` ( CO_ID ) values (a[offset(i)].co_id); -- якорь коммитов
   insert into `hex16.RE_has_CO_belongsTo` ( RE_ID_has, CO_ID_belongsTo ) values ( a[offset(i)].re_id, a[offset(i)].co_id ); -- tie, связь репозитория и коммитов
   -- Далее атрибуты
@@ -191,13 +198,15 @@ end loop;
 
 -- Коммиты. Витрина. Отчет по авторам коммитов.
 -----------------------------------------------------------------------------------------------------------------------
-select rn.RE_NAM_Repo_Name, ca.CO_AUT_Commit_Author , count(*), min(cd.CO_DAT_Commit_Date) as firsttime, max(cd.CO_DAT_Commit_Date) as lasttime
+create or replace view hex16.mart_commits_authors_view as
+select rn.RE_NAM_Repo_Name, ca.CO_AUT_Commit_Author , count(*) as commits, min(cd.CO_DAT_Commit_Date) as firsttime, max(cd.CO_DAT_Commit_Date) as lasttime
   from `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn
     inner join `crafty-centaur-261609.hex16.RE_has_CO_belongsTo` reco on rn.RE_NAM_RE_ID = reco.RE_ID_has 
     inner join `crafty-centaur-261609.hex16.CO_AUT_Commit_Author` ca on reco.CO_ID_belongsTo = ca.CO_AUT_CO_ID 
     inner join `crafty-centaur-261609.hex16.CO_DAT_Commit_Date` cd on reco.CO_ID_belongsTo = cd.CO_DAT_CO_ID
   group by 1, 2
+  order by rn.RE_NAM_Repo_Name, count(*) desc
 ;
 
-Нужно в скрипте добавления коммитов сделать одну атомарную транзакцию, чтобы при ошибке
-не добавлялись куски. Это и будет факультатив.
+-- Просмотр витрины
+select * from hex16.mart_commits_authors_view;
