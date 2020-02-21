@@ -87,7 +87,10 @@ select GENERATE_UUID() as re_id, t.repo_name
     -- для примера берем несколько наиболее часто просматриваемых репозиториев
     'FreeCodeCamp/FreeCodeCamp',
     'firehol/netdata',
-    'joshbuchea/HEAD'
+    'joshbuchea/HEAD',
+    'torvalds/linux',
+    'apple/swift',
+    'twbs/bootstrap'
   )
   and re.RE_NAM_RE_ID is null -- выбираем только несуществующие у нас репозитории
 ;
@@ -113,7 +116,7 @@ select *
 -- Загрузка исторических данных по репозиториям (просмотры)
 -----------------------------------------------------------------------------------------------------------------------
 -- Представление-источник исторических данных по репозиториям
---create or replace view hex16.etl_historical_repository_watches as
+create or replace view hex16.etl_historical_repository_watches as
 -- Исторические данные по репозиториям
 -- Только по тем репозиториям, что у нас уже есть.
 -- Предполагаем, что перед этим уже загрузили все новые репозитории в соотв. якорь
@@ -158,11 +161,30 @@ select * from `hex16.mart_repository_watches_view`;
 
 -- Коммиты. ETL-источник
 -----------------------------------------------------------------------------------------------------------------------
---
-! ограничить коммиты какой-то датой, чтобы было немного)
-select t.repo_name, count(*) from `bigquery-public-data.github_repos.sample_commits` t
-group by t.repo_name 
-order by count(*) desc
-limit 3
-
---  inner join `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn on t.repo_name  = rn.RE_NAM_Repo_Name 
+declare a array < struct<co_id string, re_id string, cdate timestamp, ccommit string, cmessage string, cauthor string> >;
+declare i int64;
+set a = array (
+select as struct GENERATE_UUID() as co_id, rn.RE_NAM_RE_ID as re_id, t.committer.date as cdate, t.commit as ccommit, t.message as cmessage, t.author.name as cauthor
+  from `bigquery-public-data.github_repos.sample_commits` t
+    inner join `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn on t.repo_name  = rn.RE_NAM_Repo_Name 
+    left outer join `crafty-centaur-261609.hex16.CO_COM_Commit_Commit` c on t.commit  = c.CO_COM_Commit_Commit 
+  where c.CO_COM_CO_ID is null -- добавляем только несуществующие в хранилище коммиты
+        and
+        t.committer.date >= timestamp( datetime '2016-06-22 00:00:00' ) -- это все равно последняя дата коммитов в этом сэмпле
+  limit 1 -- for debugging
+);
+select 'Will be added ', array_length(a), ' commits';
+set i = array_length(a)-1;
+loop
+  insert into `hex16.CO_Commit` ( CO_ID ) values (a[offset(i)].co_id); -- якорь коммитов
+  insert into `hex16.RE_has_CO_belongsTo` ( RE_ID_has, CO_ID_belongsTo ) values ( a[offset(i)].re_id, a[offset(i)].co_id ); -- tie, связь репозитория и коммитов
+  -- Далее атрибуты
+  insert into `hex16.CO_AUT_Commit_Author` ( CO_AUT_CO_ID, CO_AUT_Commit_Author ) values ( a[offset(i)].co_id, a[offset(i)].cauthor );
+  insert into `hex16.CO_COM_Commit_Commit` ( CO_COM_CO_ID, CO_COM_Commit_Commit ) values ( a[offset(i)].co_id, a[offset(i)].ccommit );
+  insert into `hex16.CO_DAT_Commit_Date` ( CO_DAT_CO_ID, CO_DAT_Commit_Date ) values ( a[offset(i)].co_id, a[offset(i)].cdate );
+  insert into `hex16.CO_MSG_Commit_Message` ( CO_MSG_CO_ID, CO_MSG_Commit_Message ) values ( a[offset(i)].co_id, a[offset(i)].cmessage );
+  if i = 0 then
+    leave;
+  end if;
+  set i = i-1;
+end loop;
