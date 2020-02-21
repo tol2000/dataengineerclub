@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS hex16.CO_AUT_Commit_Author (
 -- CO_MSG_Commit_Message table (on CO_Commit)
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_MSG_Commit_Message (
-    CO_MSG_CO_ID INT64 not null,
+    CO_MSG_CO_ID STRING not null,
     CO_MSG_Commit_Message STRING not null
 );
 -- Static attribute table ---------------------------------------------------------------------------------------------
@@ -188,3 +188,16 @@ loop
   end if;
   set i = i-1;
 end loop;
+
+-- Коммиты. Витрина. Отчет по авторам коммитов.
+-----------------------------------------------------------------------------------------------------------------------
+select rn.RE_NAM_Repo_Name, ca.CO_AUT_Commit_Author , count(*), min(cd.CO_DAT_Commit_Date) as firsttime, max(cd.CO_DAT_Commit_Date) as lasttime
+  from `crafty-centaur-261609.hex16.RE_NAM_Repo_Name` rn
+    inner join `crafty-centaur-261609.hex16.RE_has_CO_belongsTo` reco on rn.RE_NAM_RE_ID = reco.RE_ID_has 
+    inner join `crafty-centaur-261609.hex16.CO_AUT_Commit_Author` ca on reco.CO_ID_belongsTo = ca.CO_AUT_CO_ID 
+    inner join `crafty-centaur-261609.hex16.CO_DAT_Commit_Date` cd on reco.CO_ID_belongsTo = cd.CO_DAT_CO_ID
+  group by 1, 2
+;
+
+Нужно в скрипте добавления коммитов сделать одну атомарную транзакцию, чтобы при ошибке
+не добавлялись куски. Это и будет факультатив.
