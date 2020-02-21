@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS hex16.CO_Commit (
 -----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS hex16.CO_DAT_Commit_Date (
     CO_DAT_CO_ID STRING not null,
-    CO_DAT_Commit_Date DATETIME not null
+    CO_DAT_Commit_Date TIMESTAMP not null
 );
 -- Static attribute table ---------------------------------------------------------------------------------------------
 -- CO_AUT_Commit_Author table (on CO_Commit)
