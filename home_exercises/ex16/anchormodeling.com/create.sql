@@ -163,6 +163,8 @@ select * from `hex16.mart_repository_watches_view`;
 
 -- Коммиты. ETL-источник
 -----------------------------------------------------------------------------------------------------------------------
+-- Поскольку значения id получаются один раз, а вставляются несколько,
+-- я решил реализовать это через буферный массив
 declare a array < struct<co_id string, re_id string, cdate timestamp, ccommit string, cmessage string, cauthor string> >;
 declare i int64;
 set a = array (
@@ -173,28 +175,32 @@ select as struct GENERATE_UUID() as co_id, rn.RE_NAM_RE_ID as re_id, t.committer
   where c.CO_COM_CO_ID is null -- добавляем только несуществующие в хранилище коммиты
         and
         t.committer.date >= timestamp( datetime '2016-06-22 00:00:00' ) -- это все равно последняя дата коммитов в этом сэмпле
-  limit 1 -- for debugging
+  --limit 1 -- for debugging
 );
-select 'Will be added ', array_length(a), ' commits';
-set i = array_length(a)-1;
-loop
-  -- Хотел сделать обработку ошибок при добавлении в эти таблицы
-  -- при помощи одной атомарной транзакции, но с удивлением узнал из документации,
-  -- что big query не поддерживает составную транзакцию из нескольких dml операторов.
-  -- Возможно, в таких случаях бест практис - это какой-то составной инсерт
-  -- или удаление из таблиц, куда уже записались данные.
-  insert into `hex16.CO_Commit` ( CO_ID ) values (a[offset(i)].co_id); -- якорь коммитов
-  insert into `hex16.RE_has_CO_belongsTo` ( RE_ID_has, CO_ID_belongsTo ) values ( a[offset(i)].re_id, a[offset(i)].co_id ); -- tie, связь репозитория и коммитов
-  -- Далее атрибуты
-  insert into `hex16.CO_AUT_Commit_Author` ( CO_AUT_CO_ID, CO_AUT_Commit_Author ) values ( a[offset(i)].co_id, a[offset(i)].cauthor );
-  insert into `hex16.CO_COM_Commit_Commit` ( CO_COM_CO_ID, CO_COM_Commit_Commit ) values ( a[offset(i)].co_id, a[offset(i)].ccommit );
-  insert into `hex16.CO_DAT_Commit_Date` ( CO_DAT_CO_ID, CO_DAT_Commit_Date ) values ( a[offset(i)].co_id, a[offset(i)].cdate );
-  insert into `hex16.CO_MSG_Commit_Message` ( CO_MSG_CO_ID, CO_MSG_Commit_Message ) values ( a[offset(i)].co_id, a[offset(i)].cmessage );
-  if i = 0 then
-    leave;
-  end if;
-  set i = i-1;
-end loop;
+if array_length(a) <= 1000 then --страхуемся от ddos-атаки коммитов, сделанных ботами =))
+  select 'Will be added ', array_length(a), ' commits';
+  set i = array_length(a)-1;
+  loop
+    -- Хотел сделать обработку ошибок при добавлении в эти таблицы
+    -- при помощи одной атомарной транзакции, но с удивлением узнал из документации,
+    -- что big query не поддерживает составную транзакцию из нескольких dml операторов.
+    -- Возможно, в таких случаях бест практис - это какой-то составной инсерт
+    -- или удаление из таблиц, куда уже записались данные.
+    insert into `hex16.CO_Commit` ( CO_ID ) values (a[offset(i)].co_id); -- якорь коммитов
+    insert into `hex16.RE_has_CO_belongsTo` ( RE_ID_has, CO_ID_belongsTo ) values ( a[offset(i)].re_id, a[offset(i)].co_id ); -- tie, связь репозитория и коммитов
+    -- Далее атрибуты
+    insert into `hex16.CO_AUT_Commit_Author` ( CO_AUT_CO_ID, CO_AUT_Commit_Author ) values ( a[offset(i)].co_id, a[offset(i)].cauthor );
+    insert into `hex16.CO_COM_Commit_Commit` ( CO_COM_CO_ID, CO_COM_Commit_Commit ) values ( a[offset(i)].co_id, a[offset(i)].ccommit );
+    insert into `hex16.CO_DAT_Commit_Date` ( CO_DAT_CO_ID, CO_DAT_Commit_Date ) values ( a[offset(i)].co_id, a[offset(i)].cdate );
+    insert into `hex16.CO_MSG_Commit_Message` ( CO_MSG_CO_ID, CO_MSG_Commit_Message ) values ( a[offset(i)].co_id, a[offset(i)].cmessage );
+    if i = 0 then
+      leave;
+    end if;
+    set i = i-1;
+  end loop;
+else
+  select 'Attention! DDOS atack of commit-bots =))', array_length(a), ' commits';
+end if;
 
 -- Витрина. Отчет по авторам коммитов.
 -----------------------------------------------------------------------------------------------------------------------
