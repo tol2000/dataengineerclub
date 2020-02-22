@@ -55,7 +55,7 @@ https://cloud.google.com/bigquery/docs/reference/standard-sql/uuid_functions#gen
 
 === Скрипт для создания и заполнения DWH
 
-link:anchormodeling.com/create.sql[]
+link:anchormodeling.com/create.sql[Нажмите для просмотра скрипта]
 
 == Витрина. Репозитории и просмотры.
 
