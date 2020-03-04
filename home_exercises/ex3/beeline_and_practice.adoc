@@ -13,5 +13,5 @@ beeline
 
 Urls
 
-* http://35.225.3.217:7180/cmf/clusters/2/status
-* http://35.225.3.217:8088/cluster/scheduler
+* http://35.193.80.149:7180/cmf/clusters/2/status
+* http://35.193.80.149:8088/cluster/scheduler
