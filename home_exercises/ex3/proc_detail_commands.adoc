@@ -14,6 +14,7 @@ PasswordAuthentication yes
 sudo systemctl restart sshd
 
 sudo passwd user
+sudo passwd root
 
 #sudo firewall-cmd --set-default-zone=work
 #sudo firewall-cmd --zone=work --add-service ssh
@@ -53,6 +54,9 @@ sudo passwd postgres
 sudo yum install python-pip
 sudo pip install --upgrade pip
 
+sudo yum install python3-pip
+sudo pip3 install --upgrade pip
+
 #sudo under user does not help
 su
 echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
@@ -68,6 +72,24 @@ sudo mcedit /var/lib/pgsql/12/data/pg_hba.conf
   host all all 127.0.0.1/32 ident
   then the host line specifying md5 authentication shown above must be inserted before this ident line.
 
+example
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host     all             all             10.128.0.5/32          trust
+host     all             all             127.0.0.1/32           trust
+host     all             all             127.0.0.1/32           ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+
+
 sudo mcedit /var/lib/pgsql/12/data/postgresql.conf
 uncomment listen_addresses and set it to *
 max_connection = 150
@@ -80,6 +102,8 @@ sudo systemctl restart postgresql-12
 
 su postgres
 psql
+# if problems then in pg_hba.conf change md5 to trust :)
+
 CREATE ROLE scm LOGIN PASSWORD 'scm';
 CREATE DATABASE scm OWNER scm ENCODING 'UTF8';
 CREATE ROLE amon LOGIN PASSWORD 'amon';
@@ -194,3 +218,4 @@ ssh-copy-id tolicheg@10.128.0.4
   ** set localhost as a host
   ** set for each service its own db, user and pass (created before with rhis manual):
   *** rman for resource manager, nav, amon etc...
+* Add nodes to YARN (or big jobs wil hangs)
