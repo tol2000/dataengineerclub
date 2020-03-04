@@ -1,0 +1,187 @@
+= ДЗ по занятию 18
+
+https://docs.google.com/document/d/1mqXKbmIBJq5P6Qwh-9hZE_T2AK-sdlyJ9mKFQ0gNwRU/edit#
+
+== Инсталляция
+
+* В прошлом ДЗ по хайву я инсталлировал его в GCP полностью и делал все там, но там были сложности с конфигурированием и, т.к. я пока новичок в этом деле, решил сделать это ДЗ по другому методу, стандартному, через докер.
+
+* Создал в GCP простую машину на убунте, как в инструкции, поставил докер и поднял контейнер.
+
+== Наполнил файлы
+
+[source, bash]
+----
+[root@quickstart /]# cd home
+[root@quickstart home]# vi employee.txt
+[root@quickstart home]# vi employee_id.txt
+[root@quickstart home]# cat employee_id.txt 
+chael|100|Montreal,Toronto|Male,30|DB:80|Product:DeveloperLead
+Will|101|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Steven|102|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Lucy|103|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Mike|104|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Shelley|105|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Luly|106|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Lily|107|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Shell|108|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Mich|109|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Dayong|110|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Sara|111|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Roman|112|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Christine|113|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Eman|114|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Alex|115|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Alan|116|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Andy|117|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Ryan|118|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Rome|119|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Lym|120|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Linm|121|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+Dach|122|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
+Ilon|123|New York|Female,27|Python:80|Test:Lead,COE:Architect
+Elaine|124|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
+[root@quickstart home]# vi employee_hr.txt
+[root@quickstart home]# vi employee_contract.txt
+[root@quickstart home]# beeline -u "jdbc:hive2://localhost:10000/default" --silent=true
+0: jdbc:hive2://localhost:10000/default> ^C[root@quickstart home]# 
+[root@quickstart home]# ll
+total 20
+drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
+-rw-r--r-- 1 root     root      389 Mar  4 22:52 employee_contract.txt
+-rw-r--r-- 1 root     root      131 Mar  4 22:51 employee_hr.txt
+-rw-r--r-- 1 root     root     1470 Mar  4 22:51 employee_id.txt
+-rw-r--r-- 1 root     root      225 Mar  4 22:50 employee.txt
+[root@quickstart home]# cd ..
+[root@quickstart /]# beeline -u "jdbc:hive2://localhost:10000/default" --silent=true
+----
+
+=== Data definition and description
+
+==== 1. Data types
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Query the MAP in the table
+0: jdbc:hive2://localhost:10000/default> SELECT skills_score FROM employee;
++-----------------------+--+
+|     skills_score      |
++-----------------------+--+
+| {"DB":80}             |
+| {"Perl":85}           |
+| {"Python":80}         |
+| {"Sales":89,"HR":94}  |
++-----------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT name, skills_score['DB'] AS DB, 
+0: jdbc:hive2://localhost:10000/default> skills_score['Perl'] AS Perl, skills_score['Python'] AS Python, 
+0: jdbc:hive2://localhost:10000/default> skills_score['Sales'] as Sales, skills_score['HR'] as HR FROM employee;
++----------+-------+-------+---------+--------+-------+--+
+|   name   |  db   | perl  | python  | sales  |  hr   |
++----------+-------+-------+---------+--------+-------+--+
+| chael    | 80    | NULL  | NULL    | NULL   | NULL  |
+| Will     | NULL  | 85    | NULL    | NULL   | NULL  |
+| Shelley  | NULL  | NULL  | 80      | NULL   | NULL  |
+| Lucy     | NULL  | NULL  | NULL    | 89     | 94    |
++----------+-------+-------+---------+--------+-------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT depart_title FROM employee;
++----------------------------------------+--+
+|              depart_title              |
++----------------------------------------+--+
+| {"Product":["Developer^DLead"]}        |
+| {"Product":["Lead"],"Test":["Lead"]}   |
+| {"Test":["Lead"],"COE":["Architect"]}  |
+| {"Sales":["Lea"]}                      |
++----------------------------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT name, depart_title['Product'] AS Product, depart_title['Test'] AS Test,
+0: jdbc:hive2://localhost:10000/default> depart_title['COE'] AS COE, depart_title['Sales'] AS Sales  
+0: jdbc:hive2://localhost:10000/default> FROM employee;
++----------+----------------------+-----------+----------------+----------+--+
+|   name   |       product        |   test    |      coe       |  sales   |
++----------+----------------------+-----------+----------------+----------+--+
+| chael    | ["Developer^DLead"]  | NULL      | NULL           | NULL     |
+| Will     | ["Lead"]             | ["Lead"]  | NULL           | NULL     |
+| Shelley  | NULL                 | ["Lead"]  | ["Architect"]  | NULL     |
+| Lucy     | NULL                 | NULL      | NULL           | ["Lea"]  |
++----------+----------------------+-----------+----------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT name, 
+0: jdbc:hive2://localhost:10000/default> depart_title['Product'][0] AS product_col0, 
+0: jdbc:hive2://localhost:10000/default> depart_title['Test'][0] AS test_col0 
+0: jdbc:hive2://localhost:10000/default> FROM employee;
++----------+------------------+------------+--+
+|   name   |   product_col0   | test_col0  |
++----------+------------------+------------+--+
+| chael    | Developer^DLead  | NULL       |
+| Will     | Lead             | Lead       |
+| Shelley  | NULL             | Lead       |
+| Lucy     | NULL             | NULL       |
++----------+------------------+------------+--+
+----
+
+==== 2. Databases
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Create database without checking if the database already exists.
+0: jdbc:hive2://localhost:10000/default> CREATE DATABASE hivetest;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create database and checking if the database already exists.
+0: jdbc:hive2://localhost:10000/default> CREATE DATABASE IF NOT EXISTS hivetest;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create database with location, comments, and metadata information
+0: jdbc:hive2://localhost:10000/default> CREATE DATABASE IF NOT EXISTS hivetest
+0: jdbc:hive2://localhost:10000/default> COMMENT 'hive database demo'
+0: jdbc:hive2://localhost:10000/default> LOCATION '/hdfs/directory'
+0: jdbc:hive2://localhost:10000/default> WITH DBPROPERTIES ('creator'='cloudera','date'='2019-07-17');
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Show and describe database with wildcards
+0: jdbc:hive2://localhost:10000/default> SHOW DATABASES;
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
+| hivetest       |
++----------------+--+
+0: jdbc:hive2://localhost:10000/default> SHOW DATABASES LIKE 'hive.*';
++----------------+--+
+| database_name  |
++----------------+--+
+| hivetest       |
++----------------+--+
+0: jdbc:hive2://localhost:10000/default> DESCRIBE DATABASE hivetest;
++-----------+----------+----------------------------------------------------+-------------+-------------+-------------+--+
+|  db_name  | comment  |                      location                      | owner_name  | owner_type  | parameters  |
++-----------+----------+----------------------------------------------------+-------------+-------------+-------------+--+
+| hivetest  |          | hdfs://quickstart.cloudera:8020/user/hive/warehouse/hivetest.db | anonymous   | USER        |             |
++-----------+----------+----------------------------------------------------+-------------+-------------+-------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Use the database
+0: jdbc:hive2://localhost:10000/default> USE hivetest;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Show current database
+0: jdbc:hive2://localhost:10000/default> SELECT current_database();
++-----------+--+
+|    _c0    |
++-----------+--+
+| hivetest  |
++-----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Drop the empty database.
+0: jdbc:hive2://localhost:10000/default> DROP DATABASE IF EXISTS hivetest;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Drop database with CASCADE
+0: jdbc:hive2://localhost:10000/default> DROP DATABASE IF EXISTS hivetest CASCADE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> ALTER DATABASE hivetest SET OWNER user cloudera;
+Error: Error while compiling statement: FAILED: SemanticException [Error 10072]: Database does not exist: hivetest (state=42000,code=10072)
+0: jdbc:hive2://localhost:10000/default> 
+----
+
+==== 3. 
+
+[source, sql]
+----
+----
