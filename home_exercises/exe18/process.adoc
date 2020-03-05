@@ -12,46 +12,17 @@ https://docs.google.com/document/d/1mqXKbmIBJq5P6Qwh-9hZE_T2AK-sdlyJ9mKFQ0gNwRU/
 
 [source, bash]
 ----
-[root@quickstart /]# cd home
 [root@quickstart home]# vi employee.txt
 [root@quickstart home]# vi employee_id.txt
-[root@quickstart home]# cat employee_id.txt 
-chael|100|Montreal,Toronto|Male,30|DB:80|Product:DeveloperLead
-Will|101|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Steven|102|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Lucy|103|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Mike|104|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Shelley|105|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Luly|106|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Lily|107|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Shell|108|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Mich|109|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Dayong|110|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Sara|111|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Roman|112|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Christine|113|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Eman|114|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Alex|115|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Alan|116|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Andy|117|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Ryan|118|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Rome|119|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Lym|120|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Linm|121|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
-Dach|122|Montreal|Male,35|Perl:85|Product:Lead,Test:Lead
-Ilon|123|New York|Female,27|Python:80|Test:Lead,COE:Architect
-Elaine|124|Vancouver|Female,57|Sales:89,HR:94|Sales:Lead
 [root@quickstart home]# vi employee_hr.txt
 [root@quickstart home]# vi employee_contract.txt
-[root@quickstart home]# beeline -u "jdbc:hive2://localhost:10000/default" --silent=true
-0: jdbc:hive2://localhost:10000/default> ^C[root@quickstart home]# 
 [root@quickstart home]# ll
 total 20
-drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
--rw-r--r-- 1 root     root      389 Mar  4 22:52 employee_contract.txt
--rw-r--r-- 1 root     root      131 Mar  4 22:51 employee_hr.txt
--rw-r--r-- 1 root     root     1470 Mar  4 22:51 employee_id.txt
--rw-r--r-- 1 root     root      225 Mar  4 22:50 employee.txt
+drwxrwxr-x. 8 cloudera cloudera 4096 Oct 23  2017 cloudera
+-rw-r--r--. 1 root     root      389 Mar  5 12:04 employee_contract.txt
+-rw-r--r--. 1 root     root      131 Mar  5 12:03 employee_hr.txt
+-rw-r--r--. 1 root     root     1470 Mar  5 12:03 employee_id.txt
+-rw-r--r--. 1 root     root      228 Mar  5 12:02 employee.txt
 [root@quickstart home]# cd ..
 [root@quickstart /]# beeline -u "jdbc:hive2://localhost:10000/default" --silent=true
 ----
@@ -62,6 +33,90 @@ drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
 
 [source, sql]
 ----
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE employee (
+0: jdbc:hive2://localhost:10000/default>   name string,
+0: jdbc:hive2://localhost:10000/default>   work_place ARRAY<string>,
+0: jdbc:hive2://localhost:10000/default>   gender_age STRUCT<gender:string,age:int>,
+0: jdbc:hive2://localhost:10000/default>   skills_score MAP<string,int>,
+0: jdbc:hive2://localhost:10000/default>   depart_title MAP<STRING,ARRAY<STRING>>
+0: jdbc:hive2://localhost:10000/default> )
+0: jdbc:hive2://localhost:10000/default> ROW FORMAT DELIMITED
+0: jdbc:hive2://localhost:10000/default> FIELDS TERMINATED BY '|'
+0: jdbc:hive2://localhost:10000/default> COLLECTION ITEMS TERMINATED BY ','
+0: jdbc:hive2://localhost:10000/default> MAP KEYS TERMINATED BY ':'
+0: jdbc:hive2://localhost:10000/default> STORED AS TEXTFILE;
+0: jdbc:hive2://localhost:10000/default> !table employee
++------------+--------------+-------------+-------------+----------+--+
+| TABLE_CAT  | TABLE_SCHEM  | TABLE_NAME  | TABLE_TYPE  | REMARKS  |
++------------+--------------+-------------+-------------+----------+--+
+|            | default      | employee    | TABLE       | NULL     |
++------------+--------------+-------------+-------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> !column employee
++------------+--------------+-------------+---------------+------------+--------------------------------+--------------+----------------+-----------------+-----------------+-----------+----------+-------------+----------------+-------------------+--------------------+-------------------+--------------+----------------+---------------+--------------+-------------------+--------------------+--+
+| TABLE_CAT  | TABLE_SCHEM  | TABLE_NAME  |  COLUMN_NAME  | DATA_TYPE  |           TYPE_NAME            | COLUMN_SIZE  | BUFFER_LENGTH  | DECIMAL_DIGITS  | NUM_PREC_RADIX  | NULLABLE  | REMARKS  | COLUMN_DEF  | SQL_DATA_TYPE  | SQL_DATETIME_SUB  | CHAR_OCTET_LENGTH  | ORDINAL_POSITION  | IS_NULLABLE  | SCOPE_CATALOG  | SCOPE_SCHEMA  | SCOPE_TABLE  | SOURCE_DATA_TYPE  | IS_AUTO_INCREMENT  |
++------------+--------------+-------------+---------------+------------+--------------------------------+--------------+----------------+-----------------+-----------------+-----------+----------+-------------+----------------+-------------------+--------------------+-------------------+--------------+----------------+---------------+--------------+-------------------+--------------------+--+
+| NULL       | default      | employee    | name          | 12         | STRING                         | 2147483647   | NULL           | NULL            | NULL            | 1         | NULL     | NULL        | NULL           | NULL              | NULL               | 1                 | YES          | NULL           | NULL          | NULL         | NULL              | NO                 |
+| NULL       | default      | employee    | work_place    | 2003       | array<string>                  | NULL         | NULL           | NULL            | NULL            | 1         | NULL     | NULL        | NULL           | NULL              | NULL               | 2                 | YES          | NULL           | NULL          | NULL         | NULL              | NO                 |
+| NULL       | default      | employee    | gender_age    | 2002       | struct<gender:string,age:int>  | NULL         | NULL           | NULL            | NULL            | 1         | NULL     | NULL        | NULL           | NULL              | NULL               | 3                 | YES          | NULL           | NULL          | NULL         | NULL              | NO                 |
+| NULL       | default      | employee    | skills_score  | 2000       | map<string,int>                | NULL         | NULL           | NULL            | NULL            | 1         | NULL     | NULL        | NULL           | NULL              | NULL               | 4                 | YES          | NULL           | NULL          | NULL         | NULL              | NO                 |
+| NULL       | default      | employee    | depart_title  | 2000       | map<string,array<string>>      | NULL         | NULL           | NULL            | NULL            | 1         | NULL     | NULL        | NULL           | NULL              | NULL               | 5                 | YES          | NULL           | NULL          | NULL         | NULL              | NO                 |
++------------+--------------+-------------+---------------+------------+--------------------------------+--------------+----------------+-----------------+-----------------+-----------+----------+-------------+----------------+-------------------+--------------------+-------------------+--------------+----------------+---------------+--------------+-------------------+--------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> LOAD DATA LOCAL INPATH 'home/employee.txt' OVERWRITE INTO TABLE employee;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Query the whole table
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM employee;
++----------------+-------------------------+-------------------------------+------------------------+----------------------------------------+--+
+| employee.name  |   employee.work_place   |      employee.gender_age      | employee.skills_score  |         employee.depart_title          |
++----------------+-------------------------+-------------------------------+------------------------+----------------------------------------+--+
+| Michael        | ["Montreal","Toronto"]  | {"gender":"Male","age":30}    | {"DB":80}              | {"Product":["Developer^DLead"]}        |
+| Will           | ["Montreal"]            | {"gender":"Male","age":35}    | {"Perl":85}            | {"Product":["Lead"],"Test":["Lead"]}   |
+| Shelley        | ["New York"]            | {"gender":"Female","age":27}  | {"Python":80}          | {"Test":["Lead"],"COE":["Architect"]}  |
+| Lucy           | ["Vancouver"]           | {"gender":"Female","age":57}  | {"Sales":89,"HR":94}   | {"Sales":["Lead"]}                     |
++----------------+-------------------------+-------------------------------+------------------------+----------------------------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Query the ARRAY in the table
+0: jdbc:hive2://localhost:10000/default> SELECT work_place FROM employee;
++-------------------------+--+
+|       work_place        |
++-------------------------+--+
+| ["Montreal","Toronto"]  |
+| ["Montreal"]            |
+| ["New York"]            |
+| ["Vancouver"]           |
++-------------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT work_place[0] AS col_1, work_place[1] AS col_2, work_place[2] AS col_3 FROM employee;
++------------+----------+--------+--+
+|   col_1    |  col_2   | col_3  |
++------------+----------+--------+--+
+| Montreal   | Toronto  | NULL   |
+| Montreal   | NULL     | NULL   |
+| New York   | NULL     | NULL   |
+| Vancouver  | NULL     | NULL   |
++------------+----------+--------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Query the STRUCT in the table
+0: jdbc:hive2://localhost:10000/default> SELECT gender_age FROM employee;
++-------------------------------+--+
+|          gender_age           |
++-------------------------------+--+
+| {"gender":"Male","age":30}    |
+| {"gender":"Male","age":35}    |
+| {"gender":"Female","age":27}  |
+| {"gender":"Female","age":57}  |
++-------------------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT gender_age.gender, gender_age.age FROM employee;
++---------+------+--+
+| gender  | age  |
++---------+------+--+
+| Male    | 30   |
+| Male    | 35   |
+| Female  | 27   |
+| Female  | 57   |
++---------+------+--+
+0: jdbc:hive2://localhost:10000/default> 
 0: jdbc:hive2://localhost:10000/default> --Query the MAP in the table
 0: jdbc:hive2://localhost:10000/default> SELECT skills_score FROM employee;
 +-----------------------+--+
@@ -79,7 +134,7 @@ drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
 +----------+-------+-------+---------+--------+-------+--+
 |   name   |  db   | perl  | python  | sales  |  hr   |
 +----------+-------+-------+---------+--------+-------+--+
-| chael    | 80    | NULL  | NULL    | NULL   | NULL  |
+| Michael  | 80    | NULL  | NULL    | NULL   | NULL  |
 | Will     | NULL  | 85    | NULL    | NULL   | NULL  |
 | Shelley  | NULL  | NULL  | 80      | NULL   | NULL  |
 | Lucy     | NULL  | NULL  | NULL    | 89     | 94    |
@@ -92,20 +147,20 @@ drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
 | {"Product":["Developer^DLead"]}        |
 | {"Product":["Lead"],"Test":["Lead"]}   |
 | {"Test":["Lead"],"COE":["Architect"]}  |
-| {"Sales":["Lea"]}                      |
+| {"Sales":["Lead"]}                     |
 +----------------------------------------+--+
 0: jdbc:hive2://localhost:10000/default> 
 0: jdbc:hive2://localhost:10000/default> SELECT name, depart_title['Product'] AS Product, depart_title['Test'] AS Test,
 0: jdbc:hive2://localhost:10000/default> depart_title['COE'] AS COE, depart_title['Sales'] AS Sales  
 0: jdbc:hive2://localhost:10000/default> FROM employee;
-+----------+----------------------+-----------+----------------+----------+--+
-|   name   |       product        |   test    |      coe       |  sales   |
-+----------+----------------------+-----------+----------------+----------+--+
-| chael    | ["Developer^DLead"]  | NULL      | NULL           | NULL     |
-| Will     | ["Lead"]             | ["Lead"]  | NULL           | NULL     |
-| Shelley  | NULL                 | ["Lead"]  | ["Architect"]  | NULL     |
-| Lucy     | NULL                 | NULL      | NULL           | ["Lea"]  |
-+----------+----------------------+-----------+----------------+----------+--+
++----------+----------------------+-----------+----------------+-----------+--+
+|   name   |       product        |   test    |      coe       |   sales   |
++----------+----------------------+-----------+----------------+-----------+--+
+| Michael  | ["Developer^DLead"]  | NULL      | NULL           | NULL      |
+| Will     | ["Lead"]             | ["Lead"]  | NULL           | NULL      |
+| Shelley  | NULL                 | ["Lead"]  | ["Architect"]  | NULL      |
+| Lucy     | NULL                 | NULL      | NULL           | ["Lead"]  |
++----------+----------------------+-----------+----------------+-----------+--+
 0: jdbc:hive2://localhost:10000/default> 
 0: jdbc:hive2://localhost:10000/default> SELECT name, 
 0: jdbc:hive2://localhost:10000/default> depart_title['Product'][0] AS product_col0, 
@@ -114,7 +169,7 @@ drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
 +----------+------------------+------------+--+
 |   name   |   product_col0   | test_col0  |
 +----------+------------------+------------+--+
-| chael    | Developer^DLead  | NULL       |
+| Michael  | Developer^DLead  | NULL       |
 | Will     | Lead             | Lead       |
 | Shelley  | NULL             | Lead       |
 | Lucy     | NULL             | NULL       |
@@ -177,11 +232,571 @@ drwxrwxr-x 8 cloudera cloudera 4096 Oct 23  2017 cloudera
 0: jdbc:hive2://localhost:10000/default> 
 0: jdbc:hive2://localhost:10000/default> ALTER DATABASE hivetest SET OWNER user cloudera;
 Error: Error while compiling statement: FAILED: SemanticException [Error 10072]: Database does not exist: hivetest (state=42000,code=10072)
-0: jdbc:hive2://localhost:10000/default> 
 ----
 
-==== 3. 
+==== 3. Table creation
+
+Возвращаем default как текущую после удаления hivetest
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> select current_database();
++-----------+--+
+|    _c0    |
++-----------+--+
+| hivetest  |
++-----------+--+
+0: jdbc:hive2://localhost:10000/default> use default;
+0: jdbc:hive2://localhost:10000/default> select current_database();
++----------+--+
+|   _c0    |
++----------+--+
+| default  |
++----------+--+
+----
+
+Собственно создание таблиц
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Create internal table and load the data
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE IF NOT EXISTS employee_internal (
+0: jdbc:hive2://localhost:10000/default>   name string,
+0: jdbc:hive2://localhost:10000/default>   work_place ARRAY<string>,
+0: jdbc:hive2://localhost:10000/default>   gender_age STRUCT<gender:string,age:int>,
+0: jdbc:hive2://localhost:10000/default>   skills_score MAP<string,int>,
+0: jdbc:hive2://localhost:10000/default>   depart_title MAP<STRING,ARRAY<STRING>>
+0: jdbc:hive2://localhost:10000/default> )
+0: jdbc:hive2://localhost:10000/default> COMMENT 'This is an internal table'
+0: jdbc:hive2://localhost:10000/default> ROW FORMAT DELIMITED
+0: jdbc:hive2://localhost:10000/default> FIELDS TERMINATED BY '|'
+0: jdbc:hive2://localhost:10000/default> COLLECTION ITEMS TERMINATED BY ','
+0: jdbc:hive2://localhost:10000/default> MAP KEYS TERMINATED BY ':'
+0: jdbc:hive2://localhost:10000/default> STORED AS TEXTFILE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> LOAD DATA LOCAL INPATH 'home/employee.txt' OVERWRITE INTO TABLE employee_internal;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create external table and load the data
+0: jdbc:hive2://localhost:10000/default> CREATE EXTERNAL TABLE IF NOT EXISTS employee_external (
+0: jdbc:hive2://localhost:10000/default>    name string,
+0: jdbc:hive2://localhost:10000/default>    work_place ARRAY<string>,
+0: jdbc:hive2://localhost:10000/default>    gender_age STRUCT<gender:string,age:int>,
+0: jdbc:hive2://localhost:10000/default>    skills_score MAP<string,int>,
+0: jdbc:hive2://localhost:10000/default>    depart_title MAP<STRING,ARRAY<STRING>>
+0: jdbc:hive2://localhost:10000/default> )
+0: jdbc:hive2://localhost:10000/default> COMMENT 'This is an external table'
+0: jdbc:hive2://localhost:10000/default> ROW FORMAT DELIMITED
+0: jdbc:hive2://localhost:10000/default> FIELDS TERMINATED BY '|'
+0: jdbc:hive2://localhost:10000/default> COLLECTION ITEMS TERMINATED BY ','
+0: jdbc:hive2://localhost:10000/default> MAP KEYS TERMINATED BY ':'
+0: jdbc:hive2://localhost:10000/default> STORED AS TEXTFILE
+0: jdbc:hive2://localhost:10000/default> LOCATION '/user/cloudera/employee';
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> LOAD DATA LOCAL INPATH 'home/employee.txt' OVERWRITE INTO TABLE employee_external;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Temporary tables
+0: jdbc:hive2://localhost:10000/default> CREATE TEMPORARY TABLE IF NOT EXISTS tmp_emp1 (
+0: jdbc:hive2://localhost:10000/default> name string,
+0: jdbc:hive2://localhost:10000/default> work_place ARRAY<string>,
+0: jdbc:hive2://localhost:10000/default> gender_age STRUCT<gender:string,age:int>,
+0: jdbc:hive2://localhost:10000/default> skills_score MAP<string,int>,
+0: jdbc:hive2://localhost:10000/default> depart_title MAP<STRING,ARRAY<STRING>>
+0: jdbc:hive2://localhost:10000/default> ); 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> CREATE TEMPORARY TABLE tmp_emp2 AS SELECT * FROM tmp_emp1;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> CREATE TEMPORARY TABLE tmp_emp3 LIKE tmp_emp1;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create Table With Data - CREATE TABLE AS SELECT (CTAS)
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE ctas_employee AS SELECT * FROM employee_external;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create Table As SELECT (CTAS) with Common Table Expression (CTE) 
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE cte_employee AS
+0: jdbc:hive2://localhost:10000/default> WITH r1 AS (SELECT name FROM r2 WHERE name = 'Michael'),
+0: jdbc:hive2://localhost:10000/default> r2 AS (SELECT name FROM employee WHERE gender_age.gender= 'Male'),
+0: jdbc:hive2://localhost:10000/default> r3 AS (SELECT name FROM employee WHERE gender_age.gender= 'Female')
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM r1 UNION ALL select * FROM r3;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM cte_employee;
++--------------------+--+
+| cte_employee.name  |
++--------------------+--+
+| Michael            |
+| Shelley            |
+| Lucy               |
++--------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Create Table Without Data - TWO ways 
+0: jdbc:hive2://localhost:10000/default> --With CTAS
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE empty_ctas_employee AS SELECT * FROM employee_internal WHERE 1=2;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --With LIKE
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE empty_like_employee LIKE employee_internal;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Check row count for both tables
+0: jdbc:hive2://localhost:10000/default> SELECT COUNT(*) AS row_cnt FROM empty_ctas_employee;
++----------+--+
+| row_cnt  |
++----------+--+
+| 0        |
++----------+--+
+0: jdbc:hive2://localhost:10000/default> SELECT COUNT(*) AS row_cnt FROM empty_like_employee;
++----------+--+
+| row_cnt  |
++----------+--+
+| 0        |
++----------+--+
+----
+
+==== 4. Table description
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Show tables
+0: jdbc:hive2://localhost:10000/default> SHOW TABLES;
++----------------------+--+
+|       tab_name       |
++----------------------+--+
+| ctas_employee        |
+| cte_employee         |
+| employee             |
+| employee_external    |
+| employee_internal    |
+| empty_ctas_employee  |
+| empty_like_employee  |
+| tmp_emp1             |
+| tmp_emp2             |
+| tmp_emp3             |
++----------------------+--+
+0: jdbc:hive2://localhost:10000/default> SHOW TABLES '*emp*';
++----------------------+--+
+|       tab_name       |
++----------------------+--+
+| ctas_employee        |
+| cte_employee         |
+| employee             |
+| employee_external    |
+| employee_internal    |
+| empty_ctas_employee  |
+| empty_like_employee  |
+| tmp_emp1             |
+| tmp_emp2             |
+| tmp_emp3             |
++----------------------+--+
+0: jdbc:hive2://localhost:10000/default> SHOW TABLES '*ext*|*cte*';
++--------------------+--+
+|      tab_name      |
++--------------------+--+
+| cte_employee       |
+| employee_external  |
++--------------------+--+
+0: jdbc:hive2://localhost:10000/default> SHOW TABLE EXTENDED LIKE 'employee_int*';
++----------------------------------------------------+--+
+|                      tab_name                      |
++----------------------------------------------------+--+
+| tableName:employee_internal                        |
+| owner:anonymous                                    |
+| location:hdfs://quickstart.cloudera:8020/user/hive/warehouse/employee_internal |
+| inputformat:org.apache.hadoop.mapred.TextInputFormat |
+| outputformat:org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat |
+| columns:struct columns { string name, list<string> work_place, struct<gender:string,age:i32> gender_age, map<string,i32> skills_score, map<string,list<string>> depart_title} |
+| partitioned:false                                  |
+| partitionColumns:                                  |
+| totalNumberFiles:1                                 |
+| totalFileSize:228                                  |
+| maxFileSize:228                                    |
+| minFileSize:228                                    |
+| lastAccessTime:1583412558014                       |
+| lastUpdateTime:1583412558043                       |
+|                                                    |
++----------------------------------------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Show columns
+0: jdbc:hive2://localhost:10000/default> SHOW COLUMNS IN employee_internal;
++---------------+--+
+|     field     |
++---------------+--+
+| name          |
+| work_place    |
+| gender_age    |
+| skills_score  |
+| depart_title  |
++---------------+--+
+0: jdbc:hive2://localhost:10000/default> DESC employee_internal;
++---------------+--------------------------------+----------+--+
+|   col_name    |           data_type            | comment  |
++---------------+--------------------------------+----------+--+
+| name          | string                         |          |
+| work_place    | array<string>                  |          |
+| gender_age    | struct<gender:string,age:int>  |          |
+| skills_score  | map<string,int>                |          |
+| depart_title  | map<string,array<string>>      |          |
++---------------+--------------------------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Show DDL and property
+0: jdbc:hive2://localhost:10000/default> SHOW CREATE TABLE employee_internal;
++----------------------------------------------------+--+
+|                   createtab_stmt                   |
++----------------------------------------------------+--+
+| CREATE TABLE `employee_internal`(                  |
+|   `name` string,                                   |
+|   `work_place` array<string>,                      |
+|   `gender_age` struct<gender:string,age:int>,      |
+|   `skills_score` map<string,int>,                  |
+|   `depart_title` map<string,array<string>>)        |
+| COMMENT 'This is an internal table'                |
+| ROW FORMAT SERDE                                   |
+|   'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'  |
+| WITH SERDEPROPERTIES (                             |
+|   'colelction.delim'=',',                          |
+|   'field.delim'='|',                               |
+|   'mapkey.delim'=':',                              |
+|   'serialization.format'='|')                      |
+| STORED AS INPUTFORMAT                              |
+|   'org.apache.hadoop.mapred.TextInputFormat'       |
+| OUTPUTFORMAT                                       |
+|   'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat' |
+| LOCATION                                           |
+|   'hdfs://quickstart.cloudera:8020/user/hive/warehouse/employee_internal' |
+| TBLPROPERTIES (                                    |
+|   'COLUMN_STATS_ACCURATE'='true',                  |
+|   'numFiles'='1',                                  |
+|   'numRows'='0',                                   |
+|   'rawDataSize'='0',                               |
+|   'totalSize'='228',                               |
+|   'transient_lastDdlTime'='1583412558')            |
++----------------------------------------------------+--+
+0: jdbc:hive2://localhost:10000/default> SHOW TBLPROPERTIES employee_internal;
++------------------------+----------------------------+--+
+|       prpt_name        |         prpt_value         |
++------------------------+----------------------------+--+
+| COLUMN_STATS_ACCURATE  | true                       |
+| comment                | This is an internal table  |
+| numFiles               | 1                          |
+| numRows                | 0                          |
+| rawDataSize            | 0                          |
+| totalSize              | 228                        |
+| transient_lastDdlTime  | 1583412558                 |
++------------------------+----------------------------+--+
+----
+
+==== 5. Table clear
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Drop table 
+0: jdbc:hive2://localhost:10000/default> DROP TABLE IF EXISTS empty_ctas_employee;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> DROP TABLE IF EXISTS empty_like_employee;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Truncate table
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM cte_employee;
++--------------------+--+
+| cte_employee.name  |
++--------------------+--+
+| Michael            |
+| Shelley            |
+| Lucy               |
++--------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> TRUNCATE TABLE cte_employee;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SELECT * FROM cte_employee;
++--------------------+--+
+| cte_employee.name  |
++--------------------+--+
++--------------------+--+
+----
+
+==== 6. Table alter
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Alter table name
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE cte_employee RENAME TO cte_employee_backup;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter table properties, such as comments
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE cte_employee_backup SET TBLPROPERTIES ('comment' = 'New comments');
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter table delimiter through SerDe properties
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal SET SERDEPROPERTIES ('field.delim' = '$');
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter Table File Format
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal SET FILEFORMAT RCFILE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter Table Location
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal SET LOCATION 'hdfs://localhost:9000/user/cloudera/employee'; 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter Table Location
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal ENABLE NO_DROP; 
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal DISABLE NO_DROP; 
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal ENABLE OFFLINE;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal DISABLE OFFLINE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter Table Concatenate to merge small files into larger files
+0: jdbc:hive2://localhost:10000/default> --convert to the file format supported
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal SET FILEFORMAT ORC;
+0: jdbc:hive2://localhost:10000/default>  
+0: jdbc:hive2://localhost:10000/default> --convert to the regular file format
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal SET FILEFORMAT TEXTFILE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Alter columns
+0: jdbc:hive2://localhost:10000/default> --Change column type - before changes
+0: jdbc:hive2://localhost:10000/default> DESC employee_internal; 
++---------------+--------------------------------+----------+--+
+|   col_name    |           data_type            | comment  |
++---------------+--------------------------------+----------+--+
+| name          | string                         |          |
+| work_place    | array<string>                  |          |
+| gender_age    | struct<gender:string,age:int>  |          |
+| skills_score  | map<string,int>                |          |
+| depart_title  | map<string,array<string>>      |          |
++---------------+--------------------------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Change column type
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal CHANGE name employee_name string AFTER gender_age;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Verify the changes 
+0: jdbc:hive2://localhost:10000/default> DESC employee_internal; 
++----------------+--------------------------------+----------+--+
+|    col_name    |           data_type            | comment  |
++----------------+--------------------------------+----------+--+
+| work_place     | array<string>                  |          |
+| gender_age     | struct<gender:string,age:int>  |          |
+| employee_name  | string                         |          |
+| skills_score   | map<string,int>                |          |
+| depart_title   | map<string,array<string>>      |          |
++----------------+--------------------------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Change column type
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_internal CHANGE employee_name name string COMMENT 'updated' FIRST;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Verify the changes 
+0: jdbc:hive2://localhost:10000/default> DESC employee_internal; 
++---------------+--------------------------------+----------+--+
+|   col_name    |           data_type            | comment  |
++---------------+--------------------------------+----------+--+
+| name          | string                         | updated  |
+| work_place    | array<string>                  |          |
+| gender_age    | struct<gender:string,age:int>  |          |
+| skills_score  | map<string,int>                |          |
+| depart_title  | map<string,array<string>>      |          |
++---------------+--------------------------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Add columns to the table
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE ctas_employee ADD COLUMNS (work string);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Verify the added columns
+0: jdbc:hive2://localhost:10000/default> DESC ctas_employee;      
++---------------+--------------------------------+----------+--+
+|   col_name    |           data_type            | comment  |
++---------------+--------------------------------+----------+--+
+| name          | string                         |          |
+| work_place    | array<string>                  |          |
+| gender_age    | struct<gender:string,age:int>  |          |
+| skills_score  | map<string,int>                |          |
+| depart_title  | map<string,array<string>>      |          |
+| work          | string                         |          |
++---------------+--------------------------------+----------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Replace all columns
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE ctas_employee REPLACE COLUMNS (name string);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Verify the replaced all columns
+0: jdbc:hive2://localhost:10000/default> DESC ctas_employee;
++-----------+------------+----------+--+
+| col_name  | data_type  | comment  |
++-----------+------------+----------+--+
+| name      | string     |          |
++-----------+------------+----------+--+
+----
+
+==== 7. Table partitioning
+
+[source, sql]
+----
+0: jdbc:hive2://localhost:10000/default> --Create partition table DDL
+0: jdbc:hive2://localhost:10000/default> CREATE TABLE employee_partitioned
+0: jdbc:hive2://localhost:10000/default> (
+0: jdbc:hive2://localhost:10000/default>   name string,
+0: jdbc:hive2://localhost:10000/default>   work_place ARRAY<string>,
+0: jdbc:hive2://localhost:10000/default>   gender_age STRUCT<gender:string,age:int>,
+0: jdbc:hive2://localhost:10000/default>   skills_score MAP<string,int>,
+0: jdbc:hive2://localhost:10000/default>   depart_title MAP<STRING,ARRAY<STRING>>
+0: jdbc:hive2://localhost:10000/default> )
+0: jdbc:hive2://localhost:10000/default> PARTITIONED BY (Year INT, Month INT)
+0: jdbc:hive2://localhost:10000/default> ROW FORMAT DELIMITED
+0: jdbc:hive2://localhost:10000/default> FIELDS TERMINATED BY '|'
+0: jdbc:hive2://localhost:10000/default> COLLECTION ITEMS TERMINATED BY ','
+0: jdbc:hive2://localhost:10000/default> MAP KEYS TERMINATED BY ':';
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Check partition table structure
+0: jdbc:hive2://localhost:10000/default> DESC employee_partitioned;
++--------------------------+--------------------------------+-----------------------+--+
+|         col_name         |           data_type            |        comment        |
++--------------------------+--------------------------------+-----------------------+--+
+| name                     | string                         |                       |
+| work_place               | array<string>                  |                       |
+| gender_age               | struct<gender:string,age:int>  |                       |
+| skills_score             | map<string,int>                |                       |
+| depart_title             | map<string,array<string>>      |                       |
+| year                     | int                            |                       |
+| month                    | int                            |                       |
+|                          | NULL                           | NULL                  |
+| # Partition Information  | NULL                           | NULL                  |
+| # col_name               | data_type                      | comment               |
+|                          | NULL                           | NULL                  |
+| year                     | int                            |                       |
+| month                    | int                            |                       |
++--------------------------+--------------------------------+-----------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Show partitions
+0: jdbc:hive2://localhost:10000/default> SHOW PARTITIONS employee_partitioned;
++------------+--+
+| partition  |
++------------+--+
++------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Add multiple partitions
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned ADD 
+0: jdbc:hive2://localhost:10000/default> PARTITION (year=2018, month=11)        
+0: jdbc:hive2://localhost:10000/default> PARTITION (year=2018, month=12);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SHOW PARTITIONS employee_partitioned;
++---------------------+--+
+|      partition      |
++---------------------+--+
+| year=2018/month=11  |
+| year=2018/month=12  |
++---------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Drop partitions
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned DROP PARTITION (year=2018, month=11);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned DROP IF EXISTS PARTITION (year=2017); -- Drop all partitions in 2017
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned DROP IF EXISTS PARTITION (month=9);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SHOW PARTITIONS employee_partitioned;
++---------------------+--+
+|      partition      |
++---------------------+--+
+| year=2018/month=12  |
++---------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Rename partitions
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018, month=12) RENAME TO PARTITION (year=2018,month=10);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> SHOW PARTITIONS employee_partitioned;
++---------------------+--+
+|      partition      |
++---------------------+--+
+| year=2018/month=10  |
++---------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Load data to the partition
+0: jdbc:hive2://localhost:10000/default> LOAD DATA LOCAL INPATH 'home/employee.txt' 
+0: jdbc:hive2://localhost:10000/default> OVERWRITE INTO TABLE employee_partitioned
+0: jdbc:hive2://localhost:10000/default> PARTITION (year=2018, month=12);
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Verify data loaded
+0: jdbc:hive2://localhost:10000/default> SELECT name, year, month FROM employee_partitioned;
++----------+-------+--------+--+
+|   name   | year  | month  |
++----------+-------+--------+--+
+| Michael  | 2018  | 12     |
+| Will     | 2018  | 12     |
+| Shelley  | 2018  | 12     |
+| Lucy     | 2018  | 12     |
++----------+-------+--------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Partition table add columns
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned ADD COLUMNS (work string) CASCADE;
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> --Change data type for partition columns
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION COLUMN(year string);
+0: jdbc:hive2://localhost:10000/default> --Verify the changes
+0: jdbc:hive2://localhost:10000/default> DESC employee_partitioned;
++--------------------------+--------------------------------+-----------------------+--+
+|         col_name         |           data_type            |        comment        |
++--------------------------+--------------------------------+-----------------------+--+
+| name                     | string                         |                       |
+| work_place               | array<string>                  |                       |
+| gender_age               | struct<gender:string,age:int>  |                       |
+| skills_score             | map<string,int>                |                       |
+| depart_title             | map<string,array<string>>      |                       |
+| work                     | string                         |                       |
+| year                     | string                         |                       |
+| month                    | int                            |                       |
+|                          | NULL                           | NULL                  |
+| # Partition Information  | NULL                           | NULL                  |
+| # col_name               | data_type                      | comment               |
+|                          | NULL                           | NULL                  |
+| year                     | string                         |                       |
+| month                    | int                            |                       |
++--------------------------+--------------------------------+-----------------------+--+
+0: jdbc:hive2://localhost:10000/default> 
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) SET FILEFORMAT ORC;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) ENABLE NO_DROP;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) ENABLE OFFLINE;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) DISABLE NO_DROP;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) DISABLE OFFLINE;
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) CONCATENATE;
+Error: Error while compiling statement: FAILED: SemanticException org.apache.hadoop.hive.ql.parse.SemanticException: Partition not found {year=2018} (state=42000,code=40000)
+0: jdbc:hive2://localhost:10000/default> ALTER TABLE employee_partitioned PARTITION (year=2018) SET FILEFORMAT TEXTFILE;
+----
+
+==== 8. Table bucketing
+
+[source, sql]
+----
+
+----
+
+=== Data manipulation
+
+==== 1. Select
 
 [source, sql]
 ----
 ----
+
+==== 2. Join
+
+[source, sql]
+----
+----
+
+==== 3. Union
+
+[source, sql]
+----
+----
+
+==== 4. Insert export import
+
+[source, sql]
+----
+----
+
+==== 5. Order, sort, distribute by, cluster by
+
+[source, sql]
+----
+----
+
+=== Data aggregation
+
+==== 1. Basic aggregation
+
+[source, sql]
+----
+----
+
+==== 2. Windows functions
+
+[source, sql]
+----
+----
+
