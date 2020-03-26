@@ -1,0 +1,12 @@
+= Проект выпускника курсов OTUS Data engineering Клюсы А.Ю.
+
+== Постановка задачи
+
+=== Загрузка информации из публичного источника (rss, rest, иное)
+
+Возможно, использовать стримсет и его коннекторы
+
+https://hub.docker.com/r/streamsets/datacollector/
+
+https://rapidapi.com/collection/top-weather-apis?utm_source=google&utm_medium=cpc&utm_campaign=1674315309_64978333346&utm_term=weather%20api%20free_b&utm_content=&gclid=Cj0KCQjwpfHzBRCiARIsAHHzyZoekUFE3eg8G3S297tNcOwMg8UkDKHFF32FnGOIW3XMhEMc6_nv7BkaAvziEALw_wcB
+

@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+
+  # StreamSets container
+  streamsets:
+    build:
+      context: "."
+      # args:
+        # SDC_LIBS: streamsets-datacollector-apache-kafka_2_0-lib,streamsets-datacollector-google-cloud-lib
+    # environment:
+      # DIVOLTE_KAFKA_BROKER_LIST: kafka:9092
+    ports:
+      - 18630:18630
+    volumes:
+      - ./sdc-data:/data
+      - ./credentials:/opt/credentials

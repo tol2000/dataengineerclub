@@ -1,0 +1,30 @@
+{
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : 10,
+      "timeout" : 30000,
+      "writeToDestinations" : false,
+      "executeLifecycleEvents" : false,
+      "showHeader" : false,
+      "showFieldType" : true,
+      "rememberMe" : false
+    }
+  },
+  "HTTPClient_01" : {
+    "yPos" : 49,
+    "stageType" : "SOURCE",
+    "icon" : "httpclient.png",
+    "description" : "",
+    "label" : "HTTP Client 1",
+    "xPos" : 52
+  },
+  "LocalFS_01" : {
+    "yPos" : 50,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Local FS 1",
+    "xPos" : 280
+  }
+}

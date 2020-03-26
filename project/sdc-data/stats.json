@@ -1,0 +1,18 @@
+{
+  "activeStats" : {
+    "startTime" : 1585255444418,
+    "endTime" : 0,
+    "dataCollectorVersion" : "",
+    "dpmEnabled" : false,
+    "upTime" : {
+      "name" : "upTime",
+      "accumulatedTime" : 0
+    },
+    "pipelines" : [ ],
+    "stages" : [ ],
+    "recordCount" : 0,
+    "errorCodes" : { },
+    "version" : "1.0"
+  },
+  "collectedStats" : [ ]
+}
