@@ -4,7 +4,7 @@
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
   "title" : "test1",
   "description" : "",
-  "uuid" : "bfdf2ce9-7f60-425e-90a1-db0191702586",
+  "uuid" : "b5a5b2d7-4a95-47a0-b7b0-82af27335769",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -13,7 +13,7 @@
     "value" : "http://localhost:18633"
   }, {
     "name" : "deliveryGuarantee",
-    "value" : "AT_LEAST_ONCE"
+    "value" : "AT_MOST_ONCE"
   }, {
     "name" : "testOriginStage",
     "value" : "streamsets-datacollector-dev-lib::com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource::3"
@@ -31,7 +31,7 @@
     "value" : 2000
   }, {
     "name" : "retryAttempts",
-    "value" : -1
+    "value" : 3
   }, {
     "name" : "ludicrousMode",
     "value" : false
@@ -82,7 +82,7 @@
     "value" : null
   }, {
     "name" : "rateLimit",
-    "value" : 0
+    "value" : 1
   }, {
     "name" : "maxRunners",
     "value" : 0
@@ -566,7 +566,7 @@
       "value" : [ ]
     }, {
       "name" : "conf.resourceUrl",
-      "value" : "https://community-open-weather-map.p.rapidapi.com/weather?callback=test&id=2172797&units=%2522metric%2522%20or%20%2522imperial%2522&mode=xml%252C%20html&q=Odessa%252Cua"
+      "value" : "https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f206595b3a0660911c2dc"
     }, {
       "name" : "conf.headers",
       "value" : [ ]
@@ -575,7 +575,7 @@
       "value" : "GET"
     }, {
       "name" : "conf.timeZoneID",
-      "value" : "UTC"
+      "value" : "Europe/Kiev"
     }, {
       "name" : "conf.requestBody",
       "value" : null
@@ -722,10 +722,10 @@
       "value" : 0
     }, {
       "name" : "conf.httpMode",
-      "value" : "STREAMING"
+      "value" : "POLLING"
     }, {
       "name" : "conf.pollingInterval",
-      "value" : 5000
+      "value" : 2000
     }, {
       "name" : "conf.dataFormat",
       "value" : "JSON"
@@ -735,7 +735,7 @@
         "statusCode" : 500,
         "action" : "RETRY_EXPONENTIAL_BACKOFF",
         "backoffInterval" : 1000,
-        "maxNumRetries" : 10
+        "maxNumRetries" : 3
       } ]
     }, {
       "name" : "conf.responseTimeoutActionConfig.action",
@@ -775,12 +775,12 @@
       "value" : "TO_ERROR"
     } ],
     "uiInfo" : {
-      "yPos" : 49,
+      "yPos" : 50,
       "stageType" : "SOURCE",
       "icon" : "httpclient.png",
       "description" : "",
       "label" : "HTTP Client 1",
-      "xPos" : 52
+      "xPos" : 72
     },
     "inputLanes" : [ ],
     "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
@@ -1024,11 +1024,11 @@
     "title" : "test1",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1585256733346,
+    "lastModified" : 1585332664643,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "f850504b-cb78-4467-bd35-aa861e0b6bd7",
+    "uuid" : "4d20a449-6361-4071-9319-c35c7cdcbc45",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

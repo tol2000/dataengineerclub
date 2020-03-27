@@ -12,12 +12,12 @@
     }
   },
   "HTTPClient_01" : {
-    "yPos" : 49,
+    "yPos" : 50,
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
     "description" : "",
     "label" : "HTTP Client 1",
-    "xPos" : 52
+    "xPos" : 72
   },
   "LocalFS_01" : {
     "yPos" : 50,

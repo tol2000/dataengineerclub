@@ -10,3 +10,11 @@ https://hub.docker.com/r/streamsets/datacollector/
 
 https://rapidapi.com/collection/top-weather-apis?utm_source=google&utm_medium=cpc&utm_campaign=1674315309_64978333346&utm_term=weather%20api%20free_b&utm_content=&gclid=Cj0KCQjwpfHzBRCiARIsAHHzyZoekUFE3eg8G3S297tNcOwMg8UkDKHFF32FnGOIW3XMhEMc6_nv7BkaAvziEALw_wcB
 
+==== Источник openweathermap.org
+
+https://openweathermap.org/
+
+api.openweathermap.org/data/2.5/weather?q={city name},{state},{country code}&appid={your api key}
+
+https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f206595b3a0660911c2dc
+
