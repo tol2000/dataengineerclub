@@ -20,11 +20,11 @@
     "xPos" : 72
   },
   "LocalFS_01" : {
-    "yPos" : 50,
+    "yPos" : 52,
     "stageType" : "TARGET",
     "icon" : "localfilesystem.png",
     "description" : "",
     "label" : "Local FS 1",
-    "xPos" : 280
+    "xPos" : 281
   }
 }

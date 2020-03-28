@@ -18,3 +18,7 @@ api.openweathermap.org/data/2.5/weather?q={city name},{state},{country code}&app
 
 https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f206595b3a0660911c2dc
 
+
+* Выбираем погоду в 50 пунктах вокруг Одессы и находим мин/макс температуру +
+https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc
+

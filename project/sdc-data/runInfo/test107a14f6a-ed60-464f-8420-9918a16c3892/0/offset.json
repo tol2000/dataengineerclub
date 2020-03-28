@@ -1,6 +1,6 @@
 {
   "version" : 2,
   "offsets" : {
-    "$com.streamsets.datacollector.pollsource.offset$" : "url::https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f206595b3a0660911c2dc::params::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855::time::1585332856992::startAt::0"
+    "$com.streamsets.datacollector.pollsource.offset$" : "url::https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc::params::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855::time::1585434543263::startAt::0"
   }
 }

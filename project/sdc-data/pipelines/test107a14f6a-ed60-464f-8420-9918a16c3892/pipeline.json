@@ -4,7 +4,7 @@
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
   "title" : "test1",
   "description" : "",
-  "uuid" : "b5a5b2d7-4a95-47a0-b7b0-82af27335769",
+  "uuid" : "d0bddf59-a22e-4086-9560-b68788f1eaf1",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -365,7 +365,7 @@
       "value" : "MULTIPLE_OBJECTS"
     }, {
       "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
-      "value" : 4096
+      "value" : 65535
     }, {
       "name" : "conf.dataFormatConfig.csvFileFormat",
       "value" : "CSV"
@@ -566,7 +566,7 @@
       "value" : [ ]
     }, {
       "name" : "conf.resourceUrl",
-      "value" : "https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f206595b3a0660911c2dc"
+      "value" : "https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc"
     }, {
       "name" : "conf.headers",
       "value" : [ ]
@@ -793,7 +793,7 @@
     "stageVersion" : "4",
     "configuration" : [ {
       "name" : "configs.uniquePrefix",
-      "value" : "sdc-${sdc:id()}"
+      "value" : "sdc-global-in"
     }, {
       "name" : "configs.fileNameSuffix",
       "value" : null
@@ -802,10 +802,10 @@
       "value" : false
     }, {
       "name" : "configs.dirPathTemplate",
-      "value" : "/data/out/${YYYY()}-${MM()}-${DD()}-${hh()}"
+      "value" : "/data/out"
     }, {
       "name" : "configs.timeZoneID",
-      "value" : "UTC"
+      "value" : "Europe/Kiev"
     }, {
       "name" : "configs.timeDriver",
       "value" : "${time:now()}"
@@ -847,7 +847,7 @@
       "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
     }, {
       "name" : "configs.dataFormat",
-      "value" : "TEXT"
+      "value" : "JSON"
     }, {
       "name" : "configs.hdfsPermissionCheck",
       "value" : true
@@ -976,12 +976,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 50,
+      "yPos" : 52,
       "stageType" : "TARGET",
       "icon" : "localfilesystem.png",
       "description" : "",
       "label" : "Local FS 1",
-      "xPos" : 280
+      "xPos" : 281
     },
     "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
     "outputLanes" : [ ],
@@ -1024,11 +1024,11 @@
     "title" : "test1",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1585332664643,
+    "lastModified" : 1585434313909,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "4d20a449-6361-4071-9319-c35c7cdcbc45",
+    "uuid" : "c480ad0d-e328-4770-b73a-d89eaf36f9d4",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]
