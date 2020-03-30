@@ -1,0 +1,103 @@
+@startuml Схема процесса
+
+skinparam ComponentStyle uml2
+
+' left to right direction
+' top to bottom direction
+
+centerheader
+= Тема проекта: Загрузка, хранение и анализ публично доступной информации
+endheader
+
+legend top left
+    Я решил создать проект - основу для построения хранения и анализа
+    общедоступной информации
+    Для примера взял api погоды (либо вики-стримы или информация по вакансиям)
+
+    Цель проекта - построить максимально недорогую открытую систему
+    для приема, хранения и анализа любой общедоступной информации
+    из открытых (а, возможно, и закрытых) источников
+
+    Система должна основываться на свободных, желательно open-source,
+    в крайнем случае недорогих, но эффективных и распространенных решениях.
+
+    Система должна быть способна к расширению
+
+    - Загрузка данных и управление заданиями обеспечивается при помощи **StreamSets**
+        StreamSets обеспечивает загрузку данных с различных источников,
+        выгрузку их в храгилище,
+        а также работает как планировщик процессов
+    - NoSql для хранения сырых данных - **apache hive**
+    - RDBMS для якорной модели DWH - возможно PostGre
+        Поскольку система ориентирована на небольшие предприятия и на lowcost
+        и поскольку предполагается хранить и анализировать ,
+endlegend
+
+cloud "Источник (rest API)" as cloud_source #LightBlue {
+}
+
+note right of cloud_source
+    Внешние данные
+    с какого-либо публичного источника
+end note
+
+Actor "Внешний\nПользователь" as extuser
+
+frame "Хранилище\nтипа Data Lake" as frame_dlstor {
+
+    frame "Витрины" as frame_dlstor_dm #Gold {
+        frame "Представления" as views_dm {
+            component report_1 [
+                Представление1
+            ]
+            component report_2 [
+                Представление2
+            ]
+        }
+        component batch_dm_refresh [
+            **Batch**
+            ----
+            Обновление отчетов
+            ----
+            Периодичность: 
+        ]
+    }
+
+    frame "Обработанные данные" as frame_dlstor_stage #LightGreen {
+        database "Реляционная БД\n" as db_stage #Pink {
+            component anchor_model_dwh [
+                Якорная модель хранилища
+            ]
+        }
+        component batch_stage_refresh [
+            **StreamSets**
+            ----
+            PipeLine SilverLayer
+            Оперативное обновление stage-данных
+        ]
+    }
+
+    frame "Сырые данные" as frame_dlstor_raw #LightGray {
+        database "NoSql БД Типа Hive" as db_raw #Pink {
+            component raw_data [
+                Сырые данные
+            ]
+        }
+        component batch_raw_load [
+            **StreamSets**
+            ----
+            PipeLine BronzeLayer
+            Загрузка сырых данных
+        ]
+    }
+
+    cloud_source --> batch_raw_load
+    batch_raw_load --> db_raw
+
+    db_raw --> db_stage
+
+    db_stage --> views_dm
+
+
+}
+@enduml
