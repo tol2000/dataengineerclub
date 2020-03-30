@@ -2,6 +2,57 @@
 
 == Постановка задачи
 
+== Примечания
+
+=== Установка и настройка
+
+* docker-compose up
+
+==== streamsets
+
+* location locahost: 18630
+* credentials
+** admin/admin
+
+==== cloudera-quickstart
+
+https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
+
+* location: localhost
+** 8020   # HDFS 
+** 22     # SSH
+** 7180   # Cloudera Manager
+** 8888   # Hue
+** 11000  # Oozie
+** 50070  # HDFS Rest Namenode
+** 50075  # HDFS Rest Datanode
+** 2181   # Zookeeper
+** 8088   # YARN Resource Manager
+** 19888  # MapReduce Job History
+** 50030  # MapReduce Job Tracker
+** 8983   # Solr
+** 16000  # Sqoop Metastore
+** 8042   # YARN Node Manager
+** 60010  # HBase Master
+** 60030  # HBase Region
+** 9090   # HBase Thrift
+** 8080   # HBase Rest
+** 7077   # Spark Master
+* credentials
+** claudera manager: admin/admin
+** hue: claudera/claudera
+
+===== Cloudera manager
+
+If necessary then +
+
+[source, bash]
+----
+docker ps -a
+docker attach container-id
+/home/cloudera/cloudera-manager --express --force
+----
+
 === Загрузка информации из публичного источника (rss, rest, иное)
 
 Возможно, использовать стримсет и его коннекторы
