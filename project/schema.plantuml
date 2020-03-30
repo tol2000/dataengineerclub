@@ -126,6 +126,5 @@ frame "Хранилище\nтипа Data Lake" as frame_dlstor {
 
     db_stage --> views_dm
 
-
 }
 @enduml
