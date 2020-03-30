@@ -52,7 +52,7 @@ legend top left
     При создании системы я старался придерживаться некоторых идеологий
     DevOps, в частности, All As A Code, что потом очень хорошо ложится
     в любую VCS вроде git, поэтому описание проекта, схема и документация
-    созданы в asciidoc+plantuml.
+    в asciidoc+plantuml.
 
     При создании проекта, опять же из-за ограниченного времени разработки,
     я скорее всего не буду полностью реализовывать всю систему для
@@ -92,15 +92,16 @@ frame "Хранилище\nтипа Data Lake" as frame_dlstor {
     }
 
     frame "Обработанные данные" as frame_dlstor_stage #LightGreen {
-        database "Реляционная БД\n" as db_stage #Pink {
+        database "Реляционная БД\n**Vertica**" as db_stage #Pink {
             component anchor_model_dwh [
                 Якорная модель хранилища
             ]
         }
         component batch_stage_refresh [
-            **StreamSets**
+            **StreamSets + Spark + scala**
             ----
             PipeLine SilverLayer
+            Batch: spark + scala
             Оперативное обновление stage-данных
         ]
     }
