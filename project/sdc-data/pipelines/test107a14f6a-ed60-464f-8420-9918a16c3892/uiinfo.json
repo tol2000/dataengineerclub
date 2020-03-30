@@ -15,16 +15,24 @@
     "yPos" : 50,
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
-    "description" : "",
-    "label" : "HTTP Client 1",
+    "description" : "Extracts weather through rest api",
+    "label" : "WeatherExtractor",
     "xPos" : 72
   },
+  "LocalFS_02" : {
+    "yPos" : 198,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Local FS 2",
+    "xPos" : 561
+  },
   "LocalFS_01" : {
-    "yPos" : 52,
+    "yPos" : 62,
     "stageType" : "TARGET",
     "icon" : "localfilesystem.png",
     "description" : "",
     "label" : "Local FS 1",
-    "xPos" : 281
+    "xPos" : 562
   }
 }
