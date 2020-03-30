@@ -2,9 +2,9 @@
   "schemaVersion" : 6,
   "version" : 17,
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
-  "title" : "ExtractLayer",
+  "title" : "BronzeLayer",
   "description" : "",
-  "uuid" : "1821787e-a608-4353-918b-48b45e590e00",
+  "uuid" : "6ba2ff05-24ce-42b0-94fd-1e2449da77b2",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -1225,12 +1225,12 @@
     "title" : "ExtractLayer",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1585559937315,
+    "lastModified" : 1585559943455,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "cda23d21-8b2d-4e35-aba2-afdb9ee23a9a",
-    "valid" : false,
+    "uuid" : "1821787e-a608-4353-918b-48b45e590e00",
+    "valid" : true,
     "metadata" : {
       "labels" : [ ]
     },
