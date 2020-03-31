@@ -42,6 +42,8 @@ services:
       - "9090:9090"   # HBase Thrift
       - "8080:8080"   # HBase Rest
       - "7077:7077"   # Spark Master
+      - "10000:10000" # Hive jdbc
+      - "10002:10002" # Hive web interface
     tty: true
     stdin_open: true
     volumes: 

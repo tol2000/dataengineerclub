@@ -46,6 +46,9 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 ** 9090   # HBase Thrift
 ** 8080   # HBase Rest
 ** 7077   # Spark Master
+** 10000  # Hive jdbc
+** 10002  # Hive web interface
+
 * credentials
 ** claudera manager: admin/admin
 ** hue: claudera/claudera
