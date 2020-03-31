@@ -28,7 +28,7 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 
 * location: localhost
 ** 8020   # HDFS 
-** 22     # SSH
+** 8022     # SSH
 ** 7180   # Cloudera Manager
 ** 8888   # Hue
 ** 11000  # Oozie
@@ -52,14 +52,15 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 
 ===== Cloudera manager
 
-If necessary then +
-
 [source, bash]
 ----
 docker ps -a
 docker attach container-id
 /home/cloudera/cloudera-manager --express --force
 ----
+
+* connect to localhost:7180
+* restart all services in cluster
 
 === Загрузка информации из публичного источника (rss, rest, иное)
 
