@@ -22,6 +22,10 @@
 * credentials
 ** admin/admin
 
+===== Stage libraries
+
+* CDH 5.7.6
+
 ==== cloudera-quickstart
 
 https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
@@ -52,6 +56,10 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 * credentials
 ** claudera manager: admin/admin
 ** hue: claudera/claudera
+* versions
+** CDH 5.7.0
+** Hadoop 2.6.0
+** Hive 1.1.0
 
 ===== Cloudera manager
 
