@@ -4,7 +4,7 @@
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
   "title" : "BronzeLayer",
   "description" : "",
-  "uuid" : "13c9a614-3efd-43ad-88f9-294cadbdb856",
+  "uuid" : "ca841888-d350-4270-9f4d-1b5cb56ac584",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -350,7 +350,7 @@
       "value" : false
     }, {
       "name" : "conf.dataFormatConfig.textMaxLineLen",
-      "value" : 1024
+      "value" : 65536
     }, {
       "name" : "conf.dataFormatConfig.useCustomDelimiter",
       "value" : false
@@ -509,7 +509,7 @@
       "value" : true
     }, {
       "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
-      "value" : 1024
+      "value" : 65535
     }, {
       "name" : "conf.dataFormatConfig.datagramMode",
       "value" : "SYSLOG"
@@ -728,7 +728,7 @@
       "value" : 2000
     }, {
       "name" : "conf.dataFormat",
-      "value" : "JSON"
+      "value" : "TEXT"
     }, {
       "name" : "conf.responseStatusActionConfigs",
       "value" : [ {
@@ -784,207 +784,6 @@
     },
     "inputLanes" : [ ],
     "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
-    "instanceName" : "LocalFS_01",
-    "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_destination_localfilesystem_LocalFileSystemDTarget",
-    "stageVersion" : "4",
-    "configuration" : [ {
-      "name" : "configs.uniquePrefix",
-      "value" : "sdc-global-in1"
-    }, {
-      "name" : "configs.fileNameSuffix",
-      "value" : null
-    }, {
-      "name" : "configs.dirPathTemplateInHeader",
-      "value" : false
-    }, {
-      "name" : "configs.dirPathTemplate",
-      "value" : "/data/out"
-    }, {
-      "name" : "configs.timeZoneID",
-      "value" : "Europe/Kiev"
-    }, {
-      "name" : "configs.timeDriver",
-      "value" : "${time:now()}"
-    }, {
-      "name" : "configs.maxRecordsPerFile",
-      "value" : 0
-    }, {
-      "name" : "configs.maxFileSize",
-      "value" : 0
-    }, {
-      "name" : "configs.idleTimeout",
-      "value" : "${1 * HOURS}"
-    }, {
-      "name" : "configs.compression",
-      "value" : "NONE"
-    }, {
-      "name" : "configs.otherCompression",
-      "value" : null
-    }, {
-      "name" : "configs.fileType",
-      "value" : "TEXT"
-    }, {
-      "name" : "configs.keyEl",
-      "value" : "${uuid()}"
-    }, {
-      "name" : "configs.lateRecordsLimit",
-      "value" : "${1 * HOURS}"
-    }, {
-      "name" : "configs.rollIfHeader",
-      "value" : false
-    }, {
-      "name" : "configs.rollHeaderName",
-      "value" : "roll"
-    }, {
-      "name" : "configs.lateRecordsAction",
-      "value" : "SEND_TO_ERROR"
-    }, {
-      "name" : "configs.lateRecordsDirPathTemplate",
-      "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
-    }, {
-      "name" : "configs.dataFormat",
-      "value" : "JSON"
-    }, {
-      "name" : "configs.hdfsPermissionCheck",
-      "value" : true
-    }, {
-      "name" : "configs.permissionEL",
-      "value" : null
-    }, {
-      "name" : "configs.skipOldTempFileRecovery",
-      "value" : false
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.charset",
-      "value" : "UTF-8"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvFileFormat",
-      "value" : "CSV"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvHeader",
-      "value" : "NO_HEADER"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLines",
-      "value" : true
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLinesString",
-      "value" : " "
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvCustomDelimiter",
-      "value" : "|"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvCustomEscape",
-      "value" : "\\"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvCustomQuote",
-      "value" : "\""
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.csvQuoteMode",
-      "value" : "MINIMAL"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.jsonMode",
-      "value" : "MULTIPLE_OBJECTS"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.textFieldPath",
-      "value" : "/text"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.textRecordSeparator",
-      "value" : "\\n"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.textFieldMissingAction",
-      "value" : "ERROR"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.textEmptyLineIfNull",
-      "value" : false
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.avroSchemaSource",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.avroSchema",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.registerSchema",
-      "value" : false
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
-      "value" : [ ]
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrls",
-      "value" : [ ]
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfo",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.schemaLookupMode",
-      "value" : "SUBJECT"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.subject",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.subjectToRegister",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.schemaId",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.avroCompression",
-      "value" : "NULL"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.binaryFieldPath",
-      "value" : "/"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.protoDescriptorFile",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.messageType",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.fileNameEL",
-      "value" : null
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.wholeFileExistsAction",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.includeChecksumInTheEvents",
-      "value" : false
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.checksumAlgorithm",
-      "value" : "MD5"
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.xmlPrettyPrint",
-      "value" : true
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.xmlValidateSchema",
-      "value" : false
-    }, {
-      "name" : "configs.dataGeneratorFormatConfig.xmlSchema",
-      "value" : null
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "stageRequiredFields",
-      "value" : [ ]
-    }, {
-      "name" : "stageRecordPreconditions",
-      "value" : [ ]
-    } ],
-    "uiInfo" : {
-      "yPos" : 62,
-      "stageType" : "TARGET",
-      "icon" : "localfilesystem.png",
-      "description" : "",
-      "label" : "Local FS 1",
-      "xPos" : 562
-    },
-    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
-    "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
@@ -1177,15 +976,611 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 198,
+      "yPos" : 22,
       "stageType" : "TARGET",
       "icon" : "localfilesystem.png",
       "description" : "",
       "label" : "Local FS 2",
-      "xPos" : 561
+      "xPos" : 308
     },
     "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
     "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "HiveMetadata_01",
+    "library" : "streamsets-datacollector-cdh_5_7-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_hive_HiveMetadataDProcessor",
+    "stageVersion" : "3",
+    "configuration" : [ {
+      "name" : "hiveConfigBean.hiveJDBCUrl",
+      "value" : "jdbc:hive2://cdh1:10000/bronze"
+    }, {
+      "name" : "hiveConfigBean.hiveJDBCDriver",
+      "value" : "org.apache.hive.jdbc.HiveDriver"
+    }, {
+      "name" : "hiveConfigBean.useCredentials",
+      "value" : false
+    }, {
+      "name" : "hiveConfigBean.username",
+      "value" : null
+    }, {
+      "name" : "hiveConfigBean.password",
+      "value" : null
+    }, {
+      "name" : "hiveConfigBean.driverProperties",
+      "value" : [ ]
+    }, {
+      "name" : "hiveConfigBean.confDir",
+      "value" : "/data/hive/conf"
+    }, {
+      "name" : "hiveConfigBean.additionalConfigProperties",
+      "value" : [ ]
+    }, {
+      "name" : "hiveConfigBean.maxCacheSize",
+      "value" : -1
+    }, {
+      "name" : "dbNameEL",
+      "value" : "bronze"
+    }, {
+      "name" : "tableNameEL",
+      "value" : "weather"
+    }, {
+      "name" : "partitionList",
+      "value" : [ {
+        "name" : "gen_year",
+        "valueType" : "INT",
+        "valueEL" : "${YYYY()}"
+      } ]
+    }, {
+      "name" : "externalTable",
+      "value" : false
+    }, {
+      "name" : "tablePathTemplate",
+      "value" : "/user/hive/warehouse/${record:attribute('database')}.db/${record:attribute('table_name')}"
+    }, {
+      "name" : "partitionPathTemplate",
+      "value" : "dt=${record:attribute('dt')}"
+    }, {
+      "name" : "commentExpression",
+      "value" : null
+    }, {
+      "name" : "decimalDefaultsConfig.scaleExpression",
+      "value" : "${record:attribute(str:concat(str:concat('jdbc.', field:field()), '.scale'))}"
+    }, {
+      "name" : "decimalDefaultsConfig.precisionExpression",
+      "value" : "${record:attribute(str:concat(str:concat('jdbc.', field:field()), '.precision'))}"
+    }, {
+      "name" : "timeDriver",
+      "value" : "${time:now()}"
+    }, {
+      "name" : "timeZoneID",
+      "value" : "Europe/Kiev"
+    }, {
+      "name" : "convertTimesToString",
+      "value" : false
+    }, {
+      "name" : "metadataHeaderAttributeConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "dataFormat",
+      "value" : "AVRO"
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "outputStreamLabels" : [ "Data", "Metadata" ],
+      "yPos" : 159,
+      "stageType" : "PROCESSOR",
+      "icon" : "metadata.png",
+      "description" : "",
+      "label" : "Hive Metadata 1",
+      "xPos" : 540
+    },
+    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "outputLanes" : [ "HiveMetadata_01OutputLane15857632345200", "HiveMetadata_01OutputLane15857632345201" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "HiveMetastore_01",
+    "library" : "streamsets-datacollector-cdh_5_7-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_hive_HiveMetastoreDTarget",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "conf.hiveConfigBean.hiveJDBCUrl",
+      "value" : "jdbc:hive2://cdh1:10000/bronze"
+    }, {
+      "name" : "conf.hiveConfigBean.hiveJDBCDriver",
+      "value" : "org.apache.hive.jdbc.HiveDriver"
+    }, {
+      "name" : "conf.hiveConfigBean.useCredentials",
+      "value" : false
+    }, {
+      "name" : "conf.hiveConfigBean.username",
+      "value" : null
+    }, {
+      "name" : "conf.hiveConfigBean.password",
+      "value" : null
+    }, {
+      "name" : "conf.hiveConfigBean.driverProperties",
+      "value" : [ { } ]
+    }, {
+      "name" : "conf.hiveConfigBean.confDir",
+      "value" : "/data/hive/conf"
+    }, {
+      "name" : "conf.hiveConfigBean.additionalConfigProperties",
+      "value" : [ ]
+    }, {
+      "name" : "conf.hiveConfigBean.maxCacheSize",
+      "value" : -1
+    }, {
+      "name" : "conf.storedAsAvro",
+      "value" : true
+    }, {
+      "name" : "conf.schemaFolderLocation",
+      "value" : ".schemas"
+    }, {
+      "name" : "conf.hdfsUser",
+      "value" : null
+    }, {
+      "name" : "conf.headerAttributeConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 238,
+      "stageType" : "TARGET",
+      "icon" : "hive.png",
+      "description" : "",
+      "label" : "Hive Metastore bronze weather",
+      "xPos" : 780
+    },
+    "inputLanes" : [ "HiveMetadata_01OutputLane15857632345201" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "HadoopFS_01",
+    "library" : "streamsets-datacollector-cdh_5_7-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_hdfs_HdfsDTarget",
+    "stageVersion" : "5",
+    "configuration" : [ {
+      "name" : "hdfsTargetConfigBean.uniquePrefix",
+      "value" : "sdc-${sdc:id()}"
+    }, {
+      "name" : "hdfsTargetConfigBean.fileNameSuffix",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dirPathTemplateInHeader",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dirPathTemplate",
+      "value" : "/tmp/out/${YYYY()}-${MM()}-${DD()}-${hh()}"
+    }, {
+      "name" : "hdfsTargetConfigBean.timeZoneID",
+      "value" : "UTC"
+    }, {
+      "name" : "hdfsTargetConfigBean.timeDriver",
+      "value" : "${time:now()}"
+    }, {
+      "name" : "hdfsTargetConfigBean.maxRecordsPerFile",
+      "value" : 0
+    }, {
+      "name" : "hdfsTargetConfigBean.maxFileSize",
+      "value" : 0
+    }, {
+      "name" : "hdfsTargetConfigBean.idleTimeout",
+      "value" : "${1 * HOURS}"
+    }, {
+      "name" : "hdfsTargetConfigBean.compression",
+      "value" : "NONE"
+    }, {
+      "name" : "hdfsTargetConfigBean.otherCompression",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.fileType",
+      "value" : "TEXT"
+    }, {
+      "name" : "hdfsTargetConfigBean.keyEl",
+      "value" : "${uuid()}"
+    }, {
+      "name" : "hdfsTargetConfigBean.seqFileCompressionType",
+      "value" : "BLOCK"
+    }, {
+      "name" : "hdfsTargetConfigBean.lateRecordsLimit",
+      "value" : "${1 * HOURS}"
+    }, {
+      "name" : "hdfsTargetConfigBean.rollIfHeader",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.rollHeaderName",
+      "value" : "roll"
+    }, {
+      "name" : "hdfsTargetConfigBean.lateRecordsAction",
+      "value" : "SEND_TO_ERROR"
+    }, {
+      "name" : "hdfsTargetConfigBean.lateRecordsDirPathTemplate",
+      "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataFormat",
+      "value" : "AVRO"
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsPermissionCheck",
+      "value" : true
+    }, {
+      "name" : "hdfsTargetConfigBean.permissionEL",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.skipOldTempFileRecovery",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.charset",
+      "value" : "UTF-8"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvFileFormat",
+      "value" : "CSV"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLines",
+      "value" : true
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+      "value" : " "
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvQuoteMode",
+      "value" : "MINIMAL"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.jsonMode",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textFieldPath",
+      "value" : "/text"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textRecordSeparator",
+      "value" : "\\n"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textFieldMissingAction",
+      "value" : "ERROR"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textEmptyLineIfNull",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroSchemaSource",
+      "value" : "HEADER"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroSchema",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.registerSchema",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+      "value" : [ ]
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrls",
+      "value" : [ ]
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.basicAuthUserInfo",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaLookupMode",
+      "value" : "SUBJECT"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.subject",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.subjectToRegister",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaId",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroCompression",
+      "value" : "NULL"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.binaryFieldPath",
+      "value" : "/"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.protoDescriptorFile",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.messageType",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.fileNameEL",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.wholeFileExistsAction",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.checksumAlgorithm",
+      "value" : "MD5"
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlPrettyPrint",
+      "value" : true
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlValidateSchema",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlSchema",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsUri",
+      "value" : "hdfs://cdh1:8020"
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsUser",
+      "value" : null
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsKerberos",
+      "value" : false
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsConfDir",
+      "value" : "/data/hive/conf"
+    }, {
+      "name" : "hdfsTargetConfigBean.hdfsConfigs",
+      "value" : [ { } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 94,
+      "stageType" : "TARGET",
+      "icon" : "hdfs.png",
+      "description" : "",
+      "label" : "Hadoop FS 1",
+      "xPos" : 782
+    },
+    "inputLanes" : [ "HiveMetadata_01OutputLane15857632345200" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "DataGenerator_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_generator_DataGeneratorDProcessor",
+    "stageVersion" : "1",
+    "configuration" : [ {
+      "name" : "config.targetField",
+      "value" : "/"
+    }, {
+      "name" : "config.outputType",
+      "value" : "BYTE_ARRAY"
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 199,
+      "stageType" : "PROCESSOR",
+      "icon" : "coding.png",
+      "description" : "",
+      "label" : "Data Generator 1",
+      "xPos" : 51
+    },
+    "inputLanes" : [ ],
+    "outputLanes" : [ "DataGenerator_01OutputLane15857747584210" ],
+    "eventLanes" : [ ],
+    "services" : [ {
+      "service" : "com.streamsets.pipeline.api.service.dataformats.DataFormatGeneratorService",
+      "serviceVersion" : 1,
+      "configuration" : [ {
+        "name" : "dataFormat",
+        "value" : "TEXT"
+      }, {
+        "name" : "dataGeneratorFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvReplaceNewLines",
+        "value" : true
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvReplaceNewLinesString",
+        "value" : " "
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "dataGeneratorFormatConfig.csvQuoteMode",
+        "value" : "MINIMAL"
+      }, {
+        "name" : "dataGeneratorFormatConfig.jsonMode",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "dataGeneratorFormatConfig.textFieldPath",
+        "value" : "/text"
+      }, {
+        "name" : "dataGeneratorFormatConfig.textRecordSeparator",
+        "value" : "\\n"
+      }, {
+        "name" : "dataGeneratorFormatConfig.textFieldMissingAction",
+        "value" : "ERROR"
+      }, {
+        "name" : "dataGeneratorFormatConfig.textEmptyLineIfNull",
+        "value" : false
+      }, {
+        "name" : "dataGeneratorFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.registerSchema",
+        "value" : false
+      }, {
+        "name" : "dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+        "value" : [ ]
+      }, {
+        "name" : "dataGeneratorFormatConfig.schemaRegistryUrls",
+        "value" : [ ]
+      }, {
+        "name" : "dataGeneratorFormatConfig.basicAuthUserInfo",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "dataGeneratorFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.subjectToRegister",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.includeSchema",
+        "value" : true
+      }, {
+        "name" : "dataGeneratorFormatConfig.avroCompression",
+        "value" : "NULL"
+      }, {
+        "name" : "dataGeneratorFormatConfig.binaryFieldPath",
+        "value" : "/"
+      }, {
+        "name" : "dataGeneratorFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.fileNameEL",
+        "value" : null
+      }, {
+        "name" : "dataGeneratorFormatConfig.wholeFileExistsAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "dataGeneratorFormatConfig.includeChecksumInTheEvents",
+        "value" : false
+      }, {
+        "name" : "dataGeneratorFormatConfig.checksumAlgorithm",
+        "value" : "MD5"
+      }, {
+        "name" : "dataGeneratorFormatConfig.xmlPrettyPrint",
+        "value" : true
+      }, {
+        "name" : "dataGeneratorFormatConfig.xmlValidateSchema",
+        "value" : false
+      }, {
+        "name" : "dataGeneratorFormatConfig.xmlSchema",
+        "value" : null
+      }, {
+        "name" : "displayFormats",
+        "value" : "AVRO,BINARY,DELIMITED,JSON,PROTOBUF,TEXT,SDC_JSON,XML"
+      } ]
+    } ]
+  }, {
+    "instanceName" : "FieldTypeConverter_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "convertBy",
+      "value" : "BY_FIELD"
+    }, {
+      "name" : "fieldTypeConverterConfigs",
+      "value" : [ {
+        "fields" : [ ],
+        "targetType" : "INTEGER",
+        "treatInputFieldAsDate" : false,
+        "dataLocale" : "en,US",
+        "scale" : -1,
+        "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+        "dateFormat" : "YYYY_MM_DD",
+        "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+        "encoding" : "UTF-8"
+      } ]
+    }, {
+      "name" : "wholeTypeConverterConfigs",
+      "value" : [ {
+        "sourceType" : "INTEGER",
+        "targetType" : "INTEGER",
+        "treatInputFieldAsDate" : false,
+        "dataLocale" : "en,US",
+        "scale" : -1,
+        "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+        "dateFormat" : "YYYY_MM_DD",
+        "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+        "encoding" : "UTF-8"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 222,
+      "stageType" : "PROCESSOR",
+      "icon" : "converter.png",
+      "description" : "",
+      "label" : "Field Type Converter 1",
+      "xPos" : 262
+    },
+    "inputLanes" : [ ],
+    "outputLanes" : [ "FieldTypeConverter_01OutputLane15857748643240" ],
     "eventLanes" : [ ],
     "services" : [ ]
   } ],
@@ -1225,11 +1620,11 @@
     "title" : "BronzeLayer",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1585674540745,
+    "lastModified" : 1585774952309,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "aca3aa44-78f2-46dd-b17a-caa3aa960c44",
+    "uuid" : "ea5d306b-32c0-48be-9dec-e8262ee3a3d1",
     "valid" : false,
     "metadata" : {
       "labels" : [ ]
@@ -1559,11 +1954,58 @@
       } ]
     } ]
   },
-  "valid" : true,
+  "valid" : false,
   "issues" : {
     "pipelineIssues" : [ ],
-    "stageIssues" : { },
-    "issueCount" : 0
+    "stageIssues" : {
+      "FieldTypeConverter_01" : [ {
+        "instanceName" : "FieldTypeConverter_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : "FieldTypeConverter_01",
+        "configName" : null,
+        "message" : "VALIDATION_0014 - Processor must have input streams",
+        "count" : 1,
+        "additionalInfo" : null,
+        "antennaDoctorMessages" : null
+      }, {
+        "instanceName" : "FieldTypeConverter_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : null,
+        "configName" : null,
+        "message" : "VALIDATION_0011 - Stage has open output streams",
+        "count" : 1,
+        "additionalInfo" : {
+          "openStreams" : [ "FieldTypeConverter_01OutputLane15857748643240" ]
+        },
+        "antennaDoctorMessages" : null
+      } ],
+      "DataGenerator_01" : [ {
+        "instanceName" : "DataGenerator_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : "DataGenerator_01",
+        "configName" : null,
+        "message" : "VALIDATION_0014 - Processor must have input streams",
+        "count" : 1,
+        "additionalInfo" : null,
+        "antennaDoctorMessages" : null
+      }, {
+        "instanceName" : "DataGenerator_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : null,
+        "configName" : null,
+        "message" : "VALIDATION_0011 - Stage has open output streams",
+        "count" : 1,
+        "additionalInfo" : {
+          "openStreams" : [ "DataGenerator_01OutputLane15857747584210" ]
+        },
+        "antennaDoctorMessages" : null
+      } ]
+    },
+    "issueCount" : 4
   },
-  "previewable" : true
+  "previewable" : false
 }

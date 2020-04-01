@@ -3,7 +3,8 @@ version: "3.3"
 services:
 
   # StreamSets container
-  streamsets:
+  sdc1:
+    hostname: sdc11
     build:
       context: "."
       # args:
@@ -15,9 +16,10 @@ services:
     volumes:
       - ./sdc-data:/data
       - ./credentials:/opt/credentials
+      - ~/sdc-stagelibs:/opt/streamsets-datacollector-3.14.0/streamsets-libs
 
   # Cloudera container
-  cloudera-quickstart:
+  cdh1:
     image: cloudera/quickstart:latest
     privileged: true
     hostname: quickstart.cloudera
@@ -44,6 +46,7 @@ services:
       - "7077:7077"   # Spark Master
       - "10000:10000" # Hive jdbc
       - "10002:10002" # Hive web interface
+      - "9083:9083"   # Hive metastore
     tty: true
     stdin_open: true
     volumes: 

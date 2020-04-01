@@ -14,17 +14,19 @@
 
 === Установка и настройка
 
+NOTE: To avoid of oversizing git repo +
+streamsets stage libraries maps to +
+*~/ssdc-stagelibs* (must have 777 attrs)
+
 * docker-compose up
 
 ==== streamsets
 
+https://hub.docker.com/r/streamsets/datacollector/
+
 * location locahost: 18630
 * credentials
 ** admin/admin
-
-===== Stage libraries
-
-* CDH 5.7.6
 
 ==== cloudera-quickstart
 
@@ -32,7 +34,7 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 
 * location: localhost
 ** 8020   # HDFS 
-** 8022     # SSH
+** 8022   # SSH
 ** 7180   # Cloudera Manager
 ** 8888   # Hue
 ** 11000  # Oozie
@@ -61,7 +63,7 @@ https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 ** Hadoop 2.6.0
 ** Hive 1.1.0
 
-===== Cloudera manager
+===== Cloudera manager (optional)
 
 [source, bash]
 ----
@@ -77,8 +79,6 @@ docker attach container-id
 
 Возможно, использовать стримсет и его коннекторы
 
-https://hub.docker.com/r/streamsets/datacollector/
-
 https://rapidapi.com/collection/top-weather-apis?utm_source=google&utm_medium=cpc&utm_campaign=1674315309_64978333346&utm_term=weather%20api%20free_b&utm_content=&gclid=Cj0KCQjwpfHzBRCiARIsAHHzyZoekUFE3eg8G3S297tNcOwMg8UkDKHFF32FnGOIW3XMhEMc6_nv7BkaAvziEALw_wcB
 
 ==== Источник openweathermap.org
@@ -93,6 +93,25 @@ https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&appid=d12dd3e0376f20
 * Выбираем погоду в 50 пунктах вокруг Одессы и находим мин/макс температуру +
 https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc
 
+
+=== Инициализация
+
+==== Claudera
+
+===== Scripts
+
+In hue or other sql client
+
+[source, sql]
+----
+create database if not exists bronze;
+-- create table if not exists bronze.weather (src string);
+
+----
+
+=== Список используемой литературы
+
+https://github.com/streamsets/tutorials/blob/master/tutorial-hivedrift/readme.md
 
 === Other
 

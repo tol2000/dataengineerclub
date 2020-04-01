@@ -1,4 +1,21 @@
 {
+  "HiveMetadata_01" : {
+    "outputStreamLabels" : [ "Data", "Metadata" ],
+    "yPos" : 159,
+    "stageType" : "PROCESSOR",
+    "icon" : "metadata.png",
+    "description" : "",
+    "label" : "Hive Metadata 1",
+    "xPos" : 540
+  },
+  "FieldTypeConverter_01" : {
+    "yPos" : 222,
+    "stageType" : "PROCESSOR",
+    "icon" : "converter.png",
+    "description" : "",
+    "label" : "Field Type Converter 1",
+    "xPos" : 262
+  },
   ":pipeline:" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",
@@ -11,6 +28,14 @@
       "rememberMe" : false
     }
   },
+  "HadoopFS_01" : {
+    "yPos" : 94,
+    "stageType" : "TARGET",
+    "icon" : "hdfs.png",
+    "description" : "",
+    "label" : "Hadoop FS 1",
+    "xPos" : 782
+  },
   "HTTPClient_01" : {
     "yPos" : 50,
     "stageType" : "SOURCE",
@@ -19,20 +44,28 @@
     "label" : "WeatherExtractor",
     "xPos" : 72
   },
+  "HiveMetastore_01" : {
+    "yPos" : 238,
+    "stageType" : "TARGET",
+    "icon" : "hive.png",
+    "description" : "",
+    "label" : "Hive Metastore bronze weather",
+    "xPos" : 780
+  },
+  "DataGenerator_01" : {
+    "yPos" : 199,
+    "stageType" : "PROCESSOR",
+    "icon" : "coding.png",
+    "description" : "",
+    "label" : "Data Generator 1",
+    "xPos" : 51
+  },
   "LocalFS_02" : {
-    "yPos" : 198,
+    "yPos" : 22,
     "stageType" : "TARGET",
     "icon" : "localfilesystem.png",
     "description" : "",
     "label" : "Local FS 2",
-    "xPos" : 561
-  },
-  "LocalFS_01" : {
-    "yPos" : 62,
-    "stageType" : "TARGET",
-    "icon" : "localfilesystem.png",
-    "description" : "",
-    "label" : "Local FS 1",
-    "xPos" : 562
+    "xPos" : 308
   }
 }
