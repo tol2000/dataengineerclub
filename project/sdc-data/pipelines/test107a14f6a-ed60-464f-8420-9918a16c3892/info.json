@@ -3,12 +3,12 @@
   "title" : "BronzeLayer",
   "description" : "",
   "created" : 1585255456820,
-  "lastModified" : 1585848338273,
+  "lastModified" : 1585849108763,
   "creator" : "admin",
   "lastModifier" : "admin",
   "lastRev" : "0",
-  "uuid" : "4db23bf8-549c-4be2-9187-bcb1af4f22c2",
-  "valid" : false,
+  "uuid" : "9b255821-8cb5-4982-9803-b2113c23f03f",
+  "valid" : true,
   "metadata" : {
     "labels" : [ ]
   },

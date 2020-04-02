@@ -9,7 +9,7 @@
     "xPos" : 537
   },
   "SchemaGenerator_01" : {
-    "yPos" : 73,
+    "yPos" : 74,
     "stageType" : "PROCESSOR",
     "icon" : "schemagen.png",
     "description" : "",

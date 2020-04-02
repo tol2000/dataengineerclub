@@ -4,7 +4,7 @@
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
   "title" : "BronzeLayer",
   "description" : "",
-  "uuid" : "4db23bf8-549c-4be2-9187-bcb1af4f22c2",
+  "uuid" : "9b255821-8cb5-4982-9803-b2113c23f03f",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -850,7 +850,7 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 73,
+      "yPos" : 74,
       "stageType" : "PROCESSOR",
       "icon" : "schemagen.png",
       "description" : "",
@@ -1047,7 +1047,7 @@
       "value" : null
     }, {
       "name" : "hdfsTargetConfigBean.dirPathTemplateInHeader",
-      "value" : false
+      "value" : true
     }, {
       "name" : "hdfsTargetConfigBean.dirPathTemplate",
       "value" : "/tmp/out/${YYYY()}-${MM()}-${DD()}-${hh()}"
@@ -1218,7 +1218,7 @@
       "value" : null
     }, {
       "name" : "hdfsTargetConfigBean.hdfsUri",
-      "value" : "hdfs://cdh1:8020${record:attribute('targetDirectory')}"
+      "value" : "hdfs://cdh1:8020"
     }, {
       "name" : "hdfsTargetConfigBean.hdfsUser",
       "value" : null
@@ -1290,12 +1290,12 @@
     "title" : "BronzeLayer",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1585848333198,
+    "lastModified" : 1585849100150,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "48903c25-d666-45b4-aa06-8865d59f5673",
-    "valid" : false,
+    "uuid" : "c8ebc61e-c64d-4860-9e55-b460df03cbd6",
+    "valid" : true,
     "metadata" : {
       "labels" : [ ]
     },
@@ -1624,23 +1624,11 @@
       } ]
     } ]
   },
-  "valid" : false,
+  "valid" : true,
   "issues" : {
     "pipelineIssues" : [ ],
-    "stageIssues" : {
-      "HadoopFS_01" : [ {
-        "instanceName" : "HadoopFS_01",
-        "serviceName" : null,
-        "level" : "STAGE_CONFIG",
-        "configGroup" : "HADOOP_FS",
-        "configName" : "hdfsTargetConfigBean.hdfsUri",
-        "message" : "CREATION_005 - Could not resolve implicit EL expression 'hdfs://cdh1:8020${record:attribute('targetDirectory')}': com.streamsets.pipeline.api.el.ELEvalException: CTRCMN_0100 - Error evaluating expression hdfs://cdh1:8020${record:attribute('targetDirectory')}: javax.servlet.jsp.el.ELException: No function is mapped to the name \"record:attribute\"",
-        "count" : 1,
-        "additionalInfo" : null,
-        "antennaDoctorMessages" : null
-      } ]
-    },
-    "issueCount" : 1
+    "stageIssues" : { },
+    "issueCount" : 0
   },
-  "previewable" : false
+  "previewable" : true
 }
