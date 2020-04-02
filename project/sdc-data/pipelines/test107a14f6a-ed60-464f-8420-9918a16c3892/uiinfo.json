@@ -1,71 +1,55 @@
 {
   "HiveMetadata_01" : {
     "outputStreamLabels" : [ "Data", "Metadata" ],
-    "yPos" : 159,
+    "yPos" : 73,
     "stageType" : "PROCESSOR",
     "icon" : "metadata.png",
     "description" : "",
     "label" : "Hive Metadata 1",
-    "xPos" : 540
+    "xPos" : 537
   },
-  "FieldTypeConverter_01" : {
-    "yPos" : 222,
+  "SchemaGenerator_01" : {
+    "yPos" : 73,
     "stageType" : "PROCESSOR",
-    "icon" : "converter.png",
+    "icon" : "schemagen.png",
     "description" : "",
-    "label" : "Field Type Converter 1",
-    "xPos" : 262
+    "label" : "Schema Generator 1",
+    "xPos" : 286
   },
   ":pipeline:" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",
-      "batchSize" : 10,
+      "batchSize" : "5",
       "timeout" : 30000,
-      "writeToDestinations" : false,
+      "writeToDestinations" : true,
       "executeLifecycleEvents" : false,
-      "showHeader" : false,
+      "showHeader" : true,
       "showFieldType" : true,
-      "rememberMe" : false
+      "rememberMe" : true
     }
   },
   "HadoopFS_01" : {
-    "yPos" : 94,
+    "yPos" : 52,
     "stageType" : "TARGET",
     "icon" : "hdfs.png",
     "description" : "",
     "label" : "Hadoop FS 1",
-    "xPos" : 782
+    "xPos" : 808
   },
   "HTTPClient_01" : {
-    "yPos" : 50,
+    "yPos" : 74,
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
     "description" : "Extracts weather through rest api",
     "label" : "WeatherExtractor",
-    "xPos" : 72
+    "xPos" : 53
   },
   "HiveMetastore_01" : {
-    "yPos" : 238,
+    "yPos" : 181,
     "stageType" : "TARGET",
     "icon" : "hive.png",
     "description" : "",
     "label" : "Hive Metastore bronze weather",
-    "xPos" : 780
-  },
-  "DataGenerator_01" : {
-    "yPos" : 199,
-    "stageType" : "PROCESSOR",
-    "icon" : "coding.png",
-    "description" : "",
-    "label" : "Data Generator 1",
-    "xPos" : 51
-  },
-  "LocalFS_02" : {
-    "yPos" : 22,
-    "stageType" : "TARGET",
-    "icon" : "localfilesystem.png",
-    "description" : "",
-    "label" : "Local FS 2",
-    "xPos" : 308
+    "xPos" : 809
   }
 }
