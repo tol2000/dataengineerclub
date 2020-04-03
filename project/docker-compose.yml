@@ -23,7 +23,9 @@ services:
     image: cloudera/quickstart:latest
     privileged: true
     hostname: quickstart.cloudera
-    command: /usr/bin/docker-quickstart
+    #command: /usr/bin/docker-quickstart
+    command: "bash -c /media/shared_from_local/bat/autostart.sh&&/usr/bin/docker-quickstart"
+    #command: /media/shared_from_local/bat/autostart.sh
     ports:
       - "8020:8020"   # HDFS 
       - "8022:22"     # SSH
