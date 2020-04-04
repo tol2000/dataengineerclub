@@ -1,0 +1,46 @@
+{
+  "ExpressionEvaluator_01" : {
+    "yPos" : 230.5623550415039,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "",
+    "label" : "YYYY MM DD hh Generator",
+    "xPos" : 551.40234375
+  },
+  "SchemaGenerator_01" : {
+    "yPos" : 74,
+    "stageType" : "PROCESSOR",
+    "icon" : "schemagen.png",
+    "description" : "",
+    "label" : "Schema Generator 1",
+    "xPos" : 286
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : "5",
+      "timeout" : 30000,
+      "writeToDestinations" : true,
+      "executeLifecycleEvents" : false,
+      "showHeader" : true,
+      "showFieldType" : true,
+      "rememberMe" : true
+    }
+  },
+  "HTTPClient_01" : {
+    "yPos" : 74,
+    "stageType" : "SOURCE",
+    "icon" : "httpclient.png",
+    "description" : "Extracts weather through rest api",
+    "label" : "WeatherExtractor",
+    "xPos" : 53
+  },
+  "HiveStreaming_01" : {
+    "yPos" : 70.59059143066406,
+    "stageType" : "TARGET",
+    "icon" : "hive.png",
+    "description" : "",
+    "label" : "Hive Streaming 1",
+    "xPos" : 771.8987426757812
+  }
+}

@@ -1,10 +1,10 @@
 {
   "schemaVersion" : 6,
   "version" : 17,
-  "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
-  "title" : "BronzeLayer",
+  "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
+  "title" : "BronzeLayerStream",
   "description" : "",
-  "uuid" : "32b6d202-cc29-482c-b8ee-09b41a3ed00b",
+  "uuid" : "706ea6a6-1a96-44ff-9d36-8ca3c7ff28dd",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -862,89 +862,33 @@
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
-    "instanceName" : "HiveMetadata_01",
-    "library" : "streamsets-datacollector-cdh_5_7-lib",
-    "stageName" : "com_streamsets_pipeline_stage_processor_hive_HiveMetadataDProcessor",
-    "stageVersion" : "3",
+    "instanceName" : "ExpressionEvaluator_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
+    "stageVersion" : "2",
     "configuration" : [ {
-      "name" : "hiveConfigBean.hiveJDBCUrl",
-      "value" : "jdbc:hive2://cdh1:10000/bronze"
-    }, {
-      "name" : "hiveConfigBean.hiveJDBCDriver",
-      "value" : "org.apache.hive.jdbc.HiveDriver"
-    }, {
-      "name" : "hiveConfigBean.useCredentials",
-      "value" : false
-    }, {
-      "name" : "hiveConfigBean.username",
-      "value" : null
-    }, {
-      "name" : "hiveConfigBean.password",
-      "value" : null
-    }, {
-      "name" : "hiveConfigBean.driverProperties",
-      "value" : [ ]
-    }, {
-      "name" : "hiveConfigBean.confDir",
-      "value" : "/data/hive/conf"
-    }, {
-      "name" : "hiveConfigBean.additionalConfigProperties",
-      "value" : [ ]
-    }, {
-      "name" : "hiveConfigBean.maxCacheSize",
-      "value" : -1
-    }, {
-      "name" : "dbNameEL",
-      "value" : "bronze"
-    }, {
-      "name" : "tableNameEL",
-      "value" : "weather_auto"
-    }, {
-      "name" : "partitionList",
+      "name" : "expressionProcessorConfigs",
       "value" : [ {
-        "name" : "pkey",
-        "valueType" : "STRING",
-        "valueEL" : "${YYYY()}-${MM()}-${DD()}-${hh()}"
-      } ]
-    }, {
-      "name" : "externalTable",
-      "value" : false
-    }, {
-      "name" : "tablePathTemplate",
-      "value" : "/user/hive/warehouse/${record:attribute('database')}.db/${record:attribute('table_name')}"
-    }, {
-      "name" : "partitionPathTemplate",
-      "value" : "dt=${record:attribute('dt')}"
-    }, {
-      "name" : "commentExpression",
-      "value" : null
-    }, {
-      "name" : "decimalDefaultsConfig.scaleExpression",
-      "value" : "${record:attribute(str:concat(str:concat('jdbc.', field:field()), '.scale'))}"
-    }, {
-      "name" : "decimalDefaultsConfig.precisionExpression",
-      "value" : "${record:attribute(str:concat(str:concat('jdbc.', field:field()), '.precision'))}"
-    }, {
-      "name" : "timeDriver",
-      "value" : "${time:now()}"
-    }, {
-      "name" : "timeZoneID",
-      "value" : "Europe/Kiev"
-    }, {
-      "name" : "convertTimesToString",
-      "value" : false
-    }, {
-      "name" : "metadataHeaderAttributeConfigs",
-      "value" : [ {
-        "key" : "database",
-        "value" : "bronze"
+        "fieldToSet" : "/year",
+        "expression" : "${time:now().}"
       }, {
-        "key" : "table_name",
-        "value" : "weather"
+        "fieldToSet" : "/month",
+        "expression" : "${MM()}"
+      }, {
+        "fieldToSet" : "/day",
+        "expression" : "${DD()}"
+      }, {
+        "fieldToSet" : "/hour",
+        "expression" : "${hh()}"
       } ]
     }, {
-      "name" : "dataFormat",
-      "value" : "AVRO"
+      "name" : "headerAttributeConfigs",
+      "value" : [ { } ]
+    }, {
+      "name" : "fieldAttributeConfigs",
+      "value" : [ {
+        "fieldToSet" : "/"
+      } ]
     }, {
       "name" : "stageOnRecordError",
       "value" : "TO_ERROR"
@@ -956,61 +900,48 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "outputStreamLabels" : [ "Data", "Metadata" ],
-      "yPos" : 73,
+      "yPos" : 230.5623550415039,
       "stageType" : "PROCESSOR",
-      "icon" : "metadata.png",
+      "icon" : "expression.png",
       "description" : "",
-      "label" : "Hive Metadata 1",
-      "xPos" : 537
+      "label" : "YYYY MM DD hh Generator",
+      "xPos" : 551.40234375
     },
     "inputLanes" : [ "SchemaGenerator_01OutputLane15858467118010" ],
-    "outputLanes" : [ "HiveMetadata_01OutputLane15857632345200", "HiveMetadata_01OutputLane15857632345201" ],
+    "outputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
-    "instanceName" : "HiveMetastore_01",
+    "instanceName" : "HiveStreaming_01",
     "library" : "streamsets-datacollector-cdh_5_7-lib",
-    "stageName" : "com_streamsets_pipeline_stage_destination_hive_HiveMetastoreDTarget",
-    "stageVersion" : "2",
+    "stageName" : "com_streamsets_pipeline_stage_destination_hive_HiveDTarget",
+    "stageVersion" : "1",
     "configuration" : [ {
-      "name" : "conf.hiveConfigBean.hiveJDBCUrl",
-      "value" : "jdbc:hive2://cdh1:10000/bronze"
+      "name" : "hiveUrl",
+      "value" : "thrift://cdh1:9083"
     }, {
-      "name" : "conf.hiveConfigBean.hiveJDBCDriver",
-      "value" : "org.apache.hive.jdbc.HiveDriver"
+      "name" : "schema",
+      "value" : "bronze"
     }, {
-      "name" : "conf.hiveConfigBean.useCredentials",
-      "value" : false
+      "name" : "table",
+      "value" : "weather"
     }, {
-      "name" : "conf.hiveConfigBean.username",
-      "value" : null
-    }, {
-      "name" : "conf.hiveConfigBean.password",
-      "value" : null
-    }, {
-      "name" : "conf.hiveConfigBean.driverProperties",
-      "value" : [ { } ]
-    }, {
-      "name" : "conf.hiveConfigBean.confDir",
+      "name" : "hiveConfDir",
       "value" : "/data/hive/conf"
     }, {
-      "name" : "conf.hiveConfigBean.additionalConfigProperties",
+      "name" : "columnMappings",
       "value" : [ ]
     }, {
-      "name" : "conf.hiveConfigBean.maxCacheSize",
-      "value" : -1
-    }, {
-      "name" : "conf.storedAsAvro",
+      "name" : "autoCreatePartitions",
       "value" : true
     }, {
-      "name" : "conf.schemaFolderLocation",
-      "value" : ".schemas"
+      "name" : "txnBatchSize",
+      "value" : 1000
     }, {
-      "name" : "conf.hdfsUser",
-      "value" : null
+      "name" : "bufferLimitKb",
+      "value" : 128
     }, {
-      "name" : "conf.headerAttributeConfigs",
+      "name" : "additionalHiveProperties",
       "value" : [ ]
     }, {
       "name" : "stageOnRecordError",
@@ -1023,233 +954,14 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 181,
+      "yPos" : 70.59059143066406,
       "stageType" : "TARGET",
       "icon" : "hive.png",
       "description" : "",
-      "label" : "Hive Metastore bronze weather",
-      "xPos" : 809
+      "label" : "Hive Streaming 1",
+      "xPos" : 771.8987426757812
     },
-    "inputLanes" : [ "HiveMetadata_01OutputLane15857632345201" ],
-    "outputLanes" : [ ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
-    "instanceName" : "HadoopFS_01",
-    "library" : "streamsets-datacollector-cdh_5_7-lib",
-    "stageName" : "com_streamsets_pipeline_stage_destination_hdfs_HdfsDTarget",
-    "stageVersion" : "5",
-    "configuration" : [ {
-      "name" : "hdfsTargetConfigBean.uniquePrefix",
-      "value" : "sdc-${sdc:id()}"
-    }, {
-      "name" : "hdfsTargetConfigBean.fileNameSuffix",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dirPathTemplateInHeader",
-      "value" : true
-    }, {
-      "name" : "hdfsTargetConfigBean.dirPathTemplate",
-      "value" : "/tmp/out/${YYYY()}-${MM()}-${DD()}-${hh()}"
-    }, {
-      "name" : "hdfsTargetConfigBean.timeZoneID",
-      "value" : "Europe/Kiev"
-    }, {
-      "name" : "hdfsTargetConfigBean.timeDriver",
-      "value" : "${time:now()}"
-    }, {
-      "name" : "hdfsTargetConfigBean.maxRecordsPerFile",
-      "value" : 0
-    }, {
-      "name" : "hdfsTargetConfigBean.maxFileSize",
-      "value" : 0
-    }, {
-      "name" : "hdfsTargetConfigBean.idleTimeout",
-      "value" : "${1 * HOURS}"
-    }, {
-      "name" : "hdfsTargetConfigBean.compression",
-      "value" : "NONE"
-    }, {
-      "name" : "hdfsTargetConfigBean.otherCompression",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.fileType",
-      "value" : "TEXT"
-    }, {
-      "name" : "hdfsTargetConfigBean.keyEl",
-      "value" : "${uuid()}"
-    }, {
-      "name" : "hdfsTargetConfigBean.seqFileCompressionType",
-      "value" : "BLOCK"
-    }, {
-      "name" : "hdfsTargetConfigBean.lateRecordsLimit",
-      "value" : "${1 * HOURS}"
-    }, {
-      "name" : "hdfsTargetConfigBean.rollIfHeader",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.rollHeaderName",
-      "value" : "roll"
-    }, {
-      "name" : "hdfsTargetConfigBean.lateRecordsAction",
-      "value" : "SEND_TO_ERROR"
-    }, {
-      "name" : "hdfsTargetConfigBean.lateRecordsDirPathTemplate",
-      "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataFormat",
-      "value" : "AVRO"
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsPermissionCheck",
-      "value" : true
-    }, {
-      "name" : "hdfsTargetConfigBean.permissionEL",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.skipOldTempFileRecovery",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.charset",
-      "value" : "UTF-8"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvFileFormat",
-      "value" : "CSV"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvHeader",
-      "value" : "NO_HEADER"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLines",
-      "value" : true
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvReplaceNewLinesString",
-      "value" : " "
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomDelimiter",
-      "value" : "|"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomEscape",
-      "value" : "\\"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvCustomQuote",
-      "value" : "\""
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.csvQuoteMode",
-      "value" : "MINIMAL"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.jsonMode",
-      "value" : "MULTIPLE_OBJECTS"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textFieldPath",
-      "value" : "/text"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textRecordSeparator",
-      "value" : "\\n"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textFieldMissingAction",
-      "value" : "ERROR"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.textEmptyLineIfNull",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroSchemaSource",
-      "value" : "HEADER"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroSchema",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.registerSchema",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
-      "value" : [ ]
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaRegistryUrls",
-      "value" : [ ]
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.basicAuthUserInfo",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaLookupMode",
-      "value" : "SUBJECT"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.subject",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.subjectToRegister",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.schemaId",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.avroCompression",
-      "value" : "NULL"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.binaryFieldPath",
-      "value" : "/"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.protoDescriptorFile",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.messageType",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.fileNameEL",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.wholeFileExistsAction",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.includeChecksumInTheEvents",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.checksumAlgorithm",
-      "value" : "MD5"
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlPrettyPrint",
-      "value" : true
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlValidateSchema",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.dataGeneratorFormatConfig.xmlSchema",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsUri",
-      "value" : "hdfs://cdh1:8020"
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsUser",
-      "value" : null
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsKerberos",
-      "value" : false
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsConfDir",
-      "value" : "/data/hive/conf"
-    }, {
-      "name" : "hdfsTargetConfigBean.hdfsConfigs",
-      "value" : [ { } ]
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "stageRequiredFields",
-      "value" : [ ]
-    }, {
-      "name" : "stageRecordPreconditions",
-      "value" : [ ]
-    } ],
-    "uiInfo" : {
-      "yPos" : 52,
-      "stageType" : "TARGET",
-      "icon" : "hdfs.png",
-      "description" : "",
-      "label" : "Hadoop FS 1",
-      "xPos" : 808
-    },
-    "inputLanes" : [ "HiveMetadata_01OutputLane15857632345200" ],
+    "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1286,20 +998,20 @@
     "services" : [ ]
   },
   "info" : {
-    "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
-    "title" : "BronzeLayer",
+    "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
+    "title" : "BronzeLayerStream",
     "description" : "",
-    "created" : 1585255456820,
-    "lastModified" : 1586033548005,
+    "created" : 1586033463655,
+    "lastModified" : 1586035425130,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "a6707552-51a3-4773-bcfc-29deb8ea7e50",
-    "valid" : false,
+    "uuid" : "c6f799ca-00fe-4b6a-b583-210884b4e499",
+    "valid" : true,
     "metadata" : {
       "labels" : [ ]
     },
-    "name" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
+    "name" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
     "sdcVersion" : "3.14.0",
     "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
   },

@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
+  "title" : "BronzeLayerStream",
+  "description" : "",
+  "created" : 1586033463655,
+  "lastModified" : 1586035427046,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "706ea6a6-1a96-44ff-9d36-8ca3c7ff28dd",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

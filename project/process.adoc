@@ -72,6 +72,13 @@
 
 Типа Datalake
 
+==== Бронзовый слой
+
+===== Таблица сырых данных weather
+
+Создана с партицированием вплоть до часа. +
+Такое мелкое партицирование сделано в учебных целях.
+
 === Мониторинг
 
 Функции мониторинга также может взять на себя streamsets
@@ -103,15 +110,6 @@ https://hub.docker.com/r/streamsets/datacollector/
 ** admin/admin
 
 ==== cloudera-quickstart
-
-===== Проброс HDFS для сохранения файлов при выключении контейнера
-
-В домашнем каталоге должен лежать каталог `hdfs.....`
-с необходимым содержиым (содержимое прилагается отдельно).
-Туда мапится внутренний каталог HDFS контейнера.
-
-https://stackoverflow.com/questions/38521048/hdfs-as-volume-in-cloudera-quickstart-docker
-
 
 https://github.com/emirkorkmaz/cloudera-quickstart-docker-compose
 
@@ -183,31 +181,32 @@ https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=5
 
 ===== Scripts
 
-In hue or other sql client
+====== Create
 
 [source, sql]
 ----
-create database if not exists bronze;
+create database if not exists
+  bronze
+  comment 'bronze layer database'
+;
 
+use bronze;
+
+create external table if not exists
+  weather (
+    text string
+  )
+  comment 'raw data from source weather'
+  partitioned by (year int, month int, day int, hour int)
+  stored as orc
+;
 ----
+
+====== Before shutdown - export
+
+insert overwrite local directory '/media/shared_from_local/bronze/weather' select * from bronze.weather;
 
 === Список используемой литературы
 
 https://github.com/streamsets/tutorials/blob/master/tutorial-hivedrift/readme.md
 
-=== Other
-
-Здравствуйте!
-
-Вот тут более подробные наброски для моего проекта.
-https://github.com/tol2000/dataengineerclub/blob/master/project/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.svg
-
-Из всего этого уже работает загрузка погоды через rest api в стримсетс.
-Все планирую в докер-контейнерах, подобно тем, что мы использовали в процессе обучения:
-streamsets, cloudera-quickstart, vertica-quickstart
-
-Функции мониторинга и планировщика, думаю, возьмет на себя стримсетс.
-Конечно, было бы здорово подключить и apache airflow, но, боюсь, не успею.
-Попробую реализовать задуманное хотя бы в формате какого-то одного бизнес-кейса.
-
-Как считаете, достойно для проекта и реально для теоретического применения хоть где-то? )
