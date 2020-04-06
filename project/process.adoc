@@ -187,6 +187,12 @@ https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=5
 
 [source, sql]
 ----
+
+По доке по апи стриминга хайва партишин поля должны идти в конце
+For example, if table is partitioned by 2 columns (year and month), hive streaming connection will extract last 2 columns from the input records using which partitions will be created dynamically in metastore. 
+https://cwiki.apache.org/confluence/display/Hive/Streaming+Data+Ingest+V2
+А у меня при автосоздании партиции из стримсета создается год 4 (месяц) вместо 2020
+
 create database if not exists
   bronze
   comment 'bronze layer database'
@@ -195,14 +201,16 @@ create database if not exists
 use bronze;
 
 drop table weather;
-create external table if not exists
+
+create table if not exists
   weather (
-    forbucketing int,
-    text string
+    text string,
+    forbucketing int
   )
   comment 'raw data from source weather'
-  partitioned by (year int)
+  partitioned by (year int, month int, day int, hour int)
   clustered by (forbucketing) into 2 buckets
+  stored as orc
 ;
 ----
 

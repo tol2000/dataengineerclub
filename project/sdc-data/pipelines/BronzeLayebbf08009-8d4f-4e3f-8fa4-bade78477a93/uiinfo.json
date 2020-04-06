@@ -1,11 +1,11 @@
 {
   "ExpressionEvaluator_01" : {
-    "yPos" : 74.5623550415039,
+    "yPos" : 76.5623550415039,
     "stageType" : "PROCESSOR",
     "icon" : "expression.png",
     "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
     "label" : "Add fields Generator",
-    "xPos" : 283.40234375
+    "xPos" : 292.40234375
   },
   "SchemaGenerator_01" : {
     "yPos" : 75,
@@ -44,11 +44,11 @@
     "xPos" : 66
   },
   "HiveStreaming_01" : {
-    "yPos" : 74.59059143066406,
+    "yPos" : 73.59059143066406,
     "stageType" : "TARGET",
     "icon" : "hive.png",
-    "description" : "",
+    "description" : "Attention! Hive streaming api requires that partition fields will be in the last",
     "label" : "Hive Streaming",
-    "xPos" : 939.8987426757812
+    "xPos" : 938.8987426757812
   }
 }
