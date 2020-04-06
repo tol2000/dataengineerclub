@@ -20,7 +20,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://quickstart.cloudera:8020</value>
+    <value>hdfs://cdh1:8020</value>
   </property>
 
   <!-- OOZIE proxy user setting -->

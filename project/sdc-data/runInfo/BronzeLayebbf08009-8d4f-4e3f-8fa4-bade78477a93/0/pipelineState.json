@@ -4,7 +4,7 @@
   "user" : "admin",
   "status" : "EDITED",
   "message" : "Pipeline edited",
-  "timeStamp" : 1586034804526,
+  "timeStamp" : 1586170817662,
   "attributes" : {
     "IS_REMOTE_PIPELINE" : false,
     "RUNTIME_PARAMETERS" : null,

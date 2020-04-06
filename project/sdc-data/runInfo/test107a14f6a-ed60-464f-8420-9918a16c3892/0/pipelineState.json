@@ -2,9 +2,9 @@
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
   "rev" : "0",
   "user" : "admin",
-  "status" : "EDITED",
-  "message" : "Pipeline edited",
-  "timeStamp" : 1586033546573,
+  "status" : "RUNNING",
+  "message" : null,
+  "timeStamp" : 1586173681068,
   "attributes" : {
     "IS_REMOTE_PIPELINE" : false,
     "RUNTIME_PARAMETERS" : null,

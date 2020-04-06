@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
   "title" : "BronzeLayerStream",
   "description" : "",
-  "uuid" : "706ea6a6-1a96-44ff-9d36-8ca3c7ff28dd",
+  "uuid" : "e35d05ca-6305-4917-8c00-85873a4278b5",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -49,7 +49,10 @@
     "value" : [ ]
   }, {
     "name" : "constants",
-    "value" : [ ]
+    "value" : [ {
+      "value" : "Europe/Kiev",
+      "key" : "conf.timeZoneID"
+    } ]
   }, {
     "name" : "badRecordsHandling",
     "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_recordstolocalfilesystem_ToErrorLocalFSDTarget::1"
@@ -870,16 +873,16 @@
       "name" : "expressionProcessorConfigs",
       "value" : [ {
         "fieldToSet" : "/year",
-        "expression" : "${time:now().}"
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"YYYY\")}"
       }, {
         "fieldToSet" : "/month",
-        "expression" : "${MM()}"
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"MM\")}"
       }, {
         "fieldToSet" : "/day",
-        "expression" : "${DD()}"
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"dd\")}"
       }, {
         "fieldToSet" : "/hour",
-        "expression" : "${hh()}"
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"HH\")}"
       } ]
     }, {
       "name" : "headerAttributeConfigs",
@@ -959,7 +962,7 @@
       "icon" : "hive.png",
       "description" : "",
       "label" : "Hive Streaming 1",
-      "xPos" : 771.8987426757812
+      "xPos" : 772.8987426757812
     },
     "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "outputLanes" : [ ],
@@ -1002,11 +1005,11 @@
     "title" : "BronzeLayerStream",
     "description" : "",
     "created" : 1586033463655,
-    "lastModified" : 1586035425130,
+    "lastModified" : 1586173315296,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "c6f799ca-00fe-4b6a-b583-210884b4e499",
+    "uuid" : "ca080189-9fa7-4409-bff5-79a0a2987420",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]
