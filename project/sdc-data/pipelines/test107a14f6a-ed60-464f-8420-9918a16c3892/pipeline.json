@@ -2,9 +2,9 @@
   "schemaVersion" : 6,
   "version" : 17,
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
-  "title" : "BronzeLayer",
+  "title" : "Old BronzeLayer",
   "description" : "",
-  "uuid" : "32b6d202-cc29-482c-b8ee-09b41a3ed00b",
+  "uuid" : "1aa96d1c-e4e7-4eb5-b613-628d925d218f",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -868,7 +868,7 @@
     "stageVersion" : "3",
     "configuration" : [ {
       "name" : "hiveConfigBean.hiveJDBCUrl",
-      "value" : "jdbc:hive2://cdh1:10000/bronze"
+      "value" : "jdbc:hive2://quickstart.cloudera:10000/bronze"
     }, {
       "name" : "hiveConfigBean.hiveJDBCDriver",
       "value" : "org.apache.hive.jdbc.HiveDriver"
@@ -975,7 +975,7 @@
     "stageVersion" : "2",
     "configuration" : [ {
       "name" : "conf.hiveConfigBean.hiveJDBCUrl",
-      "value" : "jdbc:hive2://cdh1:10000/bronze"
+      "value" : "jdbc:hive2://quickstart.cloudera:10000/bronze"
     }, {
       "name" : "conf.hiveConfigBean.hiveJDBCDriver",
       "value" : "org.apache.hive.jdbc.HiveDriver"
@@ -1218,7 +1218,7 @@
       "value" : null
     }, {
       "name" : "hdfsTargetConfigBean.hdfsUri",
-      "value" : "hdfs://cdh1:8020"
+      "value" : "hdfs://quickstart.cloudera:8020"
     }, {
       "name" : "hdfsTargetConfigBean.hdfsUser",
       "value" : null
@@ -1290,12 +1290,12 @@
     "title" : "BronzeLayer",
     "description" : "",
     "created" : 1585255456820,
-    "lastModified" : 1586033548005,
+    "lastModified" : 1586177301953,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "a6707552-51a3-4773-bcfc-29deb8ea7e50",
-    "valid" : false,
+    "uuid" : "4c38561a-595d-48c9-ad01-efc9c5f19f51",
+    "valid" : true,
     "metadata" : {
       "labels" : [ ]
     },

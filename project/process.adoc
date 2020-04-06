@@ -78,8 +78,8 @@
 
 * Создана с партицированием вплоть до часа. +
   Такое мелкое партицирование сделано в учебных целях.
-* Bucketing для стриминга в streamsets требуется, создал на основе поля hour,
-  в реале там, конечно же, будут перекосы, но не слишком большие (в предалх одного часа)
+* Для стриминга в streamsets требуется bucketing, создал 2 бакета на основе поля hour,
+  в реале там, конечно же, будут перекосы.
 
 === Мониторинг
 
@@ -183,7 +183,7 @@ https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=5
 
 ===== Scripts
 
-====== Create
+====== Hive
 
 [source, sql]
 ----
@@ -194,15 +194,24 @@ create database if not exists
 
 use bronze;
 
+drop table weather;
 create external table if not exists
   weather (
-    id int auto_increment,
+    forbucketing int,
     text string
   )
   comment 'raw data from source weather'
-  partitioned by (year int, month int, day int, hour int)
-  stored as orc
+  partitioned by (year int)
+  clustered by (forbucketing) into 2 buckets
 ;
+----
+
+    time timestamp,
+
+====== Impala
+
+[source, sql]
+----
 ----
 
 ====== Before shutdown - export

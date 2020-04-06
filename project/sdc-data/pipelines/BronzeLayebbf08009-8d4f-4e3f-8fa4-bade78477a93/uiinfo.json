@@ -1,19 +1,27 @@
 {
   "ExpressionEvaluator_01" : {
-    "yPos" : 230.5623550415039,
+    "yPos" : 74.5623550415039,
     "stageType" : "PROCESSOR",
     "icon" : "expression.png",
-    "description" : "",
-    "label" : "YYYY MM DD hh Generator",
-    "xPos" : 551.40234375
+    "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
+    "label" : "Add fields Generator",
+    "xPos" : 283.40234375
   },
   "SchemaGenerator_01" : {
-    "yPos" : 74,
+    "yPos" : 75,
     "stageType" : "PROCESSOR",
     "icon" : "schemagen.png",
     "description" : "",
-    "label" : "Schema Generator 1",
-    "xPos" : 286
+    "label" : "Avro schema Generator",
+    "xPos" : 725
+  },
+  "FieldTypeConverter_01" : {
+    "yPos" : 74,
+    "stageType" : "PROCESSOR",
+    "icon" : "converter.png",
+    "description" : "",
+    "label" : "Fields converter",
+    "xPos" : 495.89874267578125
   },
   ":pipeline:" : {
     "previewConfig" : {
@@ -28,19 +36,19 @@
     }
   },
   "HTTPClient_01" : {
-    "yPos" : 74,
+    "yPos" : 75,
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
     "description" : "Extracts weather through rest api",
-    "label" : "WeatherExtractor",
-    "xPos" : 53
+    "label" : "Weather Extractor",
+    "xPos" : 66
   },
   "HiveStreaming_01" : {
-    "yPos" : 70.59059143066406,
+    "yPos" : 74.59059143066406,
     "stageType" : "TARGET",
     "icon" : "hive.png",
     "description" : "",
-    "label" : "Hive Streaming 1",
-    "xPos" : 772.8987426757812
+    "label" : "Hive Streaming",
+    "xPos" : 939.8987426757812
   }
 }

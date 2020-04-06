@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
   "title" : "BronzeLayerStream",
   "description" : "",
-  "uuid" : "e35d05ca-6305-4917-8c00-85873a4278b5",
+  "uuid" : "885f141a-1d45-4a17-9a2b-a5a58af2e1e4",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -778,15 +778,115 @@
       "value" : "TO_ERROR"
     } ],
     "uiInfo" : {
-      "yPos" : 74,
+      "yPos" : 75,
       "stageType" : "SOURCE",
       "icon" : "httpclient.png",
       "description" : "Extracts weather through rest api",
-      "label" : "WeatherExtractor",
-      "xPos" : 53
+      "label" : "Weather Extractor",
+      "xPos" : 66
     },
     "inputLanes" : [ ],
     "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "ExpressionEvaluator_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "expressionProcessorConfigs",
+      "value" : [ {
+        "fieldToSet" : "/year",
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"YYYY\")}"
+      }, {
+        "fieldToSet" : "/forbucketing",
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"HH\")}"
+      } ]
+    }, {
+      "name" : "headerAttributeConfigs",
+      "value" : [ { } ]
+    }, {
+      "name" : "fieldAttributeConfigs",
+      "value" : [ {
+        "fieldToSet" : "/"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 74.5623550415039,
+      "stageType" : "PROCESSOR",
+      "icon" : "expression.png",
+      "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
+      "label" : "Add fields Generator",
+      "xPos" : 283.40234375
+    },
+    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "outputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "FieldTypeConverter_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "convertBy",
+      "value" : "BY_FIELD"
+    }, {
+      "name" : "fieldTypeConverterConfigs",
+      "value" : [ {
+        "fields" : [ "/year", "/forbucketing" ],
+        "targetType" : "INTEGER",
+        "treatInputFieldAsDate" : false,
+        "dataLocale" : "en,US",
+        "scale" : -1,
+        "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+        "dateFormat" : "YYYY_MM_DD",
+        "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+        "encoding" : "UTF-8"
+      } ]
+    }, {
+      "name" : "wholeTypeConverterConfigs",
+      "value" : [ {
+        "sourceType" : "INTEGER",
+        "targetType" : "INTEGER",
+        "treatInputFieldAsDate" : false,
+        "dataLocale" : "en,US",
+        "scale" : -1,
+        "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+        "dateFormat" : "YYYY_MM_DD",
+        "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+        "encoding" : "UTF-8"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 74,
+      "stageType" : "PROCESSOR",
+      "icon" : "converter.png",
+      "description" : "",
+      "label" : "Fields converter",
+      "xPos" : 495.89874267578125
+    },
+    "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
+    "outputLanes" : [ "FieldTypeConverter_01OutputLane15861785909240" ],
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
@@ -853,65 +953,15 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 74,
+      "yPos" : 75,
       "stageType" : "PROCESSOR",
       "icon" : "schemagen.png",
       "description" : "",
-      "label" : "Schema Generator 1",
-      "xPos" : 286
+      "label" : "Avro schema Generator",
+      "xPos" : 725
     },
-    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "inputLanes" : [ "FieldTypeConverter_01OutputLane15861785909240" ],
     "outputLanes" : [ "SchemaGenerator_01OutputLane15858467118010" ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
-    "instanceName" : "ExpressionEvaluator_01",
-    "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
-    "stageVersion" : "2",
-    "configuration" : [ {
-      "name" : "expressionProcessorConfigs",
-      "value" : [ {
-        "fieldToSet" : "/year",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"YYYY\")}"
-      }, {
-        "fieldToSet" : "/month",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"MM\")}"
-      }, {
-        "fieldToSet" : "/day",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"dd\")}"
-      }, {
-        "fieldToSet" : "/hour",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"HH\")}"
-      } ]
-    }, {
-      "name" : "headerAttributeConfigs",
-      "value" : [ { } ]
-    }, {
-      "name" : "fieldAttributeConfigs",
-      "value" : [ {
-        "fieldToSet" : "/"
-      } ]
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "stageRequiredFields",
-      "value" : [ ]
-    }, {
-      "name" : "stageRecordPreconditions",
-      "value" : [ ]
-    } ],
-    "uiInfo" : {
-      "yPos" : 230.5623550415039,
-      "stageType" : "PROCESSOR",
-      "icon" : "expression.png",
-      "description" : "",
-      "label" : "YYYY MM DD hh Generator",
-      "xPos" : 551.40234375
-    },
-    "inputLanes" : [ "SchemaGenerator_01OutputLane15858467118010" ],
-    "outputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
@@ -921,7 +971,7 @@
     "stageVersion" : "1",
     "configuration" : [ {
       "name" : "hiveUrl",
-      "value" : "thrift://cdh1:9083"
+      "value" : "thrift://quickstart.cloudera:9083"
     }, {
       "name" : "schema",
       "value" : "bronze"
@@ -957,14 +1007,14 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 70.59059143066406,
+      "yPos" : 74.59059143066406,
       "stageType" : "TARGET",
       "icon" : "hive.png",
       "description" : "",
-      "label" : "Hive Streaming 1",
-      "xPos" : 772.8987426757812
+      "label" : "Hive Streaming",
+      "xPos" : 939.8987426757812
     },
-    "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
+    "inputLanes" : [ "SchemaGenerator_01OutputLane15858467118010" ],
     "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1005,11 +1055,11 @@
     "title" : "BronzeLayerStream",
     "description" : "",
     "created" : 1586033463655,
-    "lastModified" : 1586173315296,
+    "lastModified" : 1586189111204,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "ca080189-9fa7-4409-bff5-79a0a2987420",
+    "uuid" : "d92f2cdd-1100-4a4d-aab6-d374d9a2bb98",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

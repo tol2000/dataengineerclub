@@ -1,13 +1,13 @@
 {
   "pipelineId" : "test107a14f6a-ed60-464f-8420-9918a16c3892",
-  "title" : "BronzeLayer",
+  "title" : "Old BronzeLayer",
   "description" : "",
   "created" : 1585255456820,
-  "lastModified" : 1586033550312,
+  "lastModified" : 1586178822547,
   "creator" : "admin",
   "lastModifier" : "admin",
   "lastRev" : "0",
-  "uuid" : "32b6d202-cc29-482c-b8ee-09b41a3ed00b",
+  "uuid" : "1aa96d1c-e4e7-4eb5-b613-628d925d218f",
   "valid" : true,
   "metadata" : {
     "labels" : [ ]
