@@ -10,7 +10,7 @@
     "condition" : "${value() > 100}",
     "sendEmail" : false,
     "enabled" : false,
-    "timestamp" : 1585255456870,
+    "timestamp" : 1586252881898,
     "valid" : true
   }, {
     "id" : "stageErrorAlertID",
@@ -21,7 +21,7 @@
     "condition" : "${value() > 100}",
     "sendEmail" : false,
     "enabled" : false,
-    "timestamp" : 1585255456870,
+    "timestamp" : 1586252881898,
     "valid" : true
   }, {
     "id" : "idleGaugeID",
@@ -32,7 +32,7 @@
     "condition" : "${time:now() - value() > 120000}",
     "sendEmail" : false,
     "enabled" : false,
-    "timestamp" : 1585255456870,
+    "timestamp" : 1586252881898,
     "valid" : true
   }, {
     "id" : "batchTimeAlertID",
@@ -43,12 +43,12 @@
     "condition" : "${value() > 200}",
     "sendEmail" : false,
     "enabled" : false,
-    "timestamp" : 1585255456870,
+    "timestamp" : 1586252881898,
     "valid" : true
   } ],
   "dataRuleDefinitions" : [ ],
   "driftRuleDefinitions" : [ ],
-  "uuid" : "1558ce70-2250-4cc7-9434-b101ae5e721f",
+  "uuid" : "ef5bf6e2-c9a8-4a9b-9034-71492727caee",
   "configuration" : [ {
     "name" : "emailIDs",
     "value" : [ ]

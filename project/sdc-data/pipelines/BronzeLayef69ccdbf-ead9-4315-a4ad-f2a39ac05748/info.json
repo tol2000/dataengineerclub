@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
+  "title" : "BronzeLayerMonitoring",
+  "description" : "",
+  "created" : 1586252881893,
+  "lastModified" : 1586253577440,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "437ba5f1-6d34-47ce-bc3a-f3eb61e26900",
+  "valid" : false,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

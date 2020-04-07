@@ -200,16 +200,17 @@ create database if not exists
 
 use bronze;
 
-drop table weather;
+--drop table weather;
 
 create table if not exists
   weather (
     text string,
-    forbucketing int
+    keybucketing string
   )
   comment 'raw data from source weather'
-  partitioned by (year int, month int, day int, hour int)
-  clustered by (forbucketing) into 2 buckets
+--  tblproperties ('transactional'='true')
+  partitioned by (keypartition string)
+  clustered by (keybucketing) into 2 buckets
   stored as orc
 ;
 ----

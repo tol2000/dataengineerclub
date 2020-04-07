@@ -1,10 +1,10 @@
 {
   "schemaVersion" : 6,
   "version" : 17,
-  "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
-  "title" : "BronzeLayerStream",
+  "pipelineId" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
+  "title" : "BronzeLayerMonitoring",
   "description" : "",
-  "uuid" : "377d9173-0c85-4b5e-b482-d064aef8df78",
+  "uuid" : "437ba5f1-6d34-47ce-bc3a-f3eb61e26900",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -31,7 +31,7 @@
     "value" : 2000
   }, {
     "name" : "retryAttempts",
-    "value" : 3
+    "value" : -1
   }, {
     "name" : "ludicrousMode",
     "value" : false
@@ -49,13 +49,10 @@
     "value" : [ ]
   }, {
     "name" : "constants",
-    "value" : [ {
-      "value" : "Europe/Kiev",
-      "key" : "conf.timeZoneID"
-    } ]
+    "value" : [ ]
   }, {
     "name" : "badRecordsHandling",
-    "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_recordstolocalfilesystem_ToErrorLocalFSDTarget::1"
+    "value" : null
   }, {
     "name" : "errorRecordPolicy",
     "value" : "ORIGINAL_RECORD"
@@ -85,7 +82,7 @@
     "value" : null
   }, {
     "name" : "rateLimit",
-    "value" : 1
+    "value" : 0
   }, {
     "name" : "maxRunners",
     "value" : 0
@@ -318,620 +315,33 @@
   "uiInfo" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",
-      "batchSize" : "5",
+      "batchSize" : 10,
       "timeout" : 30000,
-      "writeToDestinations" : true,
+      "writeToDestinations" : false,
       "executeLifecycleEvents" : false,
-      "showHeader" : true,
+      "showHeader" : false,
       "showFieldType" : true,
-      "rememberMe" : true
+      "rememberMe" : false
     }
   },
   "fragments" : [ ],
-  "stages" : [ {
-    "instanceName" : "HTTPClient_01",
-    "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_origin_http_HttpClientDSource",
-    "stageVersion" : "15",
-    "configuration" : [ {
-      "name" : "conf.basic.maxBatchSize",
-      "value" : 1000
-    }, {
-      "name" : "conf.basic.maxWaitTime",
-      "value" : 2000
-    }, {
-      "name" : "conf.dataFormatConfig.compression",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.dataFormatConfig.filePatternInArchive",
-      "value" : "*"
-    }, {
-      "name" : "conf.dataFormatConfig.charset",
-      "value" : "UTF-8"
-    }, {
-      "name" : "conf.dataFormatConfig.removeCtrlChars",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.textMaxLineLen",
-      "value" : 65536
-    }, {
-      "name" : "conf.dataFormatConfig.useCustomDelimiter",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.customDelimiter",
-      "value" : "\\r\\n"
-    }, {
-      "name" : "conf.dataFormatConfig.includeCustomDelimiterInTheText",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.jsonContent",
-      "value" : "MULTIPLE_OBJECTS"
-    }, {
-      "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
-      "value" : 65535
-    }, {
-      "name" : "conf.dataFormatConfig.csvFileFormat",
-      "value" : "CSV"
-    }, {
-      "name" : "conf.dataFormatConfig.csvHeader",
-      "value" : "NO_HEADER"
-    }, {
-      "name" : "conf.dataFormatConfig.csvAllowExtraColumns",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvExtraColumnPrefix",
-      "value" : "_extra_"
-    }, {
-      "name" : "conf.dataFormatConfig.csvMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomDelimiter",
-      "value" : "|"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterFieldDelimiter",
-      "value" : "||"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterLineDelimiter",
-      "value" : "${str:unescapeJava('\\\\n')}"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomEscape",
-      "value" : "\\"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomQuote",
-      "value" : "\""
-    }, {
-      "name" : "conf.dataFormatConfig.csvEnableComments",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvCommentMarker",
-      "value" : "#"
-    }, {
-      "name" : "conf.dataFormatConfig.csvIgnoreEmptyLines",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.csvRecordType",
-      "value" : "LIST_MAP"
-    }, {
-      "name" : "conf.dataFormatConfig.csvSkipStartLines",
-      "value" : 0
-    }, {
-      "name" : "conf.dataFormatConfig.parseNull",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.nullConstant",
-      "value" : "\\\\N"
-    }, {
-      "name" : "conf.dataFormatConfig.xmlRecordElement",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.preserveRootElement",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.includeFieldXpathAttributes",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.xPathNamespaceContext",
-      "value" : [ ]
-    }, {
-      "name" : "conf.dataFormatConfig.outputFieldAttributes",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
-      "value" : 4096
-    }, {
-      "name" : "conf.dataFormatConfig.logMode",
-      "value" : "COMMON_LOG_FORMAT"
-    }, {
-      "name" : "conf.dataFormatConfig.logMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.retainOriginalLine",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.customLogFormat",
-      "value" : "%h %l %u %t \"%r\" %>s %b"
-    }, {
-      "name" : "conf.dataFormatConfig.regex",
-      "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
-    }, {
-      "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
-      "value" : [ {
-        "fieldPath" : "/",
-        "group" : 1
-      } ]
-    }, {
-      "name" : "conf.dataFormatConfig.grokPatternDefinition",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.grokPattern",
-      "value" : "%{COMMONAPACHELOG}"
-    }, {
-      "name" : "conf.dataFormatConfig.onParseError",
-      "value" : "ERROR"
-    }, {
-      "name" : "conf.dataFormatConfig.maxStackTraceLines",
-      "value" : 50
-    }, {
-      "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
-      "value" : "%r [%t] %-5p %c %x - %m%n"
-    }, {
-      "name" : "conf.dataFormatConfig.avroSchemaSource",
-      "value" : "SOURCE"
-    }, {
-      "name" : "conf.dataFormatConfig.avroSchema",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaRegistryUrls",
-      "value" : [ ]
-    }, {
-      "name" : "conf.dataFormatConfig.basicAuth",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaLookupMode",
-      "value" : "SUBJECT"
-    }, {
-      "name" : "conf.dataFormatConfig.subject",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaId",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.avroSkipUnionIndex",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.protoDescriptorFile",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.messageType",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.isDelimited",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
-      "value" : 65535
-    }, {
-      "name" : "conf.dataFormatConfig.datagramMode",
-      "value" : "SYSLOG"
-    }, {
-      "name" : "conf.dataFormatConfig.typesDbPath",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.convertTime",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excludeInterval",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.authFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesMode",
-      "value" : "RAW_AND_INTERPRETED"
-    }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSize",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMs",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesModeDatagram",
-      "value" : "RAW_AND_INTERPRETED"
-    }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSizeDatagram",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMsDatagram",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.wholeFileMaxObjectLen",
-      "value" : 8192
-    }, {
-      "name" : "conf.dataFormatConfig.rateLimit",
-      "value" : "-1"
-    }, {
-      "name" : "conf.dataFormatConfig.verifyChecksum",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excelHeader",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.excelSkipCellsWithNoHeader",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excelReadAllSheets",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.excelSheetNames",
-      "value" : [ ]
-    }, {
-      "name" : "conf.resourceUrl",
-      "value" : "https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc"
-    }, {
-      "name" : "conf.headers",
-      "value" : [ ]
-    }, {
-      "name" : "conf.httpMethod",
-      "value" : "GET"
-    }, {
-      "name" : "conf.timeZoneID",
-      "value" : "Europe/Kiev"
-    }, {
-      "name" : "conf.requestBody",
-      "value" : null
-    }, {
-      "name" : "conf.defaultRequestContentType",
-      "value" : "application/json"
-    }, {
-      "name" : "conf.client.transferEncoding",
-      "value" : "BUFFERED"
-    }, {
-      "name" : "conf.client.httpCompression",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.connectTimeoutMillis",
-      "value" : 0
-    }, {
-      "name" : "conf.client.readTimeoutMillis",
-      "value" : 0
-    }, {
-      "name" : "conf.client.authType",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.useOAuth2",
-      "value" : false
-    }, {
-      "name" : "conf.client.oauth.consumerKey",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth.consumerSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth.token",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth.tokenSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.credentialsGrantType",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.tokenUrl",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.clientId",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.clientSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.resourceOwnerClientId",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.resourceOwnerClientSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.algorithm",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.oauth2.key",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.jwtClaims",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.transferEncoding",
-      "value" : "BUFFERED"
-    }, {
-      "name" : "conf.client.oauth2.additionalValues",
-      "value" : [ { } ]
-    }, {
-      "name" : "conf.client.basicAuth.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.basicAuth.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.useProxy",
-      "value" : false
-    }, {
-      "name" : "conf.client.proxy.uri",
-      "value" : null
-    }, {
-      "name" : "conf.client.proxy.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.proxy.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.tlsEnabled",
-      "value" : false
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreType",
-      "value" : "JKS"
-    }, {
-      "name" : "conf.client.tlsConfig.keyStorePassword",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreAlgorithm",
-      "value" : "SunX509"
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreType",
-      "value" : "JKS"
-    }, {
-      "name" : "conf.client.tlsConfig.trustStorePassword",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreAlgorithm",
-      "value" : "SunX509"
-    }, {
-      "name" : "conf.client.tlsConfig.useDefaultProtocols",
-      "value" : true
-    }, {
-      "name" : "conf.client.tlsConfig.protocols",
-      "value" : [ ]
-    }, {
-      "name" : "conf.client.tlsConfig.useDefaultCiperSuites",
-      "value" : true
-    }, {
-      "name" : "conf.client.tlsConfig.cipherSuites",
-      "value" : [ ]
-    }, {
-      "name" : "conf.client.requestLoggingConfig.enableRequestLogging",
-      "value" : false
-    }, {
-      "name" : "conf.client.requestLoggingConfig.logLevel",
-      "value" : "FINE"
-    }, {
-      "name" : "conf.client.requestLoggingConfig.verbosity",
-      "value" : "HEADERS_ONLY"
-    }, {
-      "name" : "conf.client.requestLoggingConfig.maxEntitySize",
-      "value" : 0
-    }, {
-      "name" : "conf.httpMode",
-      "value" : "POLLING"
-    }, {
-      "name" : "conf.pollingInterval",
-      "value" : 2000
-    }, {
-      "name" : "conf.dataFormat",
-      "value" : "TEXT"
-    }, {
-      "name" : "conf.responseStatusActionConfigs",
-      "value" : [ {
-        "statusCode" : 500,
-        "action" : "RETRY_EXPONENTIAL_BACKOFF",
-        "backoffInterval" : 1000,
-        "maxNumRetries" : 3
-      } ]
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.action",
-      "value" : "RETRY_IMMEDIATELY"
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.backoffInterval",
-      "value" : 1000
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.maxNumRetries",
-      "value" : 10
-    }, {
-      "name" : "conf.pagination.mode",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.pagination.nextPageURLPrefix",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.nextPageFieldPath",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.stopCondition",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.startAt",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.resultFieldPath",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.keepAllFields",
-      "value" : false
-    }, {
-      "name" : "conf.pagination.rateLimit",
-      "value" : 2000
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    } ],
-    "uiInfo" : {
-      "yPos" : 50,
-      "stageType" : "SOURCE",
-      "icon" : "httpclient.png",
-      "description" : "Extracts weather through rest api",
-      "label" : "Weather Extractor",
-      "xPos" : 60
-    },
-    "inputLanes" : [ ],
-    "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
-    "instanceName" : "ExpressionEvaluator_01",
-    "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
-    "stageVersion" : "2",
-    "configuration" : [ {
-      "name" : "expressionProcessorConfigs",
-      "value" : [ {
-        "fieldToSet" : "/keybucket",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"HH\")}"
-      }, {
-        "fieldToSet" : "/keypartition",
-        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"YYYY\")}-${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"MM\")}-${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"dd\")}-${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"HH\")}"
-      } ]
-    }, {
-      "name" : "headerAttributeConfigs",
-      "value" : [ ]
-    }, {
-      "name" : "fieldAttributeConfigs",
-      "value" : [ ]
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "stageRequiredFields",
-      "value" : [ ]
-    }, {
-      "name" : "stageRecordPreconditions",
-      "value" : [ ]
-    } ],
-    "uiInfo" : {
-      "yPos" : 50,
-      "stageType" : "PROCESSOR",
-      "icon" : "expression.png",
-      "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
-      "label" : "Add fields Generator",
-      "xPos" : 280
-    },
-    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
-    "outputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
-    "instanceName" : "HiveStreaming_01",
-    "library" : "streamsets-datacollector-cdh_5_7-lib",
-    "stageName" : "com_streamsets_pipeline_stage_destination_hive_HiveDTarget",
-    "stageVersion" : "1",
-    "configuration" : [ {
-      "name" : "hiveUrl",
-      "value" : "thrift://quickstart.cloudera:9083"
-    }, {
-      "name" : "schema",
-      "value" : "bronze"
-    }, {
-      "name" : "table",
-      "value" : "weather"
-    }, {
-      "name" : "hiveConfDir",
-      "value" : "/data/hive/conf"
-    }, {
-      "name" : "columnMappings",
-      "value" : [ ]
-    }, {
-      "name" : "autoCreatePartitions",
-      "value" : true
-    }, {
-      "name" : "txnBatchSize",
-      "value" : 1000
-    }, {
-      "name" : "bufferLimitKb",
-      "value" : 128
-    }, {
-      "name" : "additionalHiveProperties",
-      "value" : [ ]
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    }, {
-      "name" : "stageRequiredFields",
-      "value" : [ ]
-    }, {
-      "name" : "stageRecordPreconditions",
-      "value" : [ ]
-    } ],
-    "uiInfo" : {
-      "yPos" : 50,
-      "stageType" : "TARGET",
-      "icon" : "hive.png",
-      "description" : "",
-      "label" : "Hive Streaming",
-      "xPos" : 500
-    },
-    "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
-    "outputLanes" : [ ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  } ],
-  "errorStage" : {
-    "instanceName" : "WritetoFile_ErrorStage",
-    "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_destination_recordstolocalfilesystem_ToErrorLocalFSDTarget",
-    "stageVersion" : "1",
-    "configuration" : [ {
-      "name" : "directory",
-      "value" : "/data/out"
-    }, {
-      "name" : "uniquePrefix",
-      "value" : "sdc-${sdc:id()}"
-    }, {
-      "name" : "rotationIntervalSecs",
-      "value" : "${1 * HOURS}"
-    }, {
-      "name" : "maxFileSizeMbs",
-      "value" : 512
-    } ],
-    "uiInfo" : {
-      "yPos" : 50,
-      "stageType" : "TARGET",
-      "icon" : "",
-      "description" : "",
-      "label" : "Error Records - Write to File",
-      "xPos" : 500
-    },
-    "inputLanes" : [ ],
-    "outputLanes" : [ ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  },
+  "stages" : [ ],
+  "errorStage" : null,
   "info" : {
-    "pipelineId" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
-    "title" : "BronzeLayerStream",
+    "pipelineId" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
+    "title" : "BronzeLayerMonitoring",
     "description" : "",
-    "created" : 1586033463655,
-    "lastModified" : 1586252562471,
+    "created" : 1586252881893,
+    "lastModified" : 1586253293294,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "85d2dcb5-ba83-4591-b26b-d063c56233ae",
-    "valid" : true,
+    "uuid" : "e50a3164-eaaf-4c6e-8aa3-cd2eb4562ceb",
+    "valid" : false,
     "metadata" : {
       "labels" : [ ]
     },
-    "name" : "BronzeLayebbf08009-8d4f-4e3f-8fa4-bade78477a93",
+    "name" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
     "sdcVersion" : "3.14.0",
     "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
   },
@@ -1256,11 +666,31 @@
       } ]
     } ]
   },
-  "valid" : true,
+  "valid" : false,
   "issues" : {
-    "pipelineIssues" : [ ],
+    "pipelineIssues" : [ {
+      "instanceName" : null,
+      "serviceName" : null,
+      "level" : "PIPELINE",
+      "configGroup" : null,
+      "configName" : null,
+      "message" : "VALIDATION_0001 - The pipeline is empty",
+      "count" : 1,
+      "additionalInfo" : null,
+      "antennaDoctorMessages" : null
+    }, {
+      "instanceName" : null,
+      "serviceName" : null,
+      "level" : "PIPELINE_CONFIG",
+      "configGroup" : "BAD_RECORDS",
+      "configName" : "badRecordsHandling",
+      "message" : "CREATION_009 - Pipeline error handling is not configured",
+      "count" : 1,
+      "additionalInfo" : null,
+      "antennaDoctorMessages" : null
+    } ],
     "stageIssues" : { },
-    "issueCount" : 0
+    "issueCount" : 2
   },
-  "previewable" : true
+  "previewable" : false
 }

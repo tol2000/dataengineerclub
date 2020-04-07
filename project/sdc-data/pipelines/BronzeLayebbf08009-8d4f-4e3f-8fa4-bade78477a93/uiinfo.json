@@ -1,27 +1,11 @@
 {
   "ExpressionEvaluator_01" : {
-    "yPos" : 76.5623550415039,
+    "yPos" : 50,
     "stageType" : "PROCESSOR",
     "icon" : "expression.png",
     "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
     "label" : "Add fields Generator",
-    "xPos" : 292.40234375
-  },
-  "SchemaGenerator_01" : {
-    "yPos" : 75,
-    "stageType" : "PROCESSOR",
-    "icon" : "schemagen.png",
-    "description" : "",
-    "label" : "Avro schema Generator",
-    "xPos" : 725
-  },
-  "FieldTypeConverter_01" : {
-    "yPos" : 74,
-    "stageType" : "PROCESSOR",
-    "icon" : "converter.png",
-    "description" : "",
-    "label" : "Fields converter",
-    "xPos" : 495.89874267578125
+    "xPos" : 280
   },
   ":pipeline:" : {
     "previewConfig" : {
@@ -36,19 +20,19 @@
     }
   },
   "HTTPClient_01" : {
-    "yPos" : 75,
+    "yPos" : 50,
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
     "description" : "Extracts weather through rest api",
     "label" : "Weather Extractor",
-    "xPos" : 66
+    "xPos" : 60
   },
   "HiveStreaming_01" : {
-    "yPos" : 73.59059143066406,
+    "yPos" : 50,
     "stageType" : "TARGET",
     "icon" : "hive.png",
-    "description" : "Attention! Hive streaming api requires that partition fields will be in the last",
+    "description" : "",
     "label" : "Hive Streaming",
-    "xPos" : 938.8987426757812
+    "xPos" : 500
   }
 }
