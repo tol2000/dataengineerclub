@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
   "title" : "BronzeLayerMonitoring",
   "description" : "",
-  "uuid" : "437ba5f1-6d34-47ce-bc3a-f3eb61e26900",
+  "uuid" : "a46f0ac1-d056-4876-ac1f-e0f932bf4684",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -325,18 +325,102 @@
     }
   },
   "fragments" : [ ],
-  "stages" : [ ],
+  "stages" : [ {
+    "instanceName" : "CronScheduler_01",
+    "library" : "streamsets-datacollector-orchestrator-lib",
+    "stageName" : "com_streamsets_pipeline_stage_origin_scheduler_SchedulerDPushSource",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "conf.cronExpression",
+      "value" : "0 0/1 * 1/1 * ? *"
+    }, {
+      "name" : "conf.timeZoneID",
+      "value" : "Europe/Kiev"
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    } ],
+    "uiInfo" : {
+      "yPos" : 50,
+      "stageType" : "SOURCE",
+      "icon" : "scheduler.png",
+      "description" : "",
+      "label" : "Cron Scheduler 1",
+      "xPos" : 63
+    },
+    "inputLanes" : [ ],
+    "outputLanes" : [ "CronScheduler_01OutputLane15862630000920" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "HiveQuery_01",
+    "library" : "streamsets-datacollector-cdh_5_7-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_hive_queryexecutor_HiveQueryDExecutor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "config.hiveConfigBean.hiveJDBCUrl",
+      "value" : "jdbc:hive2://quickstart.cloudera:10000/bronze"
+    }, {
+      "name" : "config.hiveConfigBean.hiveJDBCDriver",
+      "value" : "org.apache.hive.jdbc.HiveDriver"
+    }, {
+      "name" : "config.hiveConfigBean.useCredentials",
+      "value" : false
+    }, {
+      "name" : "config.hiveConfigBean.username",
+      "value" : null
+    }, {
+      "name" : "config.hiveConfigBean.password",
+      "value" : null
+    }, {
+      "name" : "config.hiveConfigBean.driverProperties",
+      "value" : [ { } ]
+    }, {
+      "name" : "config.hiveConfigBean.confDir",
+      "value" : "/data/hive/conf"
+    }, {
+      "name" : "config.hiveConfigBean.additionalConfigProperties",
+      "value" : [ ]
+    }, {
+      "name" : "config.queries",
+      "value" : [ "select count(*) from weather" ]
+    }, {
+      "name" : "config.stopOnQueryFailure",
+      "value" : true
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 50,
+      "stageType" : "EXECUTOR",
+      "icon" : "hive-executor.png",
+      "description" : "",
+      "label" : "Hive Query 1",
+      "xPos" : 280
+    },
+    "inputLanes" : [ "CronScheduler_01OutputLane15862630000920" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ "HiveQuery_01_EventLane" ],
+    "services" : [ ]
+  } ],
   "errorStage" : null,
   "info" : {
     "pipelineId" : "BronzeLayef69ccdbf-ead9-4315-a4ad-f2a39ac05748",
     "title" : "BronzeLayerMonitoring",
     "description" : "",
     "created" : 1586252881893,
-    "lastModified" : 1586253293294,
+    "lastModified" : 1586263628734,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "e50a3164-eaaf-4c6e-8aa3-cd2eb4562ceb",
+    "uuid" : "21838461-3d25-47a7-9cc7-f14f50ebb912",
     "valid" : false,
     "metadata" : {
       "labels" : [ ]
@@ -671,16 +755,6 @@
     "pipelineIssues" : [ {
       "instanceName" : null,
       "serviceName" : null,
-      "level" : "PIPELINE",
-      "configGroup" : null,
-      "configName" : null,
-      "message" : "VALIDATION_0001 - The pipeline is empty",
-      "count" : 1,
-      "additionalInfo" : null,
-      "antennaDoctorMessages" : null
-    }, {
-      "instanceName" : null,
-      "serviceName" : null,
       "level" : "PIPELINE_CONFIG",
       "configGroup" : "BAD_RECORDS",
       "configName" : "badRecordsHandling",
@@ -689,7 +763,21 @@
       "additionalInfo" : null,
       "antennaDoctorMessages" : null
     } ],
-    "stageIssues" : { },
+    "stageIssues" : {
+      "HiveQuery_01" : [ {
+        "instanceName" : "HiveQuery_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : null,
+        "configName" : null,
+        "message" : "VALIDATION_0104 - Stage has open event streams",
+        "count" : 1,
+        "additionalInfo" : {
+          "openStreams" : [ "HiveQuery_01_EventLane" ]
+        },
+        "antennaDoctorMessages" : null
+      } ]
+    },
     "issueCount" : 2
   },
   "previewable" : false

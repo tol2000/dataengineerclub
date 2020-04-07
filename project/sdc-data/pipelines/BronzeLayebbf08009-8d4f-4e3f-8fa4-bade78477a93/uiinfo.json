@@ -3,7 +3,7 @@
     "yPos" : 50,
     "stageType" : "PROCESSOR",
     "icon" : "expression.png",
-    "description" : "Генерирует YYYY MM DD HH для партицирования, поля для bucketing и пр...",
+    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
     "label" : "Add fields Generator",
     "xPos" : 280
   },
@@ -24,7 +24,7 @@
     "stageType" : "SOURCE",
     "icon" : "httpclient.png",
     "description" : "Extracts weather through rest api",
-    "label" : "Weather Extractor",
+    "label" : "Source Extractor",
     "xPos" : 60
   },
   "HiveStreaming_01" : {

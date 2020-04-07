@@ -2,10 +2,6 @@
 
 == Current
 
-- При записи таблица блокируется...
-- Все-таки select count(*) не выполняется +
-  Поэтому пока нельзя выполнить загрузку
-  данных в серебряный слой
 - Организовываем якорную модель DWH серебряного слоя
   (погода или все-таки реддит)
   при помощи anchormodeling.com
@@ -74,12 +70,16 @@
 
 ==== Бронзовый слой
 
-===== Таблица сырых данных weather
+===== Таблица сырых данных tsource
 
 * Создана с партицированием вплоть до часа. +
   Такое мелкое партицирование сделано в учебных целях.
-* Для стриминга в streamsets требуется bucketing, создал 2 бакета на основе поля hour,
-  в реале там, конечно же, будут перекосы.
+* Для стриминга в streamsets требуется bucketing, создал 2 бакета на основе поля times.
+* Создана как external. +
+  Для того, чтобы можно было сохранять/восстанавливать
+  путем обычного копирования hfds - mapped local folder,
+  при перезапуске контейнера (пробросить hdfs наружу из
+  контейнера не вышло).
 
 === Мониторинг
 
@@ -187,35 +187,47 @@ https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=5
 
 [source, sql]
 ----
-
-По доке по апи стриминга хайва партишин поля должны идти в конце
-For example, if table is partitioned by 2 columns (year and month), hive streaming connection will extract last 2 columns from the input records using which partitions will be created dynamically in metastore. 
-https://cwiki.apache.org/confluence/display/Hive/Streaming+Data+Ingest+V2
-А у меня при автосоздании партиции из стримсета создается год 4 (месяц) вместо 2020
-
-create database if not exists
+create database
   bronze
   comment 'bronze layer database'
 ;
 
 use bronze;
+----
 
---drop table weather;
+====== docker bash
 
-create table if not exists
-  weather (
+[source, bash]
+----
+su --command="hdfs dfs -put /media/shared_from_local/export/ /" hdfs
+
+?
+su --command="hdfs dfs -chmod -R 777 /export" hdfs
+----
+
+====== Hive
+
+[source, sql]
+----
+use bronze;
+import table tsource from '/export/bronze/tsource';
+----
+
+[source, sql]
+----
+-- If table was not previously imported
+create table
+  tsource (
     text string,
-    keybucketing string
+    times bigint,
+    name string
   )
   comment 'raw data from source weather'
---  tblproperties ('transactional'='true')
   partitioned by (keypartition string)
-  clustered by (keybucketing) into 2 buckets
+  clustered by (times) into 2 buckets
   stored as orc
 ;
 ----
-
-    time timestamp,
 
 ====== Impala
 
@@ -223,11 +235,29 @@ create table if not exists
 ----
 ----
 
-====== Before shutdown - export
+==== Streamsets
 
-insert overwrite local directory '/media/shared_from_local/bronze/weather' select * from bronze.weather;
+* Start pipeline BronzeLayerStream
 
-=== Список используемой литературы
+=== Завершение
 
-https://github.com/streamsets/tutorials/blob/master/tutorial-hivedrift/readme.md
+==== Streamsets
 
+* Stop pipeline BronzeLayerStream
+
+==== Claudera
+
+====== Hive
+
+[source, sql]
+----
+use bronze;
+export table tsource to '/export/bronze/tsource/';
+----
+
+====== docker bash
+
+[source, bash]
+----
+rm -f -R /media/shared_from_local/export/* && su  --command="hdfs dfs -get /export/* /media/shared_from_local/export/" hdfs
+----

@@ -1,4 +1,20 @@
 {
+  "CronScheduler_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "icon" : "scheduler.png",
+    "description" : "",
+    "label" : "Cron Scheduler 1",
+    "xPos" : 63
+  },
+  "HiveQuery_01" : {
+    "yPos" : 50,
+    "stageType" : "EXECUTOR",
+    "icon" : "hive-executor.png",
+    "description" : "",
+    "label" : "Hive Query 1",
+    "xPos" : 280
+  },
   ":pipeline:" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",

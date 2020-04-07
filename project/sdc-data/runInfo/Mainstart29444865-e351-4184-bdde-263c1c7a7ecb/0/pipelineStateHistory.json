@@ -1,0 +1,16 @@
+{
+  "pipelineId" : "Mainstart29444865-e351-4184-bdde-263c1c7a7ecb",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "EDITED",
+  "message" : "Pipeline edited",
+  "timeStamp" : 1586261457463,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "Mainstart29444865-e351-4184-bdde-263c1c7a7ecb"
+}
