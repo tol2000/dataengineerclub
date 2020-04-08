@@ -1,0 +1,16 @@
+{
+  "pipelineId" : "BronzeLayee0cc5c96-185e-45dc-be27-2cebf5aad0fe",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "EDITED",
+  "message" : "Pipeline edited",
+  "timeStamp" : 1586354198448,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "BronzeLayee0cc5c96-185e-45dc-be27-2cebf5aad0fe"
+}

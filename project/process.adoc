@@ -2,6 +2,8 @@
 
 == Current
 
+hdfs://quickstart.cloudera:8020
+
 - Организовываем якорную модель DWH серебряного слоя
   (погода или все-таки реддит)
   при помощи anchormodeling.com

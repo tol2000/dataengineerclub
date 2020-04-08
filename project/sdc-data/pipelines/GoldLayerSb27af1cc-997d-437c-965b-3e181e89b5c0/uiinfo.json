@@ -1,0 +1,63 @@
+{
+  "ExpressionEvaluator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
+    "label" : "Add fields Generator",
+    "xPos" : 280
+  },
+  "HiveMetadata_01" : {
+    "outputStreamLabels" : [ "Data", "Metadata" ],
+    "yPos" : 109,
+    "stageType" : "PROCESSOR",
+    "icon" : "metadata.png",
+    "description" : "",
+    "label" : "Hive Metadata 1",
+    "xPos" : 719
+  },
+  "SchemaGenerator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "schemagen.png",
+    "description" : "",
+    "label" : "Schema Generator 1",
+    "xPos" : 500
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : "5",
+      "timeout" : 30000,
+      "writeToDestinations" : true,
+      "executeLifecycleEvents" : false,
+      "showHeader" : true,
+      "showFieldType" : true,
+      "rememberMe" : true
+    }
+  },
+  "HadoopFS_01" : {
+    "yPos" : 169,
+    "stageType" : "TARGET",
+    "icon" : "hdfs.png",
+    "description" : "",
+    "label" : "Hadoop FS 1",
+    "xPos" : 940
+  },
+  "HTTPClient_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "icon" : "httpclient.png",
+    "description" : "Extracts weather through rest api",
+    "label" : "Source Extractor",
+    "xPos" : 60
+  },
+  "HiveMetastore_01" : {
+    "yPos" : 40,
+    "stageType" : "TARGET",
+    "icon" : "hive.png",
+    "description" : "",
+    "label" : "Hive Metastore 1",
+    "xPos" : 940
+  }
+}

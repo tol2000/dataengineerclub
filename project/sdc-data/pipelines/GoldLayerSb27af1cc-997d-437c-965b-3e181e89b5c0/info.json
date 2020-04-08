@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "GoldLayerSb27af1cc-997d-437c-965b-3e181e89b5c0",
+  "title" : "GoldLayerStream",
+  "description" : "",
+  "created" : 1586362421005,
+  "lastModified" : 1586362421113,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "e18d5eac-27a8-4b00-bfc5-b43a3c567253",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "GoldLayerSb27af1cc-997d-437c-965b-3e181e89b5c0",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLayec39508a1-7dfa-4f34-8959-1b2a596efcb7",
+  "title" : "BronzeLayerStreamHiveMetastore",
+  "description" : "",
+  "created" : 1586364125036,
+  "lastModified" : 1586369501864,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "d1de249e-ed66-449f-97a5-2aced95fe714",
+  "valid" : false,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLayec39508a1-7dfa-4f34-8959-1b2a596efcb7",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

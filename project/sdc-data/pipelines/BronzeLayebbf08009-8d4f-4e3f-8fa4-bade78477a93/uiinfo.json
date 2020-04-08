@@ -1,12 +1,4 @@
 {
-  "ExpressionEvaluator_01" : {
-    "yPos" : 50,
-    "stageType" : "PROCESSOR",
-    "icon" : "expression.png",
-    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
-    "label" : "Add fields Generator",
-    "xPos" : 280
-  },
   ":pipeline:" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",
@@ -19,6 +11,14 @@
       "rememberMe" : true
     }
   },
+  "Spark_01" : {
+    "yPos" : 82,
+    "stageType" : "EXECUTOR",
+    "icon" : "spark-logo-hd.png",
+    "description" : "",
+    "label" : "Spark 1",
+    "xPos" : 568
+  },
   "HTTPClient_01" : {
     "yPos" : 50,
     "stageType" : "SOURCE",
@@ -26,13 +26,5 @@
     "description" : "Extracts weather through rest api",
     "label" : "Source Extractor",
     "xPos" : 60
-  },
-  "HiveStreaming_01" : {
-    "yPos" : 50,
-    "stageType" : "TARGET",
-    "icon" : "hive.png",
-    "description" : "",
-    "label" : "Hive Streaming",
-    "xPos" : 500
   }
 }
