@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLaye27eb7b01-099f-4fb9-a8a3-ce69e0b11ee7",
+  "title" : "BronzeLayerSubStream1 copy 1",
+  "description" : "",
+  "created" : 1586451286925,
+  "lastModified" : 1586451287015,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "2b83b5f4-3d3b-4fdc-ac93-7266182a8246",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLaye27eb7b01-099f-4fb9-a8a3-ce69e0b11ee7",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

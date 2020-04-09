@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
   "title" : "BronzeLayerStream2HDFS",
   "description" : "",
-  "uuid" : "0f07a241-74c3-4452-9b74-c0e89351d0b3",
+  "uuid" : "739854fd-b4b2-4d3e-8526-ad70d88e6df6",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -1024,7 +1024,7 @@
       "value" : false
     }, {
       "name" : "hdfsTargetConfigBean.dirPathTemplate",
-      "value" : "/out/${record:attribute(\"file_dir\")}/${record:attribute(\"file_name\")}"
+      "value" : "/out/${record:attribute(\"file_dir\")}"
     }, {
       "name" : "hdfsTargetConfigBean.timeZoneID",
       "value" : "Europe/Kiev"
@@ -1033,13 +1033,13 @@
       "value" : "${time:now()}"
     }, {
       "name" : "hdfsTargetConfigBean.maxRecordsPerFile",
-      "value" : 0
+      "value" : 500
     }, {
       "name" : "hdfsTargetConfigBean.maxFileSize",
-      "value" : 0
+      "value" : 1
     }, {
       "name" : "hdfsTargetConfigBean.idleTimeout",
-      "value" : "${1 * HOURS}"
+      "value" : "-1"
     }, {
       "name" : "hdfsTargetConfigBean.compression",
       "value" : "NONE"
@@ -1225,28 +1225,28 @@
     },
     "inputLanes" : [ "FieldRenamer_01OutputLane15863757284960" ],
     "outputLanes" : [ ],
-    "eventLanes" : [ ],
+    "eventLanes" : [ "HadoopFS_01_EventLane" ],
     "services" : [ ]
   }, {
-    "instanceName" : "LocalFS_01",
+    "instanceName" : "LocalFS_02",
     "library" : "streamsets-datacollector-basic-lib",
     "stageName" : "com_streamsets_pipeline_stage_destination_localfilesystem_LocalFileSystemDTarget",
     "stageVersion" : "4",
     "configuration" : [ {
       "name" : "configs.uniquePrefix",
-      "value" : "file"
+      "value" : "fs1_events"
     }, {
       "name" : "configs.fileNameSuffix",
-      "value" : "json"
+      "value" : "txt"
     }, {
       "name" : "configs.dirPathTemplateInHeader",
       "value" : false
     }, {
       "name" : "configs.dirPathTemplate",
-      "value" : "/data/out/${record:attribute(\"file_dir\")}/${record:attribute(\"file_name\")}"
+      "value" : "/data/out/logs"
     }, {
       "name" : "configs.timeZoneID",
-      "value" : "UTC"
+      "value" : "Europe/Kiev"
     }, {
       "name" : "configs.timeDriver",
       "value" : "${time:now()}"
@@ -1258,7 +1258,7 @@
       "value" : 0
     }, {
       "name" : "configs.idleTimeout",
-      "value" : "${1 * HOURS}"
+      "value" : "${5 * SECONDS}"
     }, {
       "name" : "configs.compression",
       "value" : "NONE"
@@ -1288,7 +1288,7 @@
       "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
     }, {
       "name" : "configs.dataFormat",
-      "value" : "JSON"
+      "value" : "SDC_JSON"
     }, {
       "name" : "configs.hdfsPermissionCheck",
       "value" : true
@@ -1330,7 +1330,7 @@
       "value" : "MULTIPLE_OBJECTS"
     }, {
       "name" : "configs.dataGeneratorFormatConfig.textFieldPath",
-      "value" : "/text"
+      "value" : "/targetFileInfo"
     }, {
       "name" : "configs.dataGeneratorFormatConfig.textRecordSeparator",
       "value" : "\\n"
@@ -1421,10 +1421,319 @@
       "stageType" : "TARGET",
       "icon" : "localfilesystem.png",
       "description" : "",
-      "label" : "Local FS 1",
-      "xPos" : 1380
+      "label" : "Local FS 2",
+      "xPos" : 1600
     },
-    "inputLanes" : [ "FieldRenamer_01OutputLane15863757284960" ],
+    "inputLanes" : [ "HadoopFS_01_EventLane" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "HTTPClient_02",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_http_HttpClientDTarget",
+    "stageVersion" : "4",
+    "configuration" : [ {
+      "name" : "conf.dataGeneratorFormatConfig.charset",
+      "value" : "UTF-8"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvFileFormat",
+      "value" : "CSV"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvReplaceNewLines",
+      "value" : true
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+      "value" : " "
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.csvQuoteMode",
+      "value" : "MINIMAL"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.jsonMode",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.textFieldPath",
+      "value" : "/text"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.textRecordSeparator",
+      "value" : "\\n"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.textFieldMissingAction",
+      "value" : "ERROR"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.textEmptyLineIfNull",
+      "value" : false
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.avroSchemaSource",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.avroSchema",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.registerSchema",
+      "value" : false
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+      "value" : [ ]
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.schemaRegistryUrls",
+      "value" : [ ]
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.basicAuthUserInfo",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.schemaLookupMode",
+      "value" : "SUBJECT"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.subject",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.subjectToRegister",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.schemaId",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.includeSchema",
+      "value" : true
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.avroCompression",
+      "value" : "NULL"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.binaryFieldPath",
+      "value" : "/"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.protoDescriptorFile",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.messageType",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.fileNameEL",
+      "value" : null
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.wholeFileExistsAction",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+      "value" : false
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.checksumAlgorithm",
+      "value" : "MD5"
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.xmlPrettyPrint",
+      "value" : true
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.xmlValidateSchema",
+      "value" : false
+    }, {
+      "name" : "conf.dataGeneratorFormatConfig.xmlSchema",
+      "value" : null
+    }, {
+      "name" : "conf.dataFormat",
+      "value" : "JSON"
+    }, {
+      "name" : "conf.resourceUrl",
+      "value" : "http://localhost:8000?sdcApplicationId=BronzeLyerSubStream1"
+    }, {
+      "name" : "conf.headers",
+      "value" : [ ]
+    }, {
+      "name" : "conf.httpMethod",
+      "value" : "POST"
+    }, {
+      "name" : "conf.methodExpression",
+      "value" : null
+    }, {
+      "name" : "conf.client.transferEncoding",
+      "value" : "BUFFERED"
+    }, {
+      "name" : "conf.client.httpCompression",
+      "value" : "NONE"
+    }, {
+      "name" : "conf.client.connectTimeoutMillis",
+      "value" : 0
+    }, {
+      "name" : "conf.client.readTimeoutMillis",
+      "value" : 0
+    }, {
+      "name" : "conf.client.numThreads",
+      "value" : 1
+    }, {
+      "name" : "conf.client.authType",
+      "value" : "NONE"
+    }, {
+      "name" : "conf.client.useOAuth2",
+      "value" : false
+    }, {
+      "name" : "conf.client.oauth.consumerKey",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth.consumerSecret",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth.token",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth.tokenSecret",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.credentialsGrantType",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.tokenUrl",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.clientId",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.clientSecret",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.username",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.password",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.resourceOwnerClientId",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.resourceOwnerClientSecret",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.algorithm",
+      "value" : "NONE"
+    }, {
+      "name" : "conf.client.oauth2.key",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.jwtClaims",
+      "value" : null
+    }, {
+      "name" : "conf.client.oauth2.transferEncoding",
+      "value" : "BUFFERED"
+    }, {
+      "name" : "conf.client.oauth2.additionalValues",
+      "value" : [ { } ]
+    }, {
+      "name" : "conf.client.basicAuth.username",
+      "value" : null
+    }, {
+      "name" : "conf.client.basicAuth.password",
+      "value" : null
+    }, {
+      "name" : "conf.client.useProxy",
+      "value" : false
+    }, {
+      "name" : "conf.client.proxy.uri",
+      "value" : null
+    }, {
+      "name" : "conf.client.proxy.username",
+      "value" : null
+    }, {
+      "name" : "conf.client.proxy.password",
+      "value" : null
+    }, {
+      "name" : "conf.client.tlsConfig.tlsEnabled",
+      "value" : false
+    }, {
+      "name" : "conf.client.tlsConfig.keyStoreFilePath",
+      "value" : null
+    }, {
+      "name" : "conf.client.tlsConfig.keyStoreType",
+      "value" : "JKS"
+    }, {
+      "name" : "conf.client.tlsConfig.keyStorePassword",
+      "value" : null
+    }, {
+      "name" : "conf.client.tlsConfig.keyStoreAlgorithm",
+      "value" : "SunX509"
+    }, {
+      "name" : "conf.client.tlsConfig.trustStoreFilePath",
+      "value" : null
+    }, {
+      "name" : "conf.client.tlsConfig.trustStoreType",
+      "value" : "JKS"
+    }, {
+      "name" : "conf.client.tlsConfig.trustStorePassword",
+      "value" : null
+    }, {
+      "name" : "conf.client.tlsConfig.trustStoreAlgorithm",
+      "value" : "SunX509"
+    }, {
+      "name" : "conf.client.tlsConfig.useDefaultProtocols",
+      "value" : true
+    }, {
+      "name" : "conf.client.tlsConfig.protocols",
+      "value" : [ ]
+    }, {
+      "name" : "conf.client.tlsConfig.useDefaultCiperSuites",
+      "value" : true
+    }, {
+      "name" : "conf.client.tlsConfig.cipherSuites",
+      "value" : [ ]
+    }, {
+      "name" : "conf.client.requestLoggingConfig.enableRequestLogging",
+      "value" : false
+    }, {
+      "name" : "conf.client.requestLoggingConfig.logLevel",
+      "value" : "FINE"
+    }, {
+      "name" : "conf.client.requestLoggingConfig.verbosity",
+      "value" : "HEADERS_ONLY"
+    }, {
+      "name" : "conf.client.requestLoggingConfig.maxEntitySize",
+      "value" : 0
+    }, {
+      "name" : "conf.singleRequestPerBatch",
+      "value" : true
+    }, {
+      "name" : "conf.rateLimit",
+      "value" : 0
+    }, {
+      "name" : "conf.maxRequestCompletionSecs",
+      "value" : 60
+    }, {
+      "name" : "conf.responseConf.sendResponseToOrigin",
+      "value" : false
+    }, {
+      "name" : "conf.responseConf.responseType",
+      "value" : "SUCCESS_RECORDS"
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 350.82396697998047,
+      "stageType" : "TARGET",
+      "icon" : "httpclient.png",
+      "description" : "",
+      "label" : "HTTP Client 1",
+      "xPos" : 1603.0711669921875
+    },
+    "inputLanes" : [ "HadoopFS_01_EventLane" ],
     "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1465,11 +1774,11 @@
     "title" : "BronzeLayerStream2HDFS",
     "description" : "",
     "created" : 1586369651979,
-    "lastModified" : 1586380373485,
+    "lastModified" : 1586450102597,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "19074bcc-01a9-4e6e-ba50-ee8b750896cf",
+    "uuid" : "0dfd398a-386a-4280-b999-3a87c30dab9c",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

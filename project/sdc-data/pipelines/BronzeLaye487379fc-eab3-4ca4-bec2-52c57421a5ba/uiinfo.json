@@ -35,6 +35,14 @@
       "rememberMe" : true
     }
   },
+  "HTTPClient_02" : {
+    "yPos" : 350.82396697998047,
+    "stageType" : "TARGET",
+    "icon" : "httpclient.png",
+    "description" : "",
+    "label" : "HTTP Client 1",
+    "xPos" : 1603.0711669921875
+  },
   "HadoopFS_01" : {
     "yPos" : 50,
     "stageType" : "TARGET",
@@ -67,12 +75,12 @@
     "label" : "Field Renamer 1",
     "xPos" : 1160
   },
-  "LocalFS_01" : {
+  "LocalFS_02" : {
     "yPos" : 200,
     "stageType" : "TARGET",
     "icon" : "localfilesystem.png",
     "description" : "",
-    "label" : "Local FS 1",
-    "xPos" : 1380
+    "label" : "Local FS 2",
+    "xPos" : 1600
   }
 }

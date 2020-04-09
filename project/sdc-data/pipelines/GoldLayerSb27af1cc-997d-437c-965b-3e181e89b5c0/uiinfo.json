@@ -3,18 +3,18 @@
     "yPos" : 50,
     "stageType" : "PROCESSOR",
     "icon" : "expression.png",
-    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
+    "description" : "",
     "label" : "Add fields Generator",
-    "xPos" : 280
+    "xPos" : 500
   },
   "HiveMetadata_01" : {
     "outputStreamLabels" : [ "Data", "Metadata" ],
-    "yPos" : 109,
+    "yPos" : 110,
     "stageType" : "PROCESSOR",
     "icon" : "metadata.png",
     "description" : "",
     "label" : "Hive Metadata 1",
-    "xPos" : 719
+    "xPos" : 940
   },
   "SchemaGenerator_01" : {
     "yPos" : 50,
@@ -22,7 +22,7 @@
     "icon" : "schemagen.png",
     "description" : "",
     "label" : "Schema Generator 1",
-    "xPos" : 500
+    "xPos" : 720
   },
   ":pipeline:" : {
     "previewConfig" : {
@@ -36,20 +36,28 @@
       "rememberMe" : true
     }
   },
+  "SparkEvaluator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "spark-logo-hd.png",
+    "description" : "",
+    "label" : "Spark Evaluator 1",
+    "xPos" : 280
+  },
   "HadoopFS_01" : {
-    "yPos" : 169,
+    "yPos" : 170,
     "stageType" : "TARGET",
     "icon" : "hdfs.png",
     "description" : "",
     "label" : "Hadoop FS 1",
-    "xPos" : 940
+    "xPos" : 1160
   },
-  "HTTPClient_01" : {
+  "RESTService_01" : {
     "yPos" : 50,
     "stageType" : "SOURCE",
-    "icon" : "httpclient.png",
-    "description" : "Extracts weather through rest api",
-    "label" : "Source Extractor",
+    "icon" : "api.png",
+    "description" : "",
+    "label" : "REST Service 1",
     "xPos" : 60
   },
   "HiveMetastore_01" : {
@@ -58,6 +66,6 @@
     "icon" : "hive.png",
     "description" : "",
     "label" : "Hive Metastore 1",
-    "xPos" : 940
+    "xPos" : 1160
   }
 }

@@ -2,9 +2,9 @@
   "schemaVersion" : 6,
   "version" : 17,
   "pipelineId" : "GoldLayerSb27af1cc-997d-437c-965b-3e181e89b5c0",
-  "title" : "GoldLayerStream",
+  "title" : "BronzeLayerSubStream1",
   "description" : "",
-  "uuid" : "e18d5eac-27a8-4b00-bfc5-b43a3c567253",
+  "uuid" : "207baf33-99a6-42ed-8531-83c06b3f0a95",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -335,450 +335,409 @@
   },
   "fragments" : [ ],
   "stages" : [ {
-    "instanceName" : "HTTPClient_01",
+    "instanceName" : "RESTService_01",
     "library" : "streamsets-datacollector-basic-lib",
-    "stageName" : "com_streamsets_pipeline_stage_origin_http_HttpClientDSource",
-    "stageVersion" : "15",
+    "stageName" : "com_streamsets_pipeline_stage_origin_restservice_RestServiceDPushSource",
+    "stageVersion" : "4",
     "configuration" : [ {
-      "name" : "conf.basic.maxBatchSize",
-      "value" : 1000
+      "name" : "httpConfigs.appId",
+      "value" : "BronzeLyerSubStream1"
     }, {
-      "name" : "conf.basic.maxWaitTime",
-      "value" : 2000
-    }, {
-      "name" : "conf.dataFormatConfig.compression",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.dataFormatConfig.filePatternInArchive",
-      "value" : "*"
-    }, {
-      "name" : "conf.dataFormatConfig.charset",
-      "value" : "UTF-8"
-    }, {
-      "name" : "conf.dataFormatConfig.removeCtrlChars",
+      "name" : "httpConfigs.tlsConfigBean.tlsEnabled",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.textMaxLineLen",
-      "value" : 65536
-    }, {
-      "name" : "conf.dataFormatConfig.useCustomDelimiter",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.customDelimiter",
-      "value" : "\\r\\n"
-    }, {
-      "name" : "conf.dataFormatConfig.includeCustomDelimiterInTheText",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.jsonContent",
-      "value" : "MULTIPLE_OBJECTS"
-    }, {
-      "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
-      "value" : 65535
-    }, {
-      "name" : "conf.dataFormatConfig.csvFileFormat",
-      "value" : "CSV"
-    }, {
-      "name" : "conf.dataFormatConfig.csvHeader",
-      "value" : "NO_HEADER"
-    }, {
-      "name" : "conf.dataFormatConfig.csvAllowExtraColumns",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvExtraColumnPrefix",
-      "value" : "_extra_"
-    }, {
-      "name" : "conf.dataFormatConfig.csvMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomDelimiter",
-      "value" : "|"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterFieldDelimiter",
-      "value" : "||"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterLineDelimiter",
-      "value" : "${str:unescapeJava('\\\\n')}"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomEscape",
-      "value" : "\\"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomQuote",
-      "value" : "\""
-    }, {
-      "name" : "conf.dataFormatConfig.csvEnableComments",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvCommentMarker",
-      "value" : "#"
-    }, {
-      "name" : "conf.dataFormatConfig.csvIgnoreEmptyLines",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.csvRecordType",
-      "value" : "LIST_MAP"
-    }, {
-      "name" : "conf.dataFormatConfig.csvSkipStartLines",
-      "value" : 0
-    }, {
-      "name" : "conf.dataFormatConfig.parseNull",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.nullConstant",
-      "value" : "\\\\N"
-    }, {
-      "name" : "conf.dataFormatConfig.xmlRecordElement",
+      "name" : "httpConfigs.tlsConfigBean.keyStoreFilePath",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.preserveRootElement",
+      "name" : "httpConfigs.tlsConfigBean.keyStoreType",
+      "value" : "JKS"
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.keyStorePassword",
+      "value" : null
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.keyStoreAlgorithm",
+      "value" : "SunX509"
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.trustStoreFilePath",
+      "value" : null
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.trustStoreType",
+      "value" : "JKS"
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.trustStorePassword",
+      "value" : null
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.trustStoreAlgorithm",
+      "value" : "SunX509"
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.useDefaultProtocols",
       "value" : true
     }, {
-      "name" : "conf.dataFormatConfig.includeFieldXpathAttributes",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.xPathNamespaceContext",
+      "name" : "httpConfigs.tlsConfigBean.protocols",
       "value" : [ ]
     }, {
-      "name" : "conf.dataFormatConfig.outputFieldAttributes",
+      "name" : "httpConfigs.tlsConfigBean.useDefaultCiperSuites",
+      "value" : true
+    }, {
+      "name" : "httpConfigs.tlsConfigBean.cipherSuites",
+      "value" : [ ]
+    }, {
+      "name" : "httpConfigs.needClientAuth",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
-      "value" : 4096
+      "name" : "httpConfigs.port",
+      "value" : 8000
     }, {
-      "name" : "conf.dataFormatConfig.logMode",
-      "value" : "COMMON_LOG_FORMAT"
+      "name" : "httpConfigs.maxConcurrentRequests",
+      "value" : 10
     }, {
-      "name" : "conf.dataFormatConfig.logMaxObjectLen",
+      "name" : "httpConfigs.appIdViaQueryParamAllowed",
+      "value" : true
+    }, {
+      "name" : "maxRequestSizeMB",
+      "value" : 100
+    }, {
+      "name" : "dataFormat",
+      "value" : "JSON"
+    }, {
+      "name" : "dataFormatConfig.compression",
+      "value" : "NONE"
+    }, {
+      "name" : "dataFormatConfig.filePatternInArchive",
+      "value" : "*"
+    }, {
+      "name" : "dataFormatConfig.charset",
+      "value" : "UTF-8"
+    }, {
+      "name" : "dataFormatConfig.removeCtrlChars",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.textMaxLineLen",
       "value" : 1024
     }, {
-      "name" : "conf.dataFormatConfig.retainOriginalLine",
+      "name" : "dataFormatConfig.useCustomDelimiter",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.customLogFormat",
+      "name" : "dataFormatConfig.customDelimiter",
+      "value" : "\\r\\n"
+    }, {
+      "name" : "dataFormatConfig.includeCustomDelimiterInTheText",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.jsonContent",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "dataFormatConfig.jsonMaxObjectLen",
+      "value" : 4096
+    }, {
+      "name" : "dataFormatConfig.csvFileFormat",
+      "value" : "CSV"
+    }, {
+      "name" : "dataFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
+    }, {
+      "name" : "dataFormatConfig.csvAllowExtraColumns",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.csvExtraColumnPrefix",
+      "value" : "_extra_"
+    }, {
+      "name" : "dataFormatConfig.csvMaxObjectLen",
+      "value" : 1024
+    }, {
+      "name" : "dataFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "dataFormatConfig.multiCharacterFieldDelimiter",
+      "value" : "||"
+    }, {
+      "name" : "dataFormatConfig.multiCharacterLineDelimiter",
+      "value" : "${str:unescapeJava('\\\\n')}"
+    }, {
+      "name" : "dataFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "dataFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "dataFormatConfig.csvEnableComments",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.csvCommentMarker",
+      "value" : "#"
+    }, {
+      "name" : "dataFormatConfig.csvIgnoreEmptyLines",
+      "value" : true
+    }, {
+      "name" : "dataFormatConfig.csvRecordType",
+      "value" : "LIST_MAP"
+    }, {
+      "name" : "dataFormatConfig.csvSkipStartLines",
+      "value" : 0
+    }, {
+      "name" : "dataFormatConfig.parseNull",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.nullConstant",
+      "value" : "\\\\N"
+    }, {
+      "name" : "dataFormatConfig.xmlRecordElement",
+      "value" : null
+    }, {
+      "name" : "dataFormatConfig.preserveRootElement",
+      "value" : true
+    }, {
+      "name" : "dataFormatConfig.includeFieldXpathAttributes",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.xPathNamespaceContext",
+      "value" : [ ]
+    }, {
+      "name" : "dataFormatConfig.outputFieldAttributes",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.xmlMaxObjectLen",
+      "value" : 4096
+    }, {
+      "name" : "dataFormatConfig.logMode",
+      "value" : "COMMON_LOG_FORMAT"
+    }, {
+      "name" : "dataFormatConfig.logMaxObjectLen",
+      "value" : 1024
+    }, {
+      "name" : "dataFormatConfig.retainOriginalLine",
+      "value" : false
+    }, {
+      "name" : "dataFormatConfig.customLogFormat",
       "value" : "%h %l %u %t \"%r\" %>s %b"
     }, {
-      "name" : "conf.dataFormatConfig.regex",
+      "name" : "dataFormatConfig.regex",
       "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
     }, {
-      "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
+      "name" : "dataFormatConfig.fieldPathsToGroupName",
       "value" : [ {
         "fieldPath" : "/",
         "group" : 1
       } ]
     }, {
-      "name" : "conf.dataFormatConfig.grokPatternDefinition",
+      "name" : "dataFormatConfig.grokPatternDefinition",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.grokPattern",
+      "name" : "dataFormatConfig.grokPattern",
       "value" : "%{COMMONAPACHELOG}"
     }, {
-      "name" : "conf.dataFormatConfig.onParseError",
+      "name" : "dataFormatConfig.onParseError",
       "value" : "ERROR"
     }, {
-      "name" : "conf.dataFormatConfig.maxStackTraceLines",
+      "name" : "dataFormatConfig.maxStackTraceLines",
       "value" : 50
     }, {
-      "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
+      "name" : "dataFormatConfig.enableLog4jCustomLogFormat",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
+      "name" : "dataFormatConfig.log4jCustomLogFormat",
       "value" : "%r [%t] %-5p %c %x - %m%n"
     }, {
-      "name" : "conf.dataFormatConfig.avroSchemaSource",
-      "value" : "SOURCE"
-    }, {
-      "name" : "conf.dataFormatConfig.avroSchema",
+      "name" : "dataFormatConfig.avroSchema",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.schemaRegistryUrls",
+      "name" : "dataFormatConfig.schemaRegistryUrls",
       "value" : [ ]
     }, {
-      "name" : "conf.dataFormatConfig.basicAuth",
+      "name" : "dataFormatConfig.basicAuth",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.schemaLookupMode",
+      "name" : "dataFormatConfig.schemaLookupMode",
       "value" : "SUBJECT"
     }, {
-      "name" : "conf.dataFormatConfig.subject",
+      "name" : "dataFormatConfig.subject",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.schemaId",
+      "name" : "dataFormatConfig.schemaId",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.avroSkipUnionIndex",
+      "name" : "dataFormatConfig.avroSkipUnionIndex",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.protoDescriptorFile",
+      "name" : "dataFormatConfig.protoDescriptorFile",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.messageType",
+      "name" : "dataFormatConfig.messageType",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.isDelimited",
+      "name" : "dataFormatConfig.isDelimited",
       "value" : true
     }, {
-      "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
-      "value" : 65535
+      "name" : "dataFormatConfig.binaryMaxObjectLen",
+      "value" : 1024
     }, {
-      "name" : "conf.dataFormatConfig.datagramMode",
+      "name" : "dataFormatConfig.datagramMode",
       "value" : "SYSLOG"
     }, {
-      "name" : "conf.dataFormatConfig.typesDbPath",
+      "name" : "dataFormatConfig.typesDbPath",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.convertTime",
+      "name" : "dataFormatConfig.convertTime",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.excludeInterval",
+      "name" : "dataFormatConfig.excludeInterval",
       "value" : true
     }, {
-      "name" : "conf.dataFormatConfig.authFilePath",
+      "name" : "dataFormatConfig.authFilePath",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesMode",
+      "name" : "dataFormatConfig.netflowOutputValuesMode",
       "value" : "RAW_AND_INTERPRETED"
     }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSize",
+      "name" : "dataFormatConfig.maxTemplateCacheSize",
       "value" : -1
     }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMs",
+      "name" : "dataFormatConfig.templateCacheTimeoutMs",
       "value" : -1
     }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesModeDatagram",
+      "name" : "dataFormatConfig.netflowOutputValuesModeDatagram",
       "value" : "RAW_AND_INTERPRETED"
     }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSizeDatagram",
+      "name" : "dataFormatConfig.maxTemplateCacheSizeDatagram",
       "value" : -1
     }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMsDatagram",
+      "name" : "dataFormatConfig.templateCacheTimeoutMsDatagram",
       "value" : -1
     }, {
-      "name" : "conf.dataFormatConfig.wholeFileMaxObjectLen",
+      "name" : "dataFormatConfig.wholeFileMaxObjectLen",
       "value" : 8192
     }, {
-      "name" : "conf.dataFormatConfig.rateLimit",
+      "name" : "dataFormatConfig.rateLimit",
       "value" : "-1"
     }, {
-      "name" : "conf.dataFormatConfig.verifyChecksum",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excelHeader",
+      "name" : "dataFormatConfig.excelHeader",
       "value" : null
     }, {
-      "name" : "conf.dataFormatConfig.excelSkipCellsWithNoHeader",
+      "name" : "dataFormatConfig.excelSkipCellsWithNoHeader",
       "value" : false
     }, {
-      "name" : "conf.dataFormatConfig.excelReadAllSheets",
+      "name" : "dataFormatConfig.excelReadAllSheets",
       "value" : true
     }, {
-      "name" : "conf.dataFormatConfig.excelSheetNames",
+      "name" : "dataFormatConfig.excelSheetNames",
       "value" : [ ]
     }, {
-      "name" : "conf.resourceUrl",
-      "value" : "https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=50&appid=d12dd3e0376f206595b3a0660911c2dc"
-    }, {
-      "name" : "conf.headers",
-      "value" : [ ]
-    }, {
-      "name" : "conf.httpMethod",
-      "value" : "GET"
-    }, {
-      "name" : "conf.timeZoneID",
-      "value" : "Europe/Kiev"
-    }, {
-      "name" : "conf.requestBody",
-      "value" : null
-    }, {
-      "name" : "conf.defaultRequestContentType",
-      "value" : "application/json"
-    }, {
-      "name" : "conf.client.transferEncoding",
-      "value" : "BUFFERED"
-    }, {
-      "name" : "conf.client.httpCompression",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.connectTimeoutMillis",
-      "value" : 0
-    }, {
-      "name" : "conf.client.readTimeoutMillis",
-      "value" : 0
-    }, {
-      "name" : "conf.client.authType",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.useOAuth2",
+      "name" : "responseConfig.sendRawResponse",
       "value" : false
     }, {
-      "name" : "conf.client.oauth.consumerKey",
-      "value" : null
+      "name" : "responseConfig.dataFormat",
+      "value" : "JSON"
     }, {
-      "name" : "conf.client.oauth.consumerSecret",
-      "value" : null
+      "name" : "responseConfig.dataGeneratorFormatConfig.charset",
+      "value" : "UTF-8"
     }, {
-      "name" : "conf.client.oauth.token",
-      "value" : null
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvFileFormat",
+      "value" : "CSV"
     }, {
-      "name" : "conf.client.oauth.tokenSecret",
-      "value" : null
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
     }, {
-      "name" : "conf.client.oauth2.credentialsGrantType",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.tokenUrl",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.clientId",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.clientSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.resourceOwnerClientId",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.resourceOwnerClientSecret",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.algorithm",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.client.oauth2.key",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.jwtClaims",
-      "value" : null
-    }, {
-      "name" : "conf.client.oauth2.transferEncoding",
-      "value" : "BUFFERED"
-    }, {
-      "name" : "conf.client.oauth2.additionalValues",
-      "value" : [ { } ]
-    }, {
-      "name" : "conf.client.basicAuth.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.basicAuth.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.useProxy",
-      "value" : false
-    }, {
-      "name" : "conf.client.proxy.uri",
-      "value" : null
-    }, {
-      "name" : "conf.client.proxy.username",
-      "value" : null
-    }, {
-      "name" : "conf.client.proxy.password",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.tlsEnabled",
-      "value" : false
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreType",
-      "value" : "JKS"
-    }, {
-      "name" : "conf.client.tlsConfig.keyStorePassword",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.keyStoreAlgorithm",
-      "value" : "SunX509"
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreType",
-      "value" : "JKS"
-    }, {
-      "name" : "conf.client.tlsConfig.trustStorePassword",
-      "value" : null
-    }, {
-      "name" : "conf.client.tlsConfig.trustStoreAlgorithm",
-      "value" : "SunX509"
-    }, {
-      "name" : "conf.client.tlsConfig.useDefaultProtocols",
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvReplaceNewLines",
       "value" : true
     }, {
-      "name" : "conf.client.tlsConfig.protocols",
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+      "value" : " "
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.csvQuoteMode",
+      "value" : "MINIMAL"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.jsonMode",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.textFieldPath",
+      "value" : "/text"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.textRecordSeparator",
+      "value" : "\\n"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.textFieldMissingAction",
+      "value" : "ERROR"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.textEmptyLineIfNull",
+      "value" : false
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.avroSchemaSource",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.avroSchema",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.registerSchema",
+      "value" : false
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
       "value" : [ ]
     }, {
-      "name" : "conf.client.tlsConfig.useDefaultCiperSuites",
+      "name" : "responseConfig.dataGeneratorFormatConfig.schemaRegistryUrls",
+      "value" : [ ]
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.basicAuthUserInfo",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.schemaLookupMode",
+      "value" : "SUBJECT"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.subject",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.subjectToRegister",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.schemaId",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.includeSchema",
       "value" : true
     }, {
-      "name" : "conf.client.tlsConfig.cipherSuites",
-      "value" : [ ]
+      "name" : "responseConfig.dataGeneratorFormatConfig.avroCompression",
+      "value" : "NULL"
     }, {
-      "name" : "conf.client.requestLoggingConfig.enableRequestLogging",
+      "name" : "responseConfig.dataGeneratorFormatConfig.binaryFieldPath",
+      "value" : "/"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.protoDescriptorFile",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.messageType",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.fileNameEL",
+      "value" : null
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.wholeFileExistsAction",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "responseConfig.dataGeneratorFormatConfig.includeChecksumInTheEvents",
       "value" : false
     }, {
-      "name" : "conf.client.requestLoggingConfig.logLevel",
-      "value" : "FINE"
+      "name" : "responseConfig.dataGeneratorFormatConfig.checksumAlgorithm",
+      "value" : "MD5"
     }, {
-      "name" : "conf.client.requestLoggingConfig.verbosity",
-      "value" : "HEADERS_ONLY"
+      "name" : "responseConfig.dataGeneratorFormatConfig.xmlPrettyPrint",
+      "value" : true
     }, {
-      "name" : "conf.client.requestLoggingConfig.maxEntitySize",
-      "value" : 0
-    }, {
-      "name" : "conf.httpMode",
-      "value" : "POLLING"
-    }, {
-      "name" : "conf.pollingInterval",
-      "value" : 2000
-    }, {
-      "name" : "conf.dataFormat",
-      "value" : "TEXT"
-    }, {
-      "name" : "conf.responseStatusActionConfigs",
-      "value" : [ {
-        "statusCode" : 500,
-        "action" : "RETRY_EXPONENTIAL_BACKOFF",
-        "backoffInterval" : 1000,
-        "maxNumRetries" : 3
-      } ]
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.action",
-      "value" : "RETRY_IMMEDIATELY"
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.backoffInterval",
-      "value" : 1000
-    }, {
-      "name" : "conf.responseTimeoutActionConfig.maxNumRetries",
-      "value" : 10
-    }, {
-      "name" : "conf.pagination.mode",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.pagination.nextPageURLPrefix",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.nextPageFieldPath",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.stopCondition",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.startAt",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.resultFieldPath",
-      "value" : null
-    }, {
-      "name" : "conf.pagination.keepAllFields",
+      "name" : "responseConfig.dataGeneratorFormatConfig.xmlValidateSchema",
       "value" : false
     }, {
-      "name" : "conf.pagination.rateLimit",
-      "value" : 2000
+      "name" : "responseConfig.dataGeneratorFormatConfig.xmlSchema",
+      "value" : null
     }, {
       "name" : "stageOnRecordError",
       "value" : "TO_ERROR"
@@ -786,13 +745,52 @@
     "uiInfo" : {
       "yPos" : 50,
       "stageType" : "SOURCE",
-      "icon" : "httpclient.png",
-      "description" : "Extracts weather through rest api",
-      "label" : "Source Extractor",
+      "icon" : "api.png",
+      "description" : "",
+      "label" : "REST Service 1",
       "xPos" : 60
     },
     "inputLanes" : [ ],
-    "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "outputLanes" : [ "RESTService_01OutputLane15864499639510" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "SparkEvaluator_01",
+    "library" : "streamsets-datacollector-cdh_5_7-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_spark_SparkDProcessor",
+    "stageVersion" : "1",
+    "configuration" : [ {
+      "name" : "sparkProcessorConfigBean.threadCount",
+      "value" : 4
+    }, {
+      "name" : "sparkProcessorConfigBean.appName",
+      "value" : "SDC Spark App"
+    }, {
+      "name" : "sparkProcessorConfigBean.transformerClass",
+      "value" : null
+    }, {
+      "name" : "sparkProcessorConfigBean.preprocessMethodArgs",
+      "value" : [ ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 50,
+      "stageType" : "PROCESSOR",
+      "icon" : "spark-logo-hd.png",
+      "description" : "",
+      "label" : "Spark Evaluator 1",
+      "xPos" : 280
+    },
+    "inputLanes" : [ "RESTService_01OutputLane15864499639510" ],
+    "outputLanes" : [ "SparkEvaluator_01OutputLane15864513469200" ],
     "eventLanes" : [ ],
     "services" : [ ]
   }, {
@@ -832,11 +830,11 @@
       "yPos" : 50,
       "stageType" : "PROCESSOR",
       "icon" : "expression.png",
-      "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
+      "description" : "",
       "label" : "Add fields Generator",
-      "xPos" : 280
+      "xPos" : 500
     },
-    "inputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
+    "inputLanes" : [ "SparkEvaluator_01OutputLane15864513469200" ],
     "outputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -909,7 +907,7 @@
       "icon" : "schemagen.png",
       "description" : "",
       "label" : "Schema Generator 1",
-      "xPos" : 500
+      "xPos" : 720
     },
     "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "outputLanes" : [ "SchemaGenerator_01OutputLane15863609670300" ],
@@ -1005,12 +1003,12 @@
     } ],
     "uiInfo" : {
       "outputStreamLabels" : [ "Data", "Metadata" ],
-      "yPos" : 109,
+      "yPos" : 110,
       "stageType" : "PROCESSOR",
       "icon" : "metadata.png",
       "description" : "",
       "label" : "Hive Metadata 1",
-      "xPos" : 719
+      "xPos" : 940
     },
     "inputLanes" : [ "SchemaGenerator_01OutputLane15863609670300" ],
     "outputLanes" : [ "HiveMetadata_01OutputLane15863590295580", "HiveMetadata_01OutputLane15863590295581" ],
@@ -1224,12 +1222,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 169,
+      "yPos" : 170,
       "stageType" : "TARGET",
       "icon" : "hdfs.png",
       "description" : "",
       "label" : "Hadoop FS 1",
-      "xPos" : 940
+      "xPos" : 1160
     },
     "inputLanes" : [ "HiveMetadata_01OutputLane15863590295581" ],
     "outputLanes" : [ ],
@@ -1295,7 +1293,7 @@
       "icon" : "hive.png",
       "description" : "",
       "label" : "Hive Metastore 1",
-      "xPos" : 940
+      "xPos" : 1160
     },
     "inputLanes" : [ "HiveMetadata_01OutputLane15863590295580" ],
     "outputLanes" : [ ],
@@ -1335,16 +1333,18 @@
   },
   "info" : {
     "pipelineId" : "GoldLayerSb27af1cc-997d-437c-965b-3e181e89b5c0",
-    "title" : "GoldLayerStream",
+    "title" : "BronzeLayerSubStream1",
     "description" : "",
     "created" : 1586362421005,
-    "lastModified" : 1586362421005,
+    "lastModified" : 1586451391696,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "c4d30163-3673-4703-8d99-186a03a161d2",
+    "uuid" : "a37f1bb5-a742-40ba-9011-65ed063e2420",
     "valid" : false,
-    "metadata" : null,
+    "metadata" : {
+      "labels" : [ ]
+    },
     "name" : "GoldLayerSb27af1cc-997d-437c-965b-3e181e89b5c0",
     "sdcVersion" : "3.14.0",
     "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
@@ -1670,11 +1670,23 @@
       } ]
     } ]
   },
-  "valid" : true,
+  "valid" : false,
   "issues" : {
     "pipelineIssues" : [ ],
-    "stageIssues" : { },
-    "issueCount" : 0
+    "stageIssues" : {
+      "SparkEvaluator_01" : [ {
+        "instanceName" : "SparkEvaluator_01",
+        "serviceName" : null,
+        "level" : "STAGE_CONFIG",
+        "configGroup" : "SPARK",
+        "configName" : "sparkProcessorConfigBean.transformerClass",
+        "message" : "VALIDATION_0007 - Configuration value is required",
+        "count" : 1,
+        "additionalInfo" : null,
+        "antennaDoctorMessages" : null
+      } ]
+    },
+    "issueCount" : 1
   },
-  "previewable" : true
+  "previewable" : false
 }

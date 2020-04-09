@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLaye957fc2c6-8ab8-4906-82c3-5bcd3760fd5b",
+  "title" : "BronzeLayerStream2HDFS copy 1",
+  "description" : "",
+  "created" : 1586442320907,
+  "lastModified" : 1586442321050,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "45b2d8e2-ef56-445d-a2d2-e51ece6f3fee",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLaye957fc2c6-8ab8-4906-82c3-5bcd3760fd5b",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

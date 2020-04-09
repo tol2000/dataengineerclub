@@ -1,0 +1,78 @@
+{
+  "FieldPivoter_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "pivoter.png",
+    "description" : "",
+    "label" : "Field Pivoter 1",
+    "xPos" : 720
+  },
+  "ExpressionEvaluator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
+    "label" : "Add fields and attributes Generator",
+    "xPos" : 280
+  },
+  "FieldRemover_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "filter.png",
+    "description" : "",
+    "label" : "Field Remover 1",
+    "xPos" : 500
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : "5",
+      "timeout" : 30000,
+      "writeToDestinations" : true,
+      "executeLifecycleEvents" : false,
+      "showHeader" : true,
+      "showFieldType" : true,
+      "rememberMe" : true
+    }
+  },
+  "HadoopFS_01" : {
+    "yPos" : 50,
+    "stageType" : "TARGET",
+    "icon" : "hdfs.png",
+    "description" : "",
+    "label" : "Hadoop FS 1",
+    "xPos" : 1380
+  },
+  "FieldFlattener_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "flattener.png",
+    "description" : "",
+    "label" : "Field Flattener 1",
+    "xPos" : 940
+  },
+  "HTTPClient_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "icon" : "httpclient.png",
+    "description" : "Extracts weather through rest api",
+    "label" : "Source Extractor",
+    "xPos" : 60
+  },
+  "FieldRenamer_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "edit.png",
+    "description" : "",
+    "label" : "Field Renamer 1",
+    "xPos" : 1160
+  },
+  "LocalFS_02" : {
+    "yPos" : 200,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Local FS 2",
+    "xPos" : 1600
+  }
+}
