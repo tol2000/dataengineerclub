@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
   "title" : "BronzeLayerStream2HDFS",
   "description" : "",
-  "uuid" : "739854fd-b4b2-4d3e-8526-ad70d88e6df6",
+  "uuid" : "a1609551-a0ca-46dc-8bfd-04cd649ab7d1",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -1549,7 +1549,7 @@
       "value" : "JSON"
     }, {
       "name" : "conf.resourceUrl",
-      "value" : "http://localhost:8000?sdcApplicationId=BronzeLyerSubStream1"
+      "value" : "http://localhost:8001?sdcApplicationId=BronzeLyerSubStreamToSpark"
     }, {
       "name" : "conf.headers",
       "value" : [ ]
@@ -1774,11 +1774,11 @@
     "title" : "BronzeLayerStream2HDFS",
     "description" : "",
     "created" : 1586369651979,
-    "lastModified" : 1586450102597,
+    "lastModified" : 1586461974597,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "0dfd398a-386a-4280-b999-3a87c30dab9c",
+    "uuid" : "6f569edb-1575-4fcf-897d-88df908e41b4",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLayef4adb60e-e858-48ac-9505-a106405f4002",
+  "title" : "BronzeLayerSubStreamToSpark",
+  "description" : "",
+  "created" : 1586461844334,
+  "lastModified" : 1586462617767,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "588ef02f-7aaf-4700-b419-b335a48c99c5",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLayef4adb60e-e858-48ac-9505-a106405f4002",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}
