@@ -1,4 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:23:5: illegal start of simple expression[0m
-[0m[[0m[31merror[0m] [0m[0m    .builder()[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:4:8: object SparkSession is not a member of package org.apache.spark[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.SparkSession[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:25:22: not found: value SparkSession[0m
+[0m[[0m[31merror[0m] [0m[0m  val sparkSession = SparkSession.builder()[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
