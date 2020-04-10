@@ -16,6 +16,7 @@ services:
       - ./sdc-data:/data
       - ./credentials:/opt/credentials
       - ~/sdc-stagelibs:/opt/streamsets-datacollector-3.14.0/streamsets-libs
+      - ~/spark-2.4.4-bin-hadoop2.7:/spark
 
   # Cloudera container
   quickstart.cloudera:
@@ -39,11 +40,13 @@ services:
       - "8983:8983"   # Solr
       - "16000:16000" # Sqoop Metastore
       - "8042:8042"   # YARN Node Manager
+      - "8032:8032"   # YARN Resource Manager
       - "60010:60010" # HBase Master
       - "60030:60030" # HBase Region
       - "9090:9090"   # HBase Thrift
       - "8080:8080"   # HBase Rest
       - "7077:7077"   # Spark Master
+      - "7078:7078"   # Spark Worker
       - "10000:10000" # Hive jdbc
       - "10002:10002" # Hive web interface
       - "9083:9083"   # Hive metastore

@@ -1,1 +1,0 @@
-{"filename":"file_7e24a31f-8513-4365-9ef5-5a2ea24d33e2.json","filepath":"/out/bronze/weather/file_7e24a31f-8513-4365-9ef5-5a2ea24d33e2.json","length":207079}

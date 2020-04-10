@@ -26,5 +26,13 @@
     "description" : "",
     "label" : "REST Service 1",
     "xPos" : 60
+  },
+  "LocalFS_01" : {
+    "yPos" : 200,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Logging",
+    "xPos" : 500
   }
 }
