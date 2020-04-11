@@ -1,0 +1,38 @@
+{
+  "ExpressionEvaluator_01" : {
+    "yPos" : 37,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "",
+    "label" : "Записи журнала",
+    "xPos" : 245
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : 10,
+      "timeout" : 30000,
+      "writeToDestinations" : false,
+      "executeLifecycleEvents" : false,
+      "showHeader" : false,
+      "showFieldType" : true,
+      "rememberMe" : false
+    }
+  },
+  "StartPipeline_01" : {
+    "yPos" : 37,
+    "stageType" : "SOURCE",
+    "icon" : "pipeline.png",
+    "description" : "",
+    "label" : "Запуск всех потоков",
+    "xPos" : 39
+  },
+  "LocalFS_01" : {
+    "yPos" : 36,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Журнал",
+    "xPos" : 452
+  }
+}

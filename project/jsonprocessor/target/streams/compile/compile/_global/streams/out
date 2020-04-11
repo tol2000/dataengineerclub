@@ -1,7 +1,19 @@
-[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:4:8: object SparkSession is not a member of package org.apache.spark[0m
-[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.SparkSession[0m
-[0m[[0m[31merror[0m] [0m[0m       ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:25:22: not found: value SparkSession[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:6:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.log4j._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:7:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql.{SaveMode, SparkSession}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:18:3: not found: value BasicConfigurator[0m
+[0m[[0m[31merror[0m] [0m[0m  BasicConfigurator.configure()[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:20:3: not found: value Logger[0m
+[0m[[0m[31merror[0m] [0m[0m  Logger.getRootLogger[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:21:16: not found: value Level[0m
+[0m[[0m[31merror[0m] [0m[0m    .setLevel( Level.ERROR )[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:23:22: not found: value SparkSession[0m
 [0m[[0m[31merror[0m] [0m[0m  val sparkSession = SparkSession.builder()[0m
 [0m[[0m[31merror[0m] [0m[0m                     ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m6 errors found[0m

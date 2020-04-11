@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa",
+  "title" : "BronzeLayerSubStreamToSparkLocalWatcher",
+  "description" : "",
+  "created" : 1586554341792,
+  "lastModified" : 1586629986511,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "490b5b39-849a-4a2e-b6ae-8e4d502778cd",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

@@ -1,0 +1,2297 @@
+{
+  "snapshotBatches" : [ [ {
+    "instanceName" : "HadoopFSStandalone_01",
+    "output" : {
+      "HadoopFSStandalone_01OutputLane15866412923390" : [ {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::1",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::1::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "0",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Ivanivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::2",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::2::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "1",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Yuzhne",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::3",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::3::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "2",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Teplodar",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::4",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::4::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "3",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Atestovo",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::5",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::5::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "4",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Usatove",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::6",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::6::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "5",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Kamyshevka Vtoraya",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::7",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::7::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "6",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Kulevcha",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::8",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::8::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "7",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Fontanka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::9",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::9::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "8",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Berezanka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::10",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::10::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "9",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Sredniy Fontan",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::11",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::11::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "10",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Starokozache",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::12",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::12::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "11",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Tayirove",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::13",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::13::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "12",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Pokrovka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::14",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::14::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "13",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Chervonoznamenka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::15",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::15::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "14",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Palanca",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::16",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::16::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "15",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Rozdilna",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::17",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::17::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "16",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Kobleve",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::18",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::18::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "17",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Dnestrovsc",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::19",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::19::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "18",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Illichivsk",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::20",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::20::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "19",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Stepove",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::21",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::21::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "20",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Pokrovs’ke",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::22",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::22::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "21",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Krivaya Balka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::23",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::23::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "22",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Malyy Fontan",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::24",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::24::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "23",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Stepanivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::25",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::25::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "24",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Bilhorod-Dnistrovskyy",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::26",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::26::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "25",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Sukhyy Lyman",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::27",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::27::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "26",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Oleksandrivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::28",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::28::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "27",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Lymanske",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::29",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::29::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "28",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Carahasani",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::30",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::30::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "29",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Zatoka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::31",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::31::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "30",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Pervomaisc",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::32",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::32::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "31",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Odes’ka Oblast’",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::33",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::33::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "32",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Căplani",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::34",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::34::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "33",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Bilyayivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::35",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::35::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "34",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Odessa",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::36",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::36::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "35",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Karolino-Buhaz",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::37",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::37::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "36",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Rybakivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::38",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::38::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "37",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Kryzhanivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::39",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::39::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "38",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Petrivka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::40",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::40::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "39",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Verbany",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::41",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::41::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "40",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Ovidiopol",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::42",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::42::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "41",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Krasnosilka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::43",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::43::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "42",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Kholodnaya Balka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::44",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::44::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "43",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Crasnoe",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::45",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::45::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "44",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Bol’shaya Balka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::46",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::46::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "45",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Belyary",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::47",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::47::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "46",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Olăneşti",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::48",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::48::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "47",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Shabo",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::49",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::49::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "48",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Ochakiv",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      }, {
+        "header" : {
+          "stageCreator" : "HadoopFSStandalone_01",
+          "sourceId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::50",
+          "stagesPath" : "HadoopFSStandalone_01",
+          "trackingId" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro::50::HadoopFSStandalone_01",
+          "previousTrackingId" : null,
+          "raw" : null,
+          "rawMimeType" : null,
+          "errorDataCollectorId" : null,
+          "errorPipelineName" : null,
+          "errorStage" : null,
+          "errorStageLabel" : null,
+          "errorCode" : null,
+          "errorMessage" : null,
+          "errorTimestamp" : 0,
+          "errorStackTrace" : null,
+          "errorJobId" : null,
+          "values" : {
+            "baseDir" : "/out/bronze/weather2hive",
+            "file" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "filename" : "part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "avro.union.typeIndex./area" : "0",
+            "offset" : "49",
+            "mtime" : "1586643052443",
+            "avroSchema" : "{\"type\":\"record\",\"name\":\"topLevelRecord\",\"fields\":[{\"name\":\"area\",\"type\":[\"string\",\"null\"]},{\"name\":\"records\",\"type\":\"long\"}]}"
+          }
+        },
+        "value" : {
+          "type" : "LIST_MAP",
+          "value" : [ {
+            "type" : "STRING",
+            "value" : "Sergeyevka",
+            "dqpath" : "/area",
+            "sqpath" : "/area"
+          }, {
+            "type" : "LONG",
+            "value" : "51",
+            "dqpath" : "/records",
+            "sqpath" : "/records"
+          } ],
+          "dqpath" : "",
+          "sqpath" : ""
+        }
+      } ]
+    },
+    "errorRecords" : [ ],
+    "stageErrors" : null,
+    "eventRecords" : [ {
+      "header" : {
+        "stageCreator" : "HadoopFSStandalone_01",
+        "sourceId" : "event:new-file:1:1586643054523",
+        "stagesPath" : "HadoopFSStandalone_01",
+        "trackingId" : "event:new-file:1:1586643054523::HadoopFSStandalone_01",
+        "previousTrackingId" : null,
+        "raw" : null,
+        "rawMimeType" : null,
+        "errorDataCollectorId" : null,
+        "errorPipelineName" : null,
+        "errorStage" : null,
+        "errorStageLabel" : null,
+        "errorCode" : null,
+        "errorMessage" : null,
+        "errorTimestamp" : 0,
+        "errorStackTrace" : null,
+        "errorJobId" : null,
+        "values" : {
+          "sdc.event.version" : "1",
+          "sdc.event.creation_timestamp" : "1586643054523",
+          "sdc.event.type" : "new-file"
+        }
+      },
+      "value" : {
+        "type" : "MAP",
+        "value" : {
+          "filepath" : {
+            "type" : "STRING",
+            "value" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "dqpath" : "/filepath",
+            "sqpath" : "/filepath"
+          }
+        },
+        "dqpath" : "",
+        "sqpath" : ""
+      }
+    }, {
+      "header" : {
+        "stageCreator" : "HadoopFSStandalone_01",
+        "sourceId" : "event:finished-file:2:1586643103155",
+        "stagesPath" : "HadoopFSStandalone_01",
+        "trackingId" : "event:finished-file:2:1586643103155::HadoopFSStandalone_01",
+        "previousTrackingId" : null,
+        "raw" : null,
+        "rawMimeType" : null,
+        "errorDataCollectorId" : null,
+        "errorPipelineName" : null,
+        "errorStage" : null,
+        "errorStageLabel" : null,
+        "errorCode" : null,
+        "errorMessage" : null,
+        "errorTimestamp" : 0,
+        "errorStackTrace" : null,
+        "errorJobId" : null,
+        "values" : {
+          "sdc.event.version" : "2",
+          "sdc.event.creation_timestamp" : "1586643103155",
+          "sdc.event.type" : "finished-file"
+        }
+      },
+      "value" : {
+        "type" : "MAP",
+        "value" : {
+          "filepath" : {
+            "type" : "STRING",
+            "value" : "/out/bronze/weather2hive/part-00000-5ad4d16c-0d49-42c0-bdb4-5158c0362460-c000.avro",
+            "dqpath" : "/filepath",
+            "sqpath" : "/filepath"
+          },
+          "error-count" : {
+            "type" : "LONG",
+            "value" : "0",
+            "dqpath" : "/\"error-count\"",
+            "sqpath" : "/'error-count'"
+          },
+          "record-count" : {
+            "type" : "LONG",
+            "value" : "50",
+            "dqpath" : "/\"record-count\"",
+            "sqpath" : "/'record-count'"
+          }
+        },
+        "dqpath" : "",
+        "sqpath" : ""
+      }
+    } ]
+  } ] ]
+}
