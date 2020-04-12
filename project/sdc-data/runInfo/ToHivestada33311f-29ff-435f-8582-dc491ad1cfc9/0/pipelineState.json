@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "RUNNING",
+  "message" : null,
+  "timeStamp" : 1586690925013,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false,
+    "RUNTIME_PARAMETERS" : null,
+    "INTERCEPTOR_CONFIGS" : [ ]
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9"
+}

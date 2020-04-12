@@ -3,12 +3,12 @@
   "title" : "ToHive",
   "description" : "",
   "created" : 1586627097620,
-  "lastModified" : 1586645536788,
+  "lastModified" : 1586682185280,
   "creator" : "admin",
   "lastModifier" : "admin",
   "lastRev" : "0",
-  "uuid" : "945c33a0-2568-4342-afc4-d403a2502236",
-  "valid" : true,
+  "uuid" : "eb022718-0ab8-4246-ae56-211daec20005",
+  "valid" : false,
   "metadata" : {
     "labels" : [ ]
   },

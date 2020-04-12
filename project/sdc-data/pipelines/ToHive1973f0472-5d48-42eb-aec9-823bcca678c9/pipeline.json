@@ -4,7 +4,7 @@
   "pipelineId" : "ToHive1973f0472-5d48-42eb-aec9-823bcca678c9",
   "title" : "ToHive",
   "description" : "",
-  "uuid" : "945c33a0-2568-4342-afc4-d403a2502236",
+  "uuid" : "eb022718-0ab8-4246-ae56-211daec20005",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -326,320 +326,6 @@
   },
   "fragments" : [ ],
   "stages" : [ {
-    "instanceName" : "HadoopFSStandalone_01",
-    "library" : "streamsets-datacollector-cdh_5_7-lib",
-    "stageName" : "com_streamsets_pipeline_stage_origin_hdfs_HdfsDSource",
-    "stageVersion" : "2",
-    "configuration" : [ {
-      "name" : "conf.dataFormatConfig.compression",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.dataFormatConfig.filePatternInArchive",
-      "value" : "*"
-    }, {
-      "name" : "conf.dataFormatConfig.charset",
-      "value" : "UTF-8"
-    }, {
-      "name" : "conf.dataFormatConfig.removeCtrlChars",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.textMaxLineLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.useCustomDelimiter",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.customDelimiter",
-      "value" : "\\r\\n"
-    }, {
-      "name" : "conf.dataFormatConfig.includeCustomDelimiterInTheText",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.jsonContent",
-      "value" : "MULTIPLE_OBJECTS"
-    }, {
-      "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
-      "value" : 4096
-    }, {
-      "name" : "conf.dataFormatConfig.csvFileFormat",
-      "value" : "CSV"
-    }, {
-      "name" : "conf.dataFormatConfig.csvHeader",
-      "value" : "NO_HEADER"
-    }, {
-      "name" : "conf.dataFormatConfig.csvAllowExtraColumns",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvExtraColumnPrefix",
-      "value" : "_extra_"
-    }, {
-      "name" : "conf.dataFormatConfig.csvMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomDelimiter",
-      "value" : "|"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterFieldDelimiter",
-      "value" : "||"
-    }, {
-      "name" : "conf.dataFormatConfig.multiCharacterLineDelimiter",
-      "value" : "${str:unescapeJava('\\\\n')}"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomEscape",
-      "value" : "\\"
-    }, {
-      "name" : "conf.dataFormatConfig.csvCustomQuote",
-      "value" : "\""
-    }, {
-      "name" : "conf.dataFormatConfig.csvEnableComments",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.csvCommentMarker",
-      "value" : "#"
-    }, {
-      "name" : "conf.dataFormatConfig.csvIgnoreEmptyLines",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.csvRecordType",
-      "value" : "LIST_MAP"
-    }, {
-      "name" : "conf.dataFormatConfig.csvSkipStartLines",
-      "value" : 0
-    }, {
-      "name" : "conf.dataFormatConfig.parseNull",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.nullConstant",
-      "value" : "\\\\N"
-    }, {
-      "name" : "conf.dataFormatConfig.xmlRecordElement",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.preserveRootElement",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.includeFieldXpathAttributes",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.xPathNamespaceContext",
-      "value" : [ ]
-    }, {
-      "name" : "conf.dataFormatConfig.outputFieldAttributes",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
-      "value" : 4096
-    }, {
-      "name" : "conf.dataFormatConfig.logMode",
-      "value" : "COMMON_LOG_FORMAT"
-    }, {
-      "name" : "conf.dataFormatConfig.logMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.retainOriginalLine",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.customLogFormat",
-      "value" : "%h %l %u %t \"%r\" %>s %b"
-    }, {
-      "name" : "conf.dataFormatConfig.regex",
-      "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
-    }, {
-      "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
-      "value" : [ {
-        "fieldPath" : "/",
-        "group" : 1
-      } ]
-    }, {
-      "name" : "conf.dataFormatConfig.grokPatternDefinition",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.grokPattern",
-      "value" : "%{COMMONAPACHELOG}"
-    }, {
-      "name" : "conf.dataFormatConfig.onParseError",
-      "value" : "ERROR"
-    }, {
-      "name" : "conf.dataFormatConfig.maxStackTraceLines",
-      "value" : 50
-    }, {
-      "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
-      "value" : "%r [%t] %-5p %c %x - %m%n"
-    }, {
-      "name" : "conf.dataFormatConfig.avroSchema",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaRegistryUrls",
-      "value" : [ ]
-    }, {
-      "name" : "conf.dataFormatConfig.basicAuth",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaLookupMode",
-      "value" : "SUBJECT"
-    }, {
-      "name" : "conf.dataFormatConfig.subject",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.schemaId",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.avroSkipUnionIndex",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.protoDescriptorFile",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.messageType",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.isDelimited",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
-      "value" : 1024
-    }, {
-      "name" : "conf.dataFormatConfig.datagramMode",
-      "value" : "SYSLOG"
-    }, {
-      "name" : "conf.dataFormatConfig.typesDbPath",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.convertTime",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excludeInterval",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.authFilePath",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesMode",
-      "value" : "RAW_AND_INTERPRETED"
-    }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSize",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMs",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.netflowOutputValuesModeDatagram",
-      "value" : "RAW_AND_INTERPRETED"
-    }, {
-      "name" : "conf.dataFormatConfig.maxTemplateCacheSizeDatagram",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.templateCacheTimeoutMsDatagram",
-      "value" : -1
-    }, {
-      "name" : "conf.dataFormatConfig.wholeFileMaxObjectLen",
-      "value" : 8192
-    }, {
-      "name" : "conf.dataFormatConfig.rateLimit",
-      "value" : "-1"
-    }, {
-      "name" : "conf.dataFormatConfig.excelHeader",
-      "value" : null
-    }, {
-      "name" : "conf.dataFormatConfig.excelSkipCellsWithNoHeader",
-      "value" : false
-    }, {
-      "name" : "conf.dataFormatConfig.excelReadAllSheets",
-      "value" : true
-    }, {
-      "name" : "conf.dataFormatConfig.excelSheetNames",
-      "value" : [ ]
-    }, {
-      "name" : "conf.dataFormat",
-      "value" : "AVRO"
-    }, {
-      "name" : "conf.spoolDir",
-      "value" : "/out/bronze/weather2hive/*"
-    }, {
-      "name" : "conf.numberOfThreads",
-      "value" : 1
-    }, {
-      "name" : "conf.pathMatcherMode",
-      "value" : "GLOB"
-    }, {
-      "name" : "conf.filePattern",
-      "value" : "*"
-    }, {
-      "name" : "conf.useLastModified",
-      "value" : "LEXICOGRAPHICAL"
-    }, {
-      "name" : "conf.processSubdirectories",
-      "value" : false
-    }, {
-      "name" : "conf.overrunLimit",
-      "value" : 128
-    }, {
-      "name" : "conf.batchSize",
-      "value" : 999999
-    }, {
-      "name" : "conf.poolingTimeoutSecs",
-      "value" : 999999
-    }, {
-      "name" : "conf.maxSpoolFiles",
-      "value" : 1000
-    }, {
-      "name" : "conf.spoolingPeriod",
-      "value" : 5
-    }, {
-      "name" : "conf.initialFileToProcess",
-      "value" : null
-    }, {
-      "name" : "conf.errorArchiveDir",
-      "value" : null
-    }, {
-      "name" : "conf.postProcessing",
-      "value" : "NONE"
-    }, {
-      "name" : "conf.archiveDir",
-      "value" : null
-    }, {
-      "name" : "conf.retentionTimeMins",
-      "value" : 0
-    }, {
-      "name" : "hdfsConf.hdfsUri",
-      "value" : "hdfs://quickstart.cloudera:8020"
-    }, {
-      "name" : "hdfsConf.hdfsUser",
-      "value" : null
-    }, {
-      "name" : "hdfsConf.hdfsKerberos",
-      "value" : false
-    }, {
-      "name" : "hdfsConf.hdfsConfDir",
-      "value" : "/data/hive/conf"
-    }, {
-      "name" : "hdfsConf.hdfsConfigs",
-      "value" : [ { } ]
-    }, {
-      "name" : "stageOnRecordError",
-      "value" : "TO_ERROR"
-    } ],
-    "uiInfo" : {
-      "yPos" : 50,
-      "stageType" : "SOURCE",
-      "rawSource" : {
-        "configuration" : [ {
-          "name" : "fileName"
-        } ]
-      },
-      "icon" : "hdfs-multithreaded.png",
-      "description" : "Читаем авро, которые спарковая джоба подготовила нам из сырых данных",
-      "label" : "Чтение данных от спарка",
-      "xPos" : 60
-    },
-    "inputLanes" : [ ],
-    "outputLanes" : [ "HadoopFSStandalone_01OutputLane15866412923390" ],
-    "eventLanes" : [ ],
-    "services" : [ ]
-  }, {
     "instanceName" : "SchemaGenerator_01",
     "library" : "streamsets-datacollector-basic-lib",
     "stageName" : "com_streamsets_pipeline_stage_processor_schemagen_SchemaGeneratorDProcessor",
@@ -710,7 +396,7 @@
       "label" : "Schema Generator 1",
       "xPos" : 280
     },
-    "inputLanes" : [ "HadoopFSStandalone_01OutputLane15866412923390" ],
+    "inputLanes" : [ ],
     "outputLanes" : [ "SchemaGenerator_01OutputLane15866437656450" ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1133,12 +819,12 @@
     "title" : "ToHive",
     "description" : "",
     "created" : 1586627097620,
-    "lastModified" : 1586645517773,
+    "lastModified" : 1586682180702,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "73f97837-eb4e-4442-be5d-3d4e21d273f3",
-    "valid" : true,
+    "uuid" : "7ce1e323-8d5c-4733-be64-483697b6f6bf",
+    "valid" : false,
     "metadata" : {
       "labels" : [ ]
     },
@@ -1467,11 +1153,33 @@
       } ]
     } ]
   },
-  "valid" : true,
+  "valid" : false,
   "issues" : {
     "pipelineIssues" : [ ],
-    "stageIssues" : { },
-    "issueCount" : 0
+    "stageIssues" : {
+      "SchemaGenerator_01" : [ {
+        "instanceName" : "SchemaGenerator_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : "SchemaGenerator_01",
+        "configName" : null,
+        "message" : "VALIDATION_0003 - The first stage must be an origin",
+        "count" : 1,
+        "additionalInfo" : null,
+        "antennaDoctorMessages" : null
+      }, {
+        "instanceName" : "SchemaGenerator_01",
+        "serviceName" : null,
+        "level" : "STAGE",
+        "configGroup" : "SchemaGenerator_01",
+        "configName" : null,
+        "message" : "VALIDATION_0014 - Processor must have input streams",
+        "count" : 1,
+        "additionalInfo" : null,
+        "antennaDoctorMessages" : null
+      } ]
+    },
+    "issueCount" : 2
   },
-  "previewable" : true
+  "previewable" : false
 }

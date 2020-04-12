@@ -29,7 +29,7 @@ object JsonProcessor extends App{
   jsonDf.createOrReplaceTempView("json")
 
   val jsonSql = sparkSession.sql(
-    "select name as area, count(*) as records" +
+    "select name as f_area, count(*) as f_records" +
       " from json" +
       " group by name"
   )

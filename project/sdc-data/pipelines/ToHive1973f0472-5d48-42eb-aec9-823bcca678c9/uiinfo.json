@@ -8,19 +8,6 @@
     "label" : "Hive Metadata 1",
     "xPos" : 500
   },
-  "HadoopFSStandalone_01" : {
-    "yPos" : 50,
-    "stageType" : "SOURCE",
-    "rawSource" : {
-      "configuration" : [ {
-        "name" : "fileName"
-      } ]
-    },
-    "icon" : "hdfs-multithreaded.png",
-    "description" : "Читаем авро, которые спарковая джоба подготовила нам из сырых данных",
-    "label" : "Чтение данных от спарка",
-    "xPos" : 60
-  },
   "SchemaGenerator_01" : {
     "yPos" : 49,
     "stageType" : "PROCESSOR",

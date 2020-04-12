@@ -259,7 +259,7 @@ create table
 
 ==== Streamsets
 
-* Start pipeline BronzeLayerStream
+Check for dir: `~/sdc-stagelibs`
 
 === Завершение
 

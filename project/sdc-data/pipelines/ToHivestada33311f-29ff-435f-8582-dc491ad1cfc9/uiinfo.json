@@ -1,0 +1,52 @@
+{
+  "HiveMetadata_01" : {
+    "outputStreamLabels" : [ "Data", "Metadata" ],
+    "yPos" : 110,
+    "stageType" : "PROCESSOR",
+    "icon" : "metadata.png",
+    "description" : "",
+    "label" : "Hive Metadata 1",
+    "xPos" : 280
+  },
+  "HadoopFSStandalone_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "rawSource" : {
+      "configuration" : [ {
+        "name" : "fileName"
+      } ]
+    },
+    "icon" : "hdfs-multithreaded.png",
+    "description" : "Читаем авро, которые спарковая джоба подготовила нам из сырых данных",
+    "label" : "Чтение данных от спарка",
+    "xPos" : 60
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : "5",
+      "timeout" : 30000,
+      "writeToDestinations" : true,
+      "executeLifecycleEvents" : false,
+      "showHeader" : true,
+      "showFieldType" : true,
+      "rememberMe" : true
+    }
+  },
+  "HadoopFS_01" : {
+    "yPos" : 40,
+    "stageType" : "TARGET",
+    "icon" : "hdfs.png",
+    "description" : "",
+    "label" : "Hadoop FS 1",
+    "xPos" : 500
+  },
+  "HiveMetastore_01" : {
+    "yPos" : 170,
+    "stageType" : "TARGET",
+    "icon" : "hive.png",
+    "description" : "",
+    "label" : "Hive Metastore 1",
+    "xPos" : 500
+  }
+}

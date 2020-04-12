@@ -4,7 +4,7 @@
 [0m[[0m[0minfo[0m] [0m[0mMerging files...[0m
 [0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/MANIFEST.MF' with strategy 'discard'[0m
 [0m[[0m[33mwarn[0m] [0m[0mStrategy 'discard' was applied to a file[0m
-[0m[[0m[0minfo[0m] [0m[0mSHA-1: e9d404937a7ee37160e2114a900b5a7ac9b52f46[0m
+[0m[[0m[0minfo[0m] [0m[0mSHA-1: 320918b46f6a61f894ddfc693bfbf5bd85094a52[0m
 [0m[[0m[0mdebug[0m] [0m[0mPackaging /home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/target/scala-2.11/jsonprocessor-assembly-1.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	library.properties[0m
