@@ -1,16 +1,46 @@
 = Проект выпускника курсов OTUS Data engineering Клюсы А.Ю.
 
+== Доделать
+
+Дописать запрос, чтобы повыбирать основные поля и
+составные поля (через точку которые)...
+
+Запускать
+ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9
+после очередного вызова спарка?
+И в конце, по событию закрытия файла в хадупе,
+финишировать эту задачу.
+Возможно, так получится не держать все время
+заблокированной таблицу weather_all
+Или как-то по-другому погуглить.
+
+Также, возможно, доделать DWH серебряного слоя,
+и сделать одну витринку...
+
+Возможно, вместо якорной модели выбрать
+другую модель (тех чуваком, что вначале ее создавали).
+
+Возможно, так удастся закончить проект вовремя :)
+
+Ну и... метадата + метастор у стримсетс
+отлично реализуют модель dwh, когда любой новый атрибут
+просто добавляется в общую таблицу...
+
+Поскольку я выполняю flatten columns
+при помощи того же стримсетс, то любые атрибуты и
+субатрибуты - это просто новые стоблцы.
+Хранилище получается денормализованным.
+Скажем, если добавляется атрибут координаты, а
+у него есть субатрибуты широта и долгота,
+то в таблице это будут два дополнительных
+поля координаты.широта и координаты.долгота.
+
+То есть, реализуем модель не якорную, а
+противоположную.
+
+Якорную модель я уже изучил в ДЗ по моделированию DWH.
+
 == Current
-
-=== spark executor
-
-[source]
-----
-cat fs1_events_f49dba62-59fb-484c-8e25-abb90f16d2a0.txt 
-�{"header":{"stageCreator":"HadoopFS_01","sourceId":"event:file-closed:1:1586448120032","stagesPath":"HadoopFS_01","trackingId":"event:file-closed:1:1586448120032::HadoopFS_01","previousTrackingId":null,"raw":null,"rawMimeType":null,"errorDataCollectorId":null,"errorPipelineName":null,"errorStage":null,"errorStageLabel":null,"errorCode":null,"errorMessage":null,"errorTimestamp":0,"errorStackTrace":null,"errorJobId":null,"values":{"sdc.event.version":"1","sdc.event.creation_timestamp":"1586448120032","sdc.event.type":"file-closed"}},"value":{"type":"MAP","value":{"filename":{"type":"STRING","value":"file_0ea69534-d866-4a91-b8fe-3d7b346eb335.json","dqpath":"/filename","sqpath":"/filename"},"filepath":{"type":"STRING","value":"/out/bronze/weather/file_0ea69534-d866-4a91-b8fe-3d7b346eb335.json","dqpath":"/filepath","sqpath":"/filepath"},"length":{"type":"LONG","value":"207079","dqpath":"/length","sqpath":"/length"}},"dqpath":"","sqpath":""}}
-----
-
-hdfs://quickstart.cloudera:8020
 
 - Организовываем якорную модель DWH серебряного слоя
   (погода или все-таки реддит)
@@ -50,27 +80,6 @@ hdfs://quickstart.cloudera:8020
 - Опять же, спарк можно вызывать из стримсета
 - Если и мониторинг прикрутить в стримсете, то
   это будет неплохая экосистема внутри.
-
-== После консультации
-
-Основное, что подключить:
-
-- Сделать проброс хдфс (см. описание квикстарта клаудеры) +
-  пробросить в хоум, по инструкции +
-  хотя, если хдфс выйдет небольшим, то, может, прямо в гитхаб... )
-
-- После всего этого как-то добавить эти файлы +
-  (и стримсета и хдфс и, может, еще что-то будет)
-  в гит с инструкцией развернуть их в хоуме до старта контейнера +
-  желательно когда проект будет завершен, чтобы там уже все было
-
-- спарк + скала + датафрейм/датасет апи серебряного слоя,
-  который, скажем, выбирает что-то из всей инфы и пишет в тот же хайв или вертику
-
-- https://stackoverflow.com/questions/38521048/hdfs-as-volume-in-cloudera-quickstart-docker
-
-
-
 
 == Постановка задачи
 
@@ -123,7 +132,11 @@ streamsets stage libraries maps to +
 
 В домашнем каталоге должен лежать каталог `sdc-stagelibs`
 с необходимым содержимым (доинсталлированные библиотеки).
-Содержимое прилагается отдельно.
+Содержимое прилагается отдельно или просто после запуска доставляются
+необходимые стейджы стримсетс.
+
+Так сделано потому, чтобы не перегружать репозиторий гита
+лишними 500+ мегабайт
 
 Потом он в docker-compose yaml мапится в соотв. каталог докера.
 
@@ -182,7 +195,7 @@ docker attach container-id
 
 === Загрузка информации из публичного источника (rss, rest, иное)
 
-Возможно, использовать стримсет и его коннекторы
+Используем стримсет и его коннекторы
 
 https://rapidapi.com/collection/top-weather-apis?utm_source=google&utm_medium=cpc&utm_campaign=1674315309_64978333346&utm_term=weather%20api%20free_b&utm_content=&gclid=Cj0KCQjwpfHzBRCiARIsAHHzyZoekUFE3eg8G3S297tNcOwMg8UkDKHFF32FnGOIW3XMhEMc6_nv7BkaAvziEALw_wcB
 
@@ -209,46 +222,22 @@ https://api.openweathermap.org/data/2.5/find?lat=46.4859841&lon=30.7249136&cnt=5
 
 [source, sql]
 ----
-create database
-  bronze
-  comment 'bronze layer database'
-;
-
-use bronze;
 ----
 
 ====== docker bash
 
 [source, bash]
 ----
-su --command="hdfs dfs -put /media/shared_from_local/export/ /" hdfs
-
-?
-su --command="hdfs dfs -chmod -R 777 /export" hdfs
 ----
 
 ====== Hive
 
 [source, sql]
 ----
-use bronze;
-import table tsource from '/export/bronze/tsource';
 ----
 
 [source, sql]
 ----
--- If table was not previously imported
-create table
-  tsource (
-    text string,
-    times bigint,
-    name string
-  )
-  comment 'raw data from source weather'
-  partitioned by (keypartition string)
-  clustered by (times) into 2 buckets
-  stored as orc
-;
 ----
 
 ====== Impala
@@ -273,13 +262,10 @@ Check for dir: `~/sdc-stagelibs`
 
 [source, sql]
 ----
-use bronze;
-export table tsource to '/export/bronze/tsource/';
 ----
 
 ====== docker bash
 
 [source, bash]
 ----
-rm -f -R /media/shared_from_local/export/* && su  --command="hdfs dfs -get /export/* /media/shared_from_local/export/" hdfs
 ----

@@ -4,11 +4,11 @@ Ivy Default Cache set to: /home/sdc/.ivy2/cache
 The jars for the packages stored in: /home/sdc/.ivy2/jars
 :: loading settings :: url = jar:file:/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
 org.apache.spark#spark-avro_2.11 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-0ea39cd1-a656-4014-a243-be6f591ec661;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-0e0932f9-1838-4180-96a4-f6f6d3c67475;1.0
 	confs: [default]
 	found org.apache.spark#spark-avro_2.11;2.4.3 in central
 	found org.spark-project.spark#unused;1.0.0 in central
-:: resolution report :: resolve 367ms :: artifacts dl 8ms
+:: resolution report :: resolve 549ms :: artifacts dl 15ms
 	:: modules in use:
 	org.apache.spark#spark-avro_2.11;2.4.3 from central in [default]
 	org.spark-project.spark#unused;1.0.0 from central in [default]
@@ -18,7 +18,7 @@ org.apache.spark#spark-avro_2.11 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-0ea39cd1-a656-4014-a243-be6f591ec661
+:: retrieving :: org.apache.spark#spark-submit-parent-0e0932f9-1838-4180-96a4-f6f6d3c67475
 	confs: [default]
-	0 artifacts copied, 2 already retrieved (0kB/7ms)
-20/04/12 11:21:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 2 already retrieved (0kB/13ms)
+20/04/12 12:23:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable

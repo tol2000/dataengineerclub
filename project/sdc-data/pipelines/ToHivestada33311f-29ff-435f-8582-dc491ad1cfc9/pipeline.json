@@ -4,7 +4,7 @@
   "pipelineId" : "ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9",
   "title" : "ToHiveStandalone",
   "description" : "",
-  "uuid" : "d41f3c78-212b-4b49-aba7-51cd86366dca",
+  "uuid" : "2e76c34d-3521-4ab9-872f-a0102afd57e2",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -679,7 +679,11 @@
       "value" : "weather_all"
     }, {
       "name" : "partitionList",
-      "value" : [ ]
+      "value" : [ {
+        "name" : "dt",
+        "valueType" : "STRING",
+        "valueEL" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"yyyy-MM-dd-HH-mm\")}"
+      } ]
     }, {
       "name" : "externalTable",
       "value" : false
@@ -730,7 +734,7 @@
       "icon" : "metadata.png",
       "description" : "",
       "label" : "Hive Metadata 1",
-      "xPos" : 280
+      "xPos" : 278
     },
     "inputLanes" : [ "HadoopFSStandalone_01OutputLane15866412923390" ],
     "outputLanes" : [ "HiveMetadata_01OutputLane15863590295580", "HiveMetadata_01OutputLane15863590295581" ],
@@ -749,7 +753,7 @@
       "value" : null
     }, {
       "name" : "hdfsTargetConfigBean.dirPathTemplateInHeader",
-      "value" : false
+      "value" : true
     }, {
       "name" : "hdfsTargetConfigBean.dirPathTemplate",
       "value" : "/tmp/out/${YYYY()}-${MM()}-${DD()}-${hh()}"
@@ -767,7 +771,7 @@
       "value" : 0
     }, {
       "name" : "hdfsTargetConfigBean.idleTimeout",
-      "value" : "${1 * HOURS}"
+      "value" : "-1"
     }, {
       "name" : "hdfsTargetConfigBean.compression",
       "value" : "NONE"
@@ -1058,11 +1062,11 @@
     "title" : "ToHiveStandalone",
     "description" : "",
     "created" : 1586681985494,
-    "lastModified" : 1586690913839,
+    "lastModified" : 1586692881163,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "45bf4bfe-ef69-4a28-a5ce-9e6839dbb9fd",
+    "uuid" : "c9f0e99c-32fd-4879-a6af-184018c410ea",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

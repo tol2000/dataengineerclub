@@ -6,7 +6,7 @@
     "icon" : "metadata.png",
     "description" : "",
     "label" : "Hive Metadata 1",
-    "xPos" : 280
+    "xPos" : 278
   },
   "HadoopFSStandalone_01" : {
     "yPos" : 50,
