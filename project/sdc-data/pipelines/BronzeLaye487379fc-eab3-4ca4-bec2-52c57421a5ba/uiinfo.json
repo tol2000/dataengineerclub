@@ -1,4 +1,44 @@
 {
+  "FieldPivoter_01" : {
+    "yPos" : 53.915008544921875,
+    "stageType" : "PROCESSOR",
+    "icon" : "pivoter.png",
+    "description" : "",
+    "label" : "Атрибуты в столбцы",
+    "xPos" : 599.2689208984375
+  },
+  "ExpressionEvaluator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
+    "label" : "Генерирование доп. полей",
+    "xPos" : 258.5411682128906
+  },
+  "FieldRemover_01" : {
+    "yPos" : 278.2599792480469,
+    "stageType" : "PROCESSOR",
+    "icon" : "filter.png",
+    "description" : "",
+    "label" : "Удаление ненужных полей",
+    "xPos" : 410.5531921386719
+  },
+  "StreamSelector_02" : {
+    "yPos" : 94.13865661621094,
+    "stageType" : "PROCESSOR",
+    "icon" : "laneSelector.png",
+    "description" : "",
+    "label" : "Переключатель автовызова ToHive",
+    "xPos" : 1423.287841796875
+  },
+  "StreamSelector_01" : {
+    "yPos" : 383.93482971191406,
+    "stageType" : "PROCESSOR",
+    "icon" : "laneSelector.png",
+    "description" : "",
+    "label" : "Переключатель отладки",
+    "xPos" : 1281.6092529296875
+  },
   ":pipeline:" : {
     "previewConfig" : {
       "previewSource" : "CONFIGURED_SOURCE",
@@ -11,53 +51,13 @@
       "rememberMe" : true
     }
   },
-  "HTTPClient_01" : {
-    "yPos" : 50,
-    "stageType" : "SOURCE",
+  "HTTPClient_02" : {
+    "yPos" : 232.89840698242188,
+    "stageType" : "TARGET",
     "icon" : "httpclient.png",
-    "description" : "Extracts weather through rest api",
-    "label" : "Извлечение погоды",
-    "xPos" : 58.72993469238281
-  },
-  "ExpressionEvaluator_01" : {
-    "yPos" : 50,
-    "stageType" : "PROCESSOR",
-    "icon" : "expression.png",
-    "description" : "Генерирует YYYY-MM-DD-HH для партицирования, поле name для определения источника и пр...",
-    "label" : "Генерирование доп. полей",
-    "xPos" : 258.5411682128906
-  },
-  "FieldRemover_01" : {
-    "yPos" : 50,
-    "stageType" : "PROCESSOR",
-    "icon" : "filter.png",
     "description" : "",
-    "label" : "Удаление ненужных полей",
-    "xPos" : 455.95294189453125
-  },
-  "FieldPivoter_01" : {
-    "yPos" : 48.87059020996094,
-    "stageType" : "PROCESSOR",
-    "icon" : "pivoter.png",
-    "description" : "",
-    "label" : "Атрибуты в столбцы",
-    "xPos" : 652.2352905273438
-  },
-  "FieldFlattener_01" : {
-    "yPos" : 47.741180419921875,
-    "stageType" : "PROCESSOR",
-    "icon" : "flattener.png",
-    "description" : "",
-    "label" : "Преобразование в плоскую таблицу",
-    "xPos" : 844
-  },
-  "FieldRenamer_01" : {
-    "yPos" : 224.69173431396484,
-    "stageType" : "PROCESSOR",
-    "icon" : "edit.png",
-    "description" : "",
-    "label" : "Переименование столбцов",
-    "xPos" : 1055.744140625
+    "label" : "HTTP Client для вызова Spark Pipeline",
+    "xPos" : 1391.782470703125
   },
   "HadoopFS_01" : {
     "yPos" : 18.670223236083984,
@@ -67,36 +67,60 @@
     "label" : "Запись JSON файлов в HDFS",
     "xPos" : 1258.7288818359375
   },
-  "HTTPClient_02" : {
-    "yPos" : 135.12994384765625,
-    "stageType" : "TARGET",
-    "icon" : "httpclient.png",
-    "description" : "",
-    "label" : "HTTP Client для вызова Spark Pipeline",
-    "xPos" : 1425.724609375
-  },
-  "StreamSelector_01" : {
-    "yPos" : 277.2489471435547,
+  "FieldFlattener_01" : {
+    "yPos" : 257.08457946777344,
     "stageType" : "PROCESSOR",
-    "icon" : "laneSelector.png",
+    "icon" : "flattener.png",
     "description" : "",
-    "label" : "Переключатель отладки",
-    "xPos" : 1260.01806640625
+    "label" : "Преобразование в плоскую таблицу",
+    "xPos" : 740.5894165039062
+  },
+  "HTTPClient_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "icon" : "httpclient.png",
+    "description" : "Extracts weather through rest api",
+    "label" : "Извлечение погоды",
+    "xPos" : 58.72993469238281
   },
   "Trash_01" : {
-    "yPos" : 409.7797088623047,
+    "yPos" : 405.96949768066406,
     "stageType" : "TARGET",
     "icon" : "trash.png",
     "description" : "",
     "label" : "Заглушка",
-    "xPos" : 1486.4217529296875
+    "xPos" : 1491.501953125
+  },
+  "Trash_02" : {
+    "yPos" : 162.23831939697266,
+    "stageType" : "TARGET",
+    "icon" : "trash.png",
+    "description" : "Поток никуда далее не передается, т.к. запускается другой пайплайн (ToHiveStandalone), который вычитывает созданные в этой ветке файлы.",
+    "label" : "Заглушка",
+    "xPos" : 1851.495849609375
   },
   "LocalFS_03" : {
-    "yPos" : 288.2083282470703,
+    "yPos" : 312.3396759033203,
     "stageType" : "TARGET",
     "icon" : "localfilesystem.png",
     "description" : "",
     "label" : "Дублирование в локальную ФС",
-    "xPos" : 1486.5137939453125
+    "xPos" : 1656.703369140625
+  },
+  "FieldRenamer_01" : {
+    "yPos" : 188.11969757080078,
+    "stageType" : "PROCESSOR",
+    "icon" : "edit.png",
+    "description" : "",
+    "label" : "Переименование столбцов",
+    "xPos" : 993.949951171875
+  },
+  "StartPipeline_01" : {
+    "yPos" : 47.88121032714844,
+    "stageType" : "PROCESSOR",
+    "icon" : "pipeline.png",
+    "description" : "",
+    "label" : "Загрузка в Hive",
+    "xPos" : 1630.2347412109375
   }
 }

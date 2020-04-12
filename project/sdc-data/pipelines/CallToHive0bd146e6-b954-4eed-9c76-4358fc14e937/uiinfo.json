@@ -1,0 +1,46 @@
+{
+  "CronScheduler_01" : {
+    "yPos" : 50,
+    "stageType" : "SOURCE",
+    "icon" : "scheduler.png",
+    "description" : "",
+    "label" : "Планировщик",
+    "xPos" : 60
+  },
+  "ExpressionEvaluator_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "expression.png",
+    "description" : "",
+    "label" : "Запись для журнала",
+    "xPos" : 500
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : 10,
+      "timeout" : 30000,
+      "writeToDestinations" : false,
+      "executeLifecycleEvents" : false,
+      "showHeader" : false,
+      "showFieldType" : true,
+      "rememberMe" : false
+    }
+  },
+  "StartPipeline_01" : {
+    "yPos" : 50,
+    "stageType" : "PROCESSOR",
+    "icon" : "pipeline.png",
+    "description" : "",
+    "label" : "Старт ToHive",
+    "xPos" : 280
+  },
+  "LocalFS_01" : {
+    "yPos" : 50,
+    "stageType" : "TARGET",
+    "icon" : "localfilesystem.png",
+    "description" : "",
+    "label" : "Журнал",
+    "xPos" : 720
+  }
+}

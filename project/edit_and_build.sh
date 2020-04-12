@@ -1,3 +1,3 @@
 #!/bin/sh
-mcedit jsonprocessor/src/main/scala/JsonProcessor.scala
+nano jsonprocessor/src/main/scala/JsonProcessor.scala
 source ./build.sh

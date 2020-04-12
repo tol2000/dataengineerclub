@@ -4,7 +4,7 @@
   "pipelineId" : "ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9",
   "title" : "ToHiveStandalone",
   "description" : "",
-  "uuid" : "2e76c34d-3521-4ab9-872f-a0102afd57e2",
+  "uuid" : "11e3a5d2-fd73-43de-b4c4-8be361e4e87d",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -680,7 +680,7 @@
     }, {
       "name" : "partitionList",
       "value" : [ {
-        "name" : "dt",
+        "name" : "keypartition",
         "valueType" : "STRING",
         "valueEL" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"yyyy-MM-dd-HH-mm\")}"
       } ]
@@ -734,7 +734,7 @@
       "icon" : "metadata.png",
       "description" : "",
       "label" : "Hive Metadata 1",
-      "xPos" : 278
+      "xPos" : 277
     },
     "inputLanes" : [ "HadoopFSStandalone_01OutputLane15866412923390" ],
     "outputLanes" : [ "HiveMetadata_01OutputLane15863590295580", "HiveMetadata_01OutputLane15863590295581" ],
@@ -957,7 +957,7 @@
     },
     "inputLanes" : [ "HiveMetadata_01OutputLane15863590295580" ],
     "outputLanes" : [ ],
-    "eventLanes" : [ ],
+    "eventLanes" : [ "HadoopFS_01_EventLane" ],
     "services" : [ ]
   }, {
     "instanceName" : "HiveMetastore_01",
@@ -1014,7 +1014,7 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 170,
+      "yPos" : 216,
       "stageType" : "TARGET",
       "icon" : "hive.png",
       "description" : "",
@@ -1022,6 +1022,520 @@
       "xPos" : 500
     },
     "inputLanes" : [ "HiveMetadata_01OutputLane15863590295581" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ "HiveMetastore_01_EventLane" ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "ExpressionEvaluator_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "expressionProcessorConfigs",
+      "value" : [ {
+        "fieldToSet" : "/text",
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"yyyy-MM-dd-HH-mm-ss\")} - Данные добавлены"
+      } ]
+    }, {
+      "name" : "headerAttributeConfigs",
+      "value" : [ { } ]
+    }, {
+      "name" : "fieldAttributeConfigs",
+      "value" : [ {
+        "fieldToSet" : "/"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 116,
+      "stageType" : "PROCESSOR",
+      "icon" : "expression.png",
+      "description" : "",
+      "label" : "Запись для журнала",
+      "xPos" : 812
+    },
+    "inputLanes" : [ "HadoopFS_01_EventLane" ],
+    "outputLanes" : [ "ExpressionEvaluator_01OutputLane15867211935380" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "ExpressionEvaluator_02",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_expression_ExpressionDProcessor",
+    "stageVersion" : "2",
+    "configuration" : [ {
+      "name" : "expressionProcessorConfigs",
+      "value" : [ {
+        "fieldToSet" : "/text",
+        "expression" : "${time:extractStringFromDateTZ(time:now(), \"Europe/Kiev\", \"yyyy-MM-dd-HH-mm-ss\")} - Метаданные обновлены"
+      } ]
+    }, {
+      "name" : "headerAttributeConfigs",
+      "value" : [ { } ]
+    }, {
+      "name" : "fieldAttributeConfigs",
+      "value" : [ {
+        "fieldToSet" : "/"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 304,
+      "stageType" : "PROCESSOR",
+      "icon" : "expression.png",
+      "description" : "",
+      "label" : "Запись для журнала",
+      "xPos" : 704
+    },
+    "inputLanes" : [ "HiveMetastore_01_EventLane" ],
+    "outputLanes" : [ "ExpressionEvaluator_02OutputLane15867212260900" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "LocalFS_02",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_localfilesystem_LocalFileSystemDTarget",
+    "stageVersion" : "4",
+    "configuration" : [ {
+      "name" : "configs.uniquePrefix",
+      "value" : "sdc-${sdc:id()}"
+    }, {
+      "name" : "configs.fileNameSuffix",
+      "value" : "txt"
+    }, {
+      "name" : "configs.dirPathTemplateInHeader",
+      "value" : false
+    }, {
+      "name" : "configs.dirPathTemplate",
+      "value" : "/data/out/logs/ToHiveMetadata/${YYYY()}-${MM()}-${DD()}-${hh()}-${mm()}-${ss()}"
+    }, {
+      "name" : "configs.timeZoneID",
+      "value" : "Europe/Kiev"
+    }, {
+      "name" : "configs.timeDriver",
+      "value" : "${time:now()}"
+    }, {
+      "name" : "configs.maxRecordsPerFile",
+      "value" : 0
+    }, {
+      "name" : "configs.maxFileSize",
+      "value" : 0
+    }, {
+      "name" : "configs.idleTimeout",
+      "value" : "-1"
+    }, {
+      "name" : "configs.compression",
+      "value" : "NONE"
+    }, {
+      "name" : "configs.otherCompression",
+      "value" : null
+    }, {
+      "name" : "configs.fileType",
+      "value" : "TEXT"
+    }, {
+      "name" : "configs.keyEl",
+      "value" : "${uuid()}"
+    }, {
+      "name" : "configs.lateRecordsLimit",
+      "value" : "${1 * HOURS}"
+    }, {
+      "name" : "configs.rollIfHeader",
+      "value" : false
+    }, {
+      "name" : "configs.rollHeaderName",
+      "value" : "roll"
+    }, {
+      "name" : "configs.lateRecordsAction",
+      "value" : "SEND_TO_ERROR"
+    }, {
+      "name" : "configs.lateRecordsDirPathTemplate",
+      "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
+    }, {
+      "name" : "configs.dataFormat",
+      "value" : "TEXT"
+    }, {
+      "name" : "configs.hdfsPermissionCheck",
+      "value" : true
+    }, {
+      "name" : "configs.permissionEL",
+      "value" : null
+    }, {
+      "name" : "configs.skipOldTempFileRecovery",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.charset",
+      "value" : "UTF-8"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvFileFormat",
+      "value" : "CSV"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLines",
+      "value" : true
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+      "value" : " "
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvQuoteMode",
+      "value" : "MINIMAL"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.jsonMode",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textFieldPath",
+      "value" : "/text"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textRecordSeparator",
+      "value" : "\\n"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textFieldMissingAction",
+      "value" : "ERROR"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textEmptyLineIfNull",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroSchemaSource",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroSchema",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.registerSchema",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+      "value" : [ ]
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrls",
+      "value" : [ ]
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfo",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaLookupMode",
+      "value" : "SUBJECT"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.subject",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.subjectToRegister",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaId",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroCompression",
+      "value" : "NULL"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.binaryFieldPath",
+      "value" : "/"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.protoDescriptorFile",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.messageType",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.fileNameEL",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.wholeFileExistsAction",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.checksumAlgorithm",
+      "value" : "MD5"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlPrettyPrint",
+      "value" : true
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlValidateSchema",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlSchema",
+      "value" : null
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 301,
+      "stageType" : "TARGET",
+      "icon" : "localfilesystem.png",
+      "description" : "",
+      "label" : "Журнал",
+      "xPos" : 917
+    },
+    "inputLanes" : [ "ExpressionEvaluator_02OutputLane15867212260900" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "LocalFS_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_localfilesystem_LocalFileSystemDTarget",
+    "stageVersion" : "4",
+    "configuration" : [ {
+      "name" : "configs.uniquePrefix",
+      "value" : "sdc-${sdc:id()}"
+    }, {
+      "name" : "configs.fileNameSuffix",
+      "value" : "txt"
+    }, {
+      "name" : "configs.dirPathTemplateInHeader",
+      "value" : false
+    }, {
+      "name" : "configs.dirPathTemplate",
+      "value" : "/data/out/logs/ToHiveData/${YYYY()}-${MM()}-${DD()}-${hh()}-${mm()}-${ss()}"
+    }, {
+      "name" : "configs.timeZoneID",
+      "value" : "Europe/Kiev"
+    }, {
+      "name" : "configs.timeDriver",
+      "value" : "${time:now()}"
+    }, {
+      "name" : "configs.maxRecordsPerFile",
+      "value" : 0
+    }, {
+      "name" : "configs.maxFileSize",
+      "value" : 0
+    }, {
+      "name" : "configs.idleTimeout",
+      "value" : "-1"
+    }, {
+      "name" : "configs.compression",
+      "value" : "NONE"
+    }, {
+      "name" : "configs.otherCompression",
+      "value" : null
+    }, {
+      "name" : "configs.fileType",
+      "value" : "TEXT"
+    }, {
+      "name" : "configs.keyEl",
+      "value" : "${uuid()}"
+    }, {
+      "name" : "configs.lateRecordsLimit",
+      "value" : "${1 * HOURS}"
+    }, {
+      "name" : "configs.rollIfHeader",
+      "value" : false
+    }, {
+      "name" : "configs.rollHeaderName",
+      "value" : "roll"
+    }, {
+      "name" : "configs.lateRecordsAction",
+      "value" : "SEND_TO_ERROR"
+    }, {
+      "name" : "configs.lateRecordsDirPathTemplate",
+      "value" : "/tmp/late/${YYYY()}-${MM()}-${DD()}"
+    }, {
+      "name" : "configs.dataFormat",
+      "value" : "TEXT"
+    }, {
+      "name" : "configs.hdfsPermissionCheck",
+      "value" : true
+    }, {
+      "name" : "configs.permissionEL",
+      "value" : null
+    }, {
+      "name" : "configs.skipOldTempFileRecovery",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.charset",
+      "value" : "UTF-8"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvFileFormat",
+      "value" : "CSV"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvHeader",
+      "value" : "NO_HEADER"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLines",
+      "value" : true
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+      "value" : " "
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomDelimiter",
+      "value" : "|"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomEscape",
+      "value" : "\\"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvCustomQuote",
+      "value" : "\""
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.csvQuoteMode",
+      "value" : "MINIMAL"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.jsonMode",
+      "value" : "MULTIPLE_OBJECTS"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textFieldPath",
+      "value" : "/text"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textRecordSeparator",
+      "value" : "\\n"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textFieldMissingAction",
+      "value" : "ERROR"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.textEmptyLineIfNull",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroSchemaSource",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroSchema",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.registerSchema",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+      "value" : [ ]
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaRegistryUrls",
+      "value" : [ ]
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfo",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaLookupMode",
+      "value" : "SUBJECT"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.subject",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.subjectToRegister",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.schemaId",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.avroCompression",
+      "value" : "NULL"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.binaryFieldPath",
+      "value" : "/"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.protoDescriptorFile",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.messageType",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.fileNameEL",
+      "value" : null
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.wholeFileExistsAction",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.checksumAlgorithm",
+      "value" : "MD5"
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlPrettyPrint",
+      "value" : true
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlValidateSchema",
+      "value" : false
+    }, {
+      "name" : "configs.dataGeneratorFormatConfig.xmlSchema",
+      "value" : null
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 74,
+      "stageType" : "TARGET",
+      "icon" : "localfilesystem.png",
+      "description" : "",
+      "label" : "Журнал",
+      "xPos" : 1029
+    },
+    "inputLanes" : [ "ExpressionEvaluator_01OutputLane15867211935380" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "PipelineFinisherExecutor_01",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_executor_finishpipeline_PipelineFinisherDExecutor",
+    "stageVersion" : "1",
+    "configuration" : [ {
+      "name" : "config.resetOffset",
+      "value" : false
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 221,
+      "stageType" : "EXECUTOR",
+      "icon" : "finisher.png",
+      "description" : "Завершаем для того, чтобы отпустить таблицу.\nЗапустится снова при создании нового json-файла для загрузки.",
+      "label" : "Завершение пайплайна",
+      "xPos" : 1087
+    },
+    "inputLanes" : [ "HadoopFS_01_EventLane" ],
     "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1062,11 +1576,11 @@
     "title" : "ToHiveStandalone",
     "description" : "",
     "created" : 1586681985494,
-    "lastModified" : 1586692881163,
+    "lastModified" : 1586727426813,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "c9f0e99c-32fd-4879-a6af-184018c410ea",
+    "uuid" : "3ecc2d02-a1d3-4e50-9e40-30478591319b",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "CallToHive0bd146e6-b954-4eed-9c76-4358fc14e937",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "RUNNING",
+  "message" : null,
+  "timeStamp" : 1586728201039,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false,
+    "RUNTIME_PARAMETERS" : { },
+    "INTERCEPTOR_CONFIGS" : [ ]
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "CallToHive0bd146e6-b954-4eed-9c76-4358fc14e937"
+}

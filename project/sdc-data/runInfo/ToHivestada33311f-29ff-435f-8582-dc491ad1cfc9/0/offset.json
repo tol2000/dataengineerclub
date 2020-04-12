@@ -1,7 +1,7 @@
 {
   "offsets" : {
     "$com.streamsets.pipeline.stage.origin.hdfs.HdfsSource.offset.version$" : "1",
-    "/out/bronze/weather2hive/2020-04-12-12-23-03/part-00000-8ca6bc2a-9868-424b-95fc-5b0d2ec3dcd8-c000.avro" : "{\"POS\":\"-1\"}"
+    "/out/bronze/weather2hive/2020-04-12-23-16-37/part-00000-2ac9adbb-407c-41ce-8330-4d81eeff9900-c000.avro" : "{\"POS\":\"-1\"}"
   },
   "version" : 2
 }

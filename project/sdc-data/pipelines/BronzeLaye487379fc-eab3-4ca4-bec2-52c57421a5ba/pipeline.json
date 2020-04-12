@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
   "title" : "BronzeLayerSourceStream2HDFS",
   "description" : "",
-  "uuid" : "88b096d3-e655-429f-816d-913e199403f7",
+  "uuid" : "567dc577-2da2-496c-8176-3b556438758c",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -60,6 +60,9 @@
       "value" : "tsource"
     }, {
       "key" : "debug",
+      "value" : "false"
+    }, {
+      "key" : "autoToHive",
       "value" : "false"
     } ]
   }, {
@@ -792,7 +795,7 @@
       "icon" : "httpclient.png",
       "description" : "Extracts weather through rest api",
       "label" : "Извлечение погоды",
-      "xPos" : 60
+      "xPos" : 58.72993469238281
     },
     "inputLanes" : [ ],
     "outputLanes" : [ "HTTPClient_01OutputLane15852562706180" ],
@@ -862,12 +865,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 50,
+      "yPos" : 278.2599792480469,
       "stageType" : "PROCESSOR",
       "icon" : "filter.png",
       "description" : "",
       "label" : "Удаление ненужных полей",
-      "xPos" : 455.95294189453125
+      "xPos" : 410.5531921386719
     },
     "inputLanes" : [ "ExpressionEvaluator_01OutputLane15860331692140" ],
     "outputLanes" : [ "FieldRemover_01OutputLane15863651495150" ],
@@ -910,12 +913,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 48.87059020996094,
+      "yPos" : 53.915008544921875,
       "stageType" : "PROCESSOR",
       "icon" : "pivoter.png",
       "description" : "",
       "label" : "Атрибуты в столбцы",
-      "xPos" : 652.2352905273438
+      "xPos" : 599.2689208984375
     },
     "inputLanes" : [ "FieldRemover_01OutputLane15863651495150" ],
     "outputLanes" : [ "FieldPivoter_01OutputLane15863745409000" ],
@@ -958,12 +961,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 47.741180419921875,
+      "yPos" : 257.08457946777344,
       "stageType" : "PROCESSOR",
       "icon" : "flattener.png",
       "description" : "",
       "label" : "Преобразование в плоскую таблицу",
-      "xPos" : 844
+      "xPos" : 740.5894165039062
     },
     "inputLanes" : [ "FieldPivoter_01OutputLane15863745409000" ],
     "outputLanes" : [ "FieldFlattener_01OutputLane15863748437130" ],
@@ -1000,12 +1003,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 224.69173431396484,
+      "yPos" : 188.11969757080078,
       "stageType" : "PROCESSOR",
       "icon" : "edit.png",
       "description" : "",
       "label" : "Переименование столбцов",
-      "xPos" : 1055.744140625
+      "xPos" : 993.949951171875
     },
     "inputLanes" : [ "FieldFlattener_01OutputLane15863748437130" ],
     "outputLanes" : [ "FieldRenamer_01OutputLane15863757284960" ],
@@ -1528,14 +1531,152 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 135.12994384765625,
+      "yPos" : 232.89840698242188,
       "stageType" : "TARGET",
       "icon" : "httpclient.png",
       "description" : "",
       "label" : "HTTP Client для вызова Spark Pipeline",
-      "xPos" : 1425.724609375
+      "xPos" : 1391.782470703125
     },
     "inputLanes" : [ "HadoopFS_01_EventLane" ],
+    "outputLanes" : [ ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "StreamSelector_02",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_selector_SelectorDProcessor",
+    "stageVersion" : "1",
+    "configuration" : [ {
+      "name" : "lanePredicates",
+      "value" : [ {
+        "outputLane" : "StreamSelector_02OutputLane1586723267185",
+        "predicate" : "${autoToHive==\"true\"}"
+      }, {
+        "outputLane" : "StreamSelector_02OutputLane1586723223015",
+        "predicate" : "default"
+      } ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 94.13865661621094,
+      "stageType" : "PROCESSOR",
+      "icon" : "laneSelector.png",
+      "description" : "",
+      "label" : "Переключатель автовызова ToHive",
+      "xPos" : 1423.287841796875
+    },
+    "inputLanes" : [ "HadoopFS_01_EventLane" ],
+    "outputLanes" : [ "StreamSelector_02OutputLane1586723267185", "StreamSelector_02OutputLane1586723223015" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "StartPipeline_01",
+    "library" : "streamsets-datacollector-orchestrator-lib",
+    "stageName" : "com_streamsets_pipeline_stage_processor_startPipeline_StartPipelineDProcessor",
+    "stageVersion" : "1",
+    "configuration" : [ {
+      "name" : "conf.baseUrl",
+      "value" : "http://localhost:18630"
+    }, {
+      "name" : "conf.pipelineIdConfigList",
+      "value" : [ {
+        "runtimeParameters" : "{}",
+        "pipelineId" : "ToHivestada33311f-29ff-435f-8582-dc491ad1cfc9"
+      } ]
+    }, {
+      "name" : "conf.resetOrigin",
+      "value" : false
+    }, {
+      "name" : "conf.controlHubEnabled",
+      "value" : false
+    }, {
+      "name" : "conf.controlHubUrl",
+      "value" : "https://cloud.streamsets.com"
+    }, {
+      "name" : "conf.runInBackground",
+      "value" : true
+    }, {
+      "name" : "conf.waitTime",
+      "value" : 5000
+    }, {
+      "name" : "conf.username",
+      "value" : "admin"
+    }, {
+      "name" : "conf.password",
+      "value" : "admin"
+    }, {
+      "name" : "conf.tlsConfig.tlsEnabled",
+      "value" : false
+    }, {
+      "name" : "conf.tlsConfig.trustStoreFilePath",
+      "value" : null
+    }, {
+      "name" : "conf.tlsConfig.trustStoreType",
+      "value" : "JKS"
+    }, {
+      "name" : "conf.tlsConfig.trustStorePassword",
+      "value" : null
+    }, {
+      "name" : "conf.tlsConfig.trustStoreAlgorithm",
+      "value" : "SunX509"
+    }, {
+      "name" : "conf.tlsConfig.useDefaultProtocols",
+      "value" : true
+    }, {
+      "name" : "conf.tlsConfig.protocols",
+      "value" : [ ]
+    }, {
+      "name" : "conf.tlsConfig.useDefaultCiperSuites",
+      "value" : true
+    }, {
+      "name" : "conf.tlsConfig.cipherSuites",
+      "value" : [ ]
+    }, {
+      "name" : "stageOnRecordError",
+      "value" : "TO_ERROR"
+    }, {
+      "name" : "stageRequiredFields",
+      "value" : [ ]
+    }, {
+      "name" : "stageRecordPreconditions",
+      "value" : [ ]
+    } ],
+    "uiInfo" : {
+      "yPos" : 47.88121032714844,
+      "stageType" : "PROCESSOR",
+      "icon" : "pipeline.png",
+      "description" : "",
+      "label" : "Загрузка в Hive",
+      "xPos" : 1630.2347412109375
+    },
+    "inputLanes" : [ "StreamSelector_02OutputLane1586723267185" ],
+    "outputLanes" : [ "StartPipeline_01OutputLane15867198570960" ],
+    "eventLanes" : [ ],
+    "services" : [ ]
+  }, {
+    "instanceName" : "Trash_02",
+    "library" : "streamsets-datacollector-basic-lib",
+    "stageName" : "com_streamsets_pipeline_stage_destination_devnull_NullDTarget",
+    "stageVersion" : "1",
+    "configuration" : [ ],
+    "uiInfo" : {
+      "yPos" : 162.23831939697266,
+      "stageType" : "TARGET",
+      "icon" : "trash.png",
+      "description" : "Поток никуда далее не передается, т.к. запускается другой пайплайн (ToHiveStandalone), который вычитывает созданные в этой ветке файлы.",
+      "label" : "Заглушка",
+      "xPos" : 1851.495849609375
+    },
+    "inputLanes" : [ "StartPipeline_01OutputLane15867198570960", "StreamSelector_02OutputLane1586723223015" ],
     "outputLanes" : [ ],
     "eventLanes" : [ ],
     "services" : [ ]
@@ -1564,12 +1705,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 277.2489471435547,
+      "yPos" : 383.93482971191406,
       "stageType" : "PROCESSOR",
       "icon" : "laneSelector.png",
       "description" : "",
       "label" : "Переключатель отладки",
-      "xPos" : 1260.01806640625
+      "xPos" : 1281.6092529296875
     },
     "inputLanes" : [ "FieldRenamer_01OutputLane15863757284960" ],
     "outputLanes" : [ "StreamSelector_01OutputLane1586508464895", "StreamSelector_01OutputLane1586508432966" ],
@@ -1582,12 +1723,12 @@
     "stageVersion" : "1",
     "configuration" : [ ],
     "uiInfo" : {
-      "yPos" : 409.7797088623047,
+      "yPos" : 405.96949768066406,
       "stageType" : "TARGET",
       "icon" : "trash.png",
       "description" : "",
       "label" : "Заглушка",
-      "xPos" : 1486.4217529296875
+      "xPos" : 1491.501953125
     },
     "inputLanes" : [ "StreamSelector_01OutputLane1586508432966" ],
     "outputLanes" : [ ],
@@ -1783,12 +1924,12 @@
       "value" : [ ]
     } ],
     "uiInfo" : {
-      "yPos" : 288.2083282470703,
+      "yPos" : 312.3396759033203,
       "stageType" : "TARGET",
       "icon" : "localfilesystem.png",
       "description" : "",
       "label" : "Дублирование в локальную ФС",
-      "xPos" : 1486.5137939453125
+      "xPos" : 1656.703369140625
     },
     "inputLanes" : [ "StreamSelector_01OutputLane1586508464895" ],
     "outputLanes" : [ ],
@@ -1831,12 +1972,12 @@
     "title" : "BronzeLayerSourceStream2HDFS",
     "description" : "",
     "created" : 1586369651979,
-    "lastModified" : 1586629696518,
+    "lastModified" : 1586729873226,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "b33775cc-8dc6-457e-92c7-2c735db1f029",
-    "valid" : true,
+    "uuid" : "32477cdc-2bab-4d83-b329-59348a5e0959",
+    "valid" : false,
     "metadata" : {
       "labels" : [ ]
     },

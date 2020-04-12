@@ -11,6 +11,38 @@ object JsonProcessor extends App{
   val jsonName = args(0)
   val outPath = args(1)
 
+  val sql1 =
+    "select name as f_area, count(*) as f_records" +
+    "  from json" +
+    "  group by name"
+
+  //val sql2 = "select * from json"
+
+  val sql3 =
+    "select" +
+    "  name," +
+    "  coord.lat, coord.lon," +
+    "  main.temp, main.feels_like," +
+    "  main.temp_min, main.temp_max," +
+    "  main.pressure, main.humidity," +
+    "  dt, wind.speed, wind.deg," +
+    "  sys.country, rain, snow, clouds.all," +
+    "  count(*) qnty"
+    //+ "  weather.0.id, weather.0.main, weather.0.description" +
+    "  from json" +
+    "  group by"
+    "    name," +
+    "    coord.lat, coord.lon," +
+    "    main.temp, main.feels_like," +
+    "    main.temp_min, main.temp_max," +
+    "    main.pressure, main.humidity," +
+    "    dt, wind.speed, wind.deg," +
+    "    sys.country, rain,snow, clouds.all"
+    //+ "    weather.0.id, weather.0.main, weather.0.description"
+  
+    val sql4 = "select name, dt, count(*) as qnty from json group by name, dt"
+
+
   val currDateStr = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(
     Calendar.getInstance( TimeZone.getTimeZone("Europe/Kiev") ).getTime()
   )
@@ -29,9 +61,7 @@ object JsonProcessor extends App{
   jsonDf.createOrReplaceTempView("json")
 
   val jsonSql = sparkSession.sql(
-    "select name as f_area, count(*) as f_records" +
-      " from json" +
-      " group by name"
+    sql4
   )
 
   val coal = jsonSql.coalesce(1)

@@ -4,7 +4,7 @@
   "pipelineId" : "MainOrchesecbdc306-9028-4cb8-9fef-a0aa9a5d4056",
   "title" : "MainOrchestrator",
   "description" : "",
-  "uuid" : "3f1aa6f6-81e6-4450-b48e-3d52f889e186",
+  "uuid" : "b4614b65-6d12-40de-8b97-c5a4b7d5d8e8",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -341,6 +341,9 @@
       }, {
         "runtimeParameters" : "{}",
         "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba"
+      }, {
+        "runtimeParameters" : "{}",
+        "pipelineId" : "CallToHive0bd146e6-b954-4eed-9c76-4358fc14e937"
       } ]
     }, {
       "name" : "conf.resetOrigin",
@@ -673,11 +676,11 @@
     "title" : "MainOrchestrator",
     "description" : "",
     "created" : 1586608614576,
-    "lastModified" : 1586611833467,
+    "lastModified" : 1586724333461,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "6842f011-c858-44eb-aa9c-f0948df00248",
+    "uuid" : "9c7483ac-164f-4391-a348-f8c0ed352cc0",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]
