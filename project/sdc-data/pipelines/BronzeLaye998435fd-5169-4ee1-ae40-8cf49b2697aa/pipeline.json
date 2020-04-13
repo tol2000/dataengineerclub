@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa",
   "title" : "BronzeLayerSubStreamToSparkLocalWatcher",
   "description" : "",
-  "uuid" : "490b5b39-849a-4a2e-b6ae-8e4d502778cd",
+  "uuid" : "9064496c-594c-4100-a381-dc9bb5c53efb",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -767,7 +767,7 @@
       "value" : "180000"
     }, {
       "name" : "config.script",
-      "value" : "cd $SPARKPATH\nmkdir --parents $LOGSPATH\necho $FILEPATH >> $LOGSPATH/log_filepaths.txt\n$SPARKPATH/jar_submit_local.sh > $LOGSPATH/spark_log.txt 2> $LOGSPATH/spark_errlog.txt"
+      "value" : "cd $SPARKPATH\nmkdir --parents $LOGSPATH\necho $(date) - $FILEPATH >> $LOGSPATH/log_filepaths.txt\n$SPARKPATH/jar_submit_local.sh > $LOGSPATH/spark_log.txt 2> $LOGSPATH/spark_errlog.txt"
     }, {
       "name" : "stageOnRecordError",
       "value" : "TO_ERROR"
@@ -827,11 +827,11 @@
     "title" : "BronzeLayerSubStreamToSparkLocalWatcher",
     "description" : "",
     "created" : 1586554341792,
-    "lastModified" : 1586623722006,
+    "lastModified" : 1586792178229,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "8125c02d-9f4b-435b-8555-db5a4ba3d7de",
+    "uuid" : "aa111cbc-1d1b-4333-a2f6-6ad85f0add77",
     "valid" : true,
     "metadata" : {
       "labels" : [ ]

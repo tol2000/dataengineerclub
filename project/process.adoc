@@ -72,7 +72,7 @@ DevOps, в частности, All As A Code, что потом очень хо�
 
 === Схема проекта
 
-image::http://www.plantuml.com/plantuml/svg/bLLVQoH547_lJr7a7jJLF5mU0yfT54uXI6315oDBPwQJ7J8xlVRq9iOZi5cDV_0WU0ZwPBm3dvtSPSXSSfbyXUflP7LbHdSccpyPM7Qx_logVbM_tdcKMcdiQ103ld3xcEDRp00lt1XBzmFcRi_jOIP4kXabGsda03xMWw5EL6AxTYTMG9aBGhm3iLgtO3MOQADl8OoC2coa4_9OFVIEDMsj7anvH40WolIL39KH7mA-R5IdmwcROBO8-3jc-DgDtNTuWgUOVG1kdo8oFCUSFWNcW0NmESCpEfyG10KV-OFxaSmbu36Mn6L2vWjlm3UKW-VkUpAFVLKYMs0XL19M3ObORT29s_Va14nDoCTT-eb6h4SXpE4V7XzBBbZWARnhL6hXySfdxys1J873UgaUcK31WsK_fgLufE2fs1KYqLPLezFhZL01zE1ppzNzLBCzPhBdxXVCsU_sm0-6FYM-ndBU4oVwPNiEx2NYpKulwO3lGOZ7WTK6vXeLtwmcU4Z9P-uPdj3tAymeF_TdfgQ-iQFKZsoT1A8e-UzgFGLN_XdprOGI2Xfz1fz8As5PRYfEvOnU6AU-wbF1R6gKvvGx8QJ2CxqItGi7yE29ZaDAyrdJcOUKbUCnqyoetRDBeRW3HjcAr7RgqobnwWbgOODHGsrixo5yAQ3rN0UD-SD6x5StGo_S2thX6kXTSRN0chH1dyZrZ5ed0VPRXJgT9H_GwJIiy_Gq3FWd7h5Ufhe0Kio4D9ExYNVS0d28EQ-knEDQV7p_dYs2Q3BPRMwTAhDwZdovMkSjqLyLGshbHdsjdXYbagdbXgIuDPbwyBzOjGTysKkFHae-0FmLVrjDEfqlbB5H83iTnW_NQjILADcyLYmo2VhKm427Akw5s_rPc_t7tqmthikzvQdm_G6ttxehsRsNpLrUk--kDKeEkigcy3vqXz9iqdSQo5ZU9eALQAYMeqH1Dugtb5cMEyeq0bXAYv1EWxPbTC4woFZwls99UI7DK1UpcFz_osx_Pfsye93n7PHXvFP_kf0xCsNnkUv-7RCA05zMVrEVHbkgbW51t282YkXvl5dBdztelRViIyHQXZSi-CuBNJ8w-LPTNMZxJGjkZvkdPS2jcscyjgZuHwt6EQPfyb7LW1cY-bsRMHALepgng_u35s9NF599E1h4_m80[]
+image::http://www.plantuml.com/plantuml/svg/ZLLTJpD55BwVNt42D-_xnbxe9Oa6b8Wc64Yuu498CtG7sdG_cfafY8QaBI8QZ0P2el42WuRxjdIX7wNyXJF_o3FJtQQu59XqTtFEdfbvdkVCFbrKcajT3NocogMmmYKFu8ieg4IX2FM6FlG5qCjF68q2POGi2ku9oJu5_0TZ768JyD7KS4H1tpImkG3u1pRnrjJCCTvZ7viVWJcXYYO-O4nN5sF0BjYOhW75zxG45RTiO4ufFGBiuCZKJOFIZpQ1FQ321_CZfMjsL_CJnLqcGYy1n7onHn7eg0A-sDKC0A_DoHYZhHk_9nf-LFLWRgqYmat1TL78RtW5tacXD2ojV_r-3hW25LLbGS3yQcclg3_tgm9-O4UCBHLq964EBomNyxDZqziAyMz2E32_uZqzsmIkWR6DtLBYErrL5k0kQIjeyaqYHjVn_GNZhP0cT8be4vQvvh3Aoy9DTJFodgzeLmB0W4OXRGueBGKFbD0AvjTBOHc-PP2CZSahbzhEJAL6bxEpR7PwWaTeThYoeA_nNpp7Iw263eZWCJKefXQVEPpUJg3oJbSXEG456aytB9RsHMO_E_0IsyJzZeJh0zwGC3riJogsdrcg55Iupz-ms9yuj9fQl6bLIkmfkQ-MlznmF8hUhafrJaVQjMjpPldQmzjnxNkmGQPDUSaFacEp8eK8fzJ8KjcHKVYzS2IoOyQEcThj9vcZvz5VOSkTkXQEJ2DTx5KkIlCzCM733ryaunqKPp79dFZdonxjX_yNLGsnvVesCCUlqPr4BAl0XFq5xTeW3EGWwOcbvWTSQfXVYNpFySgATcwzoNtfzHpsCSQUgSEQ9vJYcrmNYl3Er750-Ox535JRT2JmbgxEsBJQGDftx19KEvPuloGELDuBNbHJYaeaTVxZMP9U4Q5JMhQHo6QH3Z5EFTRyHblRauzt53ehnUx_qMIrVHrGP0rp5gXBP_gtOuiVfGZD6IoyVsiVq_RHWtvJ5lSXzo6nhGNBlePzIyErrVqPcDyPIrmxb_jioXod5w4toKV7c7icnSxutDt6pgsOlRc83ZPZTBD1uZvi_72Pz2YnwMHg-eiYzEZ_ypy0[]
 
 == Реализация
 
@@ -191,6 +191,28 @@ image::1-4-2020-16-30-14-PM.png[]
 ===== Загрузчик источника в бронзовый слой
 
 image::1-4-2020-16-32-44-PM.png[] 
+
+====== Преобразование данных в бронзовом слое
+
+Тут я немного схитрил и сохраняю не совсем сырые данные, а немного преобразованные.
+
+Иными словами, чтобы мне было удобнее работать с одной таблицей и без составных типов данных,
+я данные с сайта openweathermap "разворачиваю и уплощаю", использую компоненты
+стримсета fields pivot и fields flattener.
+
+Получаю я данные с сайта погоды такими:
+
+image::1-4-2020-18-51-07-PM.png[] 
+
+А пишу в слой сырых данных уже такими:
+
+image::1-4-2020-18-52-24-PM.png[] 
+
+При этом любые внуутренние изменения в структуре данных отражаются и у меня,
+то есть, преобразования практически без потерь.
+
+Разве что если уж источник совсем коренным образом сменит формат данных,
+тогда мой прием сломается, но это будет тогда другое приложение.
 
 ===== Оркестратор и прослушиватель для вызова спарковой джобы
 

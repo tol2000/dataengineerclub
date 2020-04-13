@@ -2,8 +2,7 @@
 
 skinparam ComponentStyle uml2
 
-' left to right direction
-' top to bottom direction
+
 
 centerheader
 = Тема проекта: Загрузка, хранение и анализ публично доступной информации
@@ -13,71 +12,73 @@ legend top left
   Схема
 endlegend
 
-cloud "Источник (rest API)" as cloud_source #LightBlue {
+cloud "OpenWeatherMap (rest API)" as source #LightBlue {
 }
-
-note right of cloud_source
-    Внешние данные
-    с какого-либо публичного источника
-end note
 
 Actor "Внешний\nПользователь" as extuser
 
 frame "Хранилище\nтипа Data Lake" as frame_dlstor {
 
-    frame "Витрины" as frame_dlstor_dm #Gold {
-        frame "Представления" as views_dm {
-            component report_1 [
-                Представление1
-            ]
-            component report_2 [
-                Представление2
-            ]
-        }
-        component batch_dm_refresh [
-            **Batch**
-            ----
-            Обновление отчетов
-            ----
-            Периодичность: 
+    component streamsets #Pink [
+        Streamsets
+    ]
+
+    component spark #Pink [
+        Spark
+    ]
+
+    database "СУБД клаудеры" as dbms_cloudera {
+        component hive #Pink [
+            Движок Хайв
         ]
-    }
-
-    frame "Обработанные данные" as frame_dlstor_stage #LightGreen {
-        database "Реляционная БД\n**Vertica**" as db_stage #Pink {
-            component anchor_model_dwh [
-                Якорная модель хранилища
-            ]
-        }
-        component batch_stage_refresh [
-            **StreamSets + Spark + scala**
-            ----
-            PipeLine SilverLayer
-            Batch: spark + scala
-            Оперативное обновление stage-данных
+        component impala #Pink [
+            Движок Импала
         ]
-    }
 
-    frame "Сырые данные" as frame_dlstor_raw #LightGray {
-        database "NoSql БД Типа Hive" as db_raw #Pink {
-            component raw_data [
-                Сырые данные
-            ]
+        database "HDFS" as hdfs {
+
+            frame "Сырые данные" as frame_dlstor_raw #LightGreen {
+                component bronze [
+                    Сырые данные
+                ]
+            }
+
+            frame "Обработанные данные" as frame_dlstor_stage #LightGray {
+                component dwh [
+                    Хранилище
+                    по Кимбаллу
+                ]
+            }
+        
         }
-        component batch_raw_load [
-            **StreamSets**
-            ----
-            PipeLine BronzeLayer
-            Загрузка сырых данных
-        ]
+
+        frame "Витрины" as datamart #Gold {
+            frame "Бизнес-кейс OdessaWatch (следим за погодой в Одессе" as views_dm {
+                component report_1 [
+                    Отчет по изменению влажности в Одессе
+                ]
+                component report_other [
+                    Другие отчеты :)
+                ]
+            }
+        }
+
     }
-
-    cloud_source --> batch_raw_load
-    batch_raw_load --> db_raw
-
-    db_raw --> db_stage
-
-    db_stage --> views_dm
 
 }
+
+streamsets *-* spark : Оркестрация
+
+source --> streamsets
+streamsets --> bronze
+
+bronze --> spark
+spark --> hive
+hive --> dwh
+
+dwh --> impala
+impala --> datamart
+
+impala --> extuser
+
 @enduml
