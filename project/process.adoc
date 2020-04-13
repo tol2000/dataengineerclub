@@ -165,7 +165,7 @@ image:
 
 [source, scala]
 ----
-includee::jsonprocessor/src/main/scala/JsonProcessor.scala
+includee::jsonprocessor/src/main/scala/JsonProcessor.scala[]
 ----
 
 == Примечания
