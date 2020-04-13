@@ -4,7 +4,7 @@
   "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
   "title" : "BronzeLayerSourceStream2HDFS",
   "description" : "",
-  "uuid" : "567dc577-2da2-496c-8176-3b556438758c",
+  "uuid" : "90b1ad5f-1ac7-42eb-ac23-69458bfe8e25",
   "configuration" : [ {
     "name" : "executionMode",
     "value" : "STANDALONE"
@@ -949,7 +949,7 @@
       "value" : true
     }, {
       "name" : "config.nameSeparator",
-      "value" : "."
+      "value" : "_"
     }, {
       "name" : "stageOnRecordError",
       "value" : "TO_ERROR"
@@ -980,12 +980,12 @@
     "configuration" : [ {
       "name" : "renameMapping",
       "value" : [ {
-        "fromFieldExpression" : "/'list\\.(.*)'",
+        "fromFieldExpression" : "/list_(.*)",
         "toFieldExpression" : "/$1"
       } ]
     }, {
       "name" : "errorHandler.nonExistingFromFieldHandling",
-      "value" : "TO_ERROR"
+      "value" : "CONTINUE"
     }, {
       "name" : "errorHandler.existingToFieldHandling",
       "value" : "TO_ERROR"
@@ -1227,7 +1227,7 @@
       "icon" : "hdfs.png",
       "description" : "",
       "label" : "Запись JSON файлов в HDFS",
-      "xPos" : 1258.7288818359375
+      "xPos" : 1257.4677734375
     },
     "inputLanes" : [ "FieldRenamer_01OutputLane15863757284960" ],
     "outputLanes" : [ ],
@@ -1972,12 +1972,12 @@
     "title" : "BronzeLayerSourceStream2HDFS",
     "description" : "",
     "created" : 1586369651979,
-    "lastModified" : 1586729873226,
+    "lastModified" : 1586768437832,
     "creator" : "admin",
     "lastModifier" : "admin",
     "lastRev" : "0",
-    "uuid" : "32477cdc-2bab-4d83-b329-59348a5e0959",
-    "valid" : false,
+    "uuid" : "8349bfe1-ed0d-4073-99da-81dfc87f6bca",
+    "valid" : true,
     "metadata" : {
       "labels" : [ ]
     },

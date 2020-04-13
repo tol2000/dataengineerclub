@@ -3,11 +3,11 @@
   "title" : "BronzeLayerSourceStream2HDFS",
   "description" : "",
   "created" : 1586369651979,
-  "lastModified" : 1586729874884,
+  "lastModified" : 1586768439883,
   "creator" : "admin",
   "lastModifier" : "admin",
   "lastRev" : "0",
-  "uuid" : "567dc577-2da2-496c-8176-3b556438758c",
+  "uuid" : "90b1ad5f-1ac7-42eb-ac23-69458bfe8e25",
   "valid" : true,
   "metadata" : {
     "labels" : [ ]

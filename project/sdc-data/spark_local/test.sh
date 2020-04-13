@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export FILEPATH=/out/bronze/weather/file_25ba3a7e-2aec-4b0d-b007-2fd71d40e111.json
+export FILEPATH=/out/bronze/weather/file_470dea81-2cba-4fb2-85a3-07d191430696.json
 
 /spark/bin/spark-submit \
   --packages org.apache.spark:spark-avro_2.11:2.4.3 \

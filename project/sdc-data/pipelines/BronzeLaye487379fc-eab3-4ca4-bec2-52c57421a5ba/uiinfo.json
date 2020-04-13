@@ -65,7 +65,7 @@
     "icon" : "hdfs.png",
     "description" : "",
     "label" : "Запись JSON файлов в HDFS",
-    "xPos" : 1258.7288818359375
+    "xPos" : 1257.4677734375
   },
   "FieldFlattener_01" : {
     "yPos" : 257.08457946777344,

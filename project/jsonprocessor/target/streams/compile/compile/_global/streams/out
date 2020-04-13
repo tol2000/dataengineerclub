@@ -1,7 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:32:19: a pure expression does nothing in statement position; you may be omitting necessary parentheses[0m
-[0m[[0m[33mwarn[0m] [0m[0m    "  from json" +[0m
-[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:39:37: a pure expression does nothing in statement position; you may be omitting necessary parentheses[0m
-[0m[[0m[33mwarn[0m] [0m[0m    "    dt, wind.speed, wind.deg," +[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                    ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala:43:33: a pure expression does nothing in statement position; you may be omitting necessary parentheses[0m
+[0m[[0m[33mwarn[0m] [0m[0m    "    wind_speed, wind_deg," +[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m

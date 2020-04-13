@@ -6,46 +6,42 @@ import java.util.{Calendar, TimeZone}
 import org.apache.log4j._
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
+/*
+* Модуль загружает из бронзового слоя в серебряный
+* данные по каждому безнес-кейсу.
+* Код, относящийся к каждому кейсу, помечен соотв. комментарием
+*
+* // CASE OdessaWatch - Кейс для отслеживания параметров погоды в Одессе.
+* 
+*/
+
 object JsonProcessor extends App{
 
   val jsonName = args(0)
   val outPath = args(1)
 
-  val sql1 =
-    "select name as f_area, count(*) as f_records" +
-    "  from json" +
-    "  group by name"
-
-  //val sql2 = "select * from json"
-
-  val sql3 =
-    "select" +
-    "  name," +
-    "  coord.lat, coord.lon," +
-    "  main.temp, main.feels_like," +
-    "  main.temp_min, main.temp_max," +
-    "  main.pressure, main.humidity," +
-    "  dt, wind.speed, wind.deg," +
-    "  sys.country, rain, snow, clouds.all," +
-    "  count(*) qnty"
-    //+ "  weather.0.id, weather.0.main, weather.0.description" +
-    "  from json" +
-    "  group by"
-    "    name," +
-    "    coord.lat, coord.lon," +
-    "    main.temp, main.feels_like," +
-    "    main.temp_min, main.temp_max," +
-    "    main.pressure, main.humidity," +
-    "    dt, wind.speed, wind.deg," +
-    "    sys.country, rain,snow, clouds.all"
-    //+ "    weather.0.id, weather.0.main, weather.0.description"
-  
-    val sql4 = "select name, dt, count(*) as qnty from json group by name, dt"
-
-
   val currDateStr = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(
     Calendar.getInstance( TimeZone.getTimeZone("Europe/Kiev") ).getTime()
   )
+
+  // CASE OdessaWatch
+  // Запрос для бизнес-кейса
+  val sqlOdessaWatch =
+    "select" +
+    "    '"+currDateStr+"' as date_string, " +
+    "    name," +
+    "    main_feels_like," +
+    "    main_pressure, main_humidity," +
+    "    wind_speed, wind_deg," +
+    "    rain, snow, clouds_all" +
+    "  from json" +
+    "  where id = 698740" +
+    "  group by" +
+    "    name," +
+    "    main_feels_like," +
+    "    main_pressure, main_humidity," +
+    "    wind_speed, wind_deg," +
+    "    rain, snow, clouds_all"
 
   BasicConfigurator.configure()
 
@@ -53,20 +49,36 @@ object JsonProcessor extends App{
     .setLevel( Level.ERROR )
 
   val sparkSession = SparkSession.builder()
+    .config("hive.metastore.uris", "thrift://quickstart.cloudera:9083")
+    .enableHiveSupport()
     .getOrCreate()
 
   val jsonDf = sparkSession.read.format("json")
-    .load(jsonName)
+    .load(jsonName) // Датафрейм, в который загружаем исходный джейсон
 
-  jsonDf.createOrReplaceTempView("json")
+  jsonDf.createOrReplaceTempView("json")  // Представление по датафрейму исходного джейсона для запросов
 
-  val jsonSql = sparkSession.sql(
-    sql4
-  )
+  // CASE OdessaWatch
+  val dfOdessaWatch = sparkSession.sql(
+    sqlOdessaWatch // Запрос по исходному джейсону для формирования целевого датасета
+  ) // Целевой датафрейм для загрузки в БД
 
-  val coal = jsonSql.coalesce(1)
+  // CASE OdessaWatch
+  // Пишем целевой датасет в промежуточный авро (может использоваться в стримсетс)
+  dfOdessaWatch.coalesce(1)
+    .write.format("avro").mode(SaveMode.Append).save(outPath+"/OdessaWatch/"+currDateStr)
 
-  coal.write.format("avro").mode(SaveMode.Append).save(outPath+"/"+currDateStr)
-  //+"/"+currDateStr
+  // CASE OdessaWatch
+  // Создаем представление для целевого датасета.
+  // Из него потом запросом выгрузим в БД
+  dfOdessaWatch.createOrReplaceTempView("viewOdessaWatch")  // на основе выборки
+
+  // CASE OdessaWatch
+  // Создаем таблицу в хайве, если ее вдруг нет
+  val hiveCreateSql = sparkSession.sql("create table if not exists odessawatch as select * from viewOdessaWatch where 0=1")
+
+  // CASE OdessaWatch
+  // Заливаем туда данные
+  val hiveInsertSql = sparkSession.sql("insert into odessawatch select * from viewOdessaWatch")
 
 }
