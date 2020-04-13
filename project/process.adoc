@@ -198,6 +198,62 @@ image::1-4-2020-16-34-33-PM.png[]
 
 === Cloudera
 
+==== Бронзовый слой в HDFS
+
+image::1-4-2020-16-42-16-PM.png[] 
+
+==== Хранилище серебряного слоя, кейс OdessaWatch
+
+image::1-4-2020-16-44-45-PM.png[] 
+
+==== Витрина золотого слоя по кейсу OdessaWatch
+
+Для витрины можно выполнять запросы как в Hive, так и в Impala,
+т.к. импале доступны метаданный хайва.
+
+В этом прелесть экосистемы Hadoop, т.к для различных нужд
+можно использовать различные движки, которые берут информацию с
+одного и того же места: таблиц в HDFS.
+
+Скажем, сложные и длительные запросы можно обрабатывать в
+Hive на map reduce, а быстрые ad-hoc запросы или легкие
+витринные запросы от клиентов на импале.
+
+Ниже скрины с хайва и импалы.
+
+Замечу, что запрос на импале выполнялся существенно меньше,
+я так понимаю, из-за подготовительных операций и map reduce.
+
+Зато, я думаю, импала плохо потянет запросы, обрабатывающие
+и аггрегирующие много данных.
+
+===== Запрос по изменению влажности по Одессе за все время
+
+[source, sql]
+----
+select a.date_string as date_from,
+       b.date_string as date_to,
+       a.main_humidity as humidity_from,
+       b.main_humidity as humidity_to
+  from (
+    select row_number() over (order by date_string) as rnum, main_humidity, date_string
+      from odessawatch
+  ) a
+  left outer join (
+    select row_number() over (order by date_string) as rnum, main_humidity, date_string
+      from odessawatch
+  ) b
+  on a.rnum+1 = b.rnum
+  where a.main_humidity<>b.main_humidity
+  order by date_from
+----
+
+===== Скрины хайва и импалы
+
+image::1-4-2020-17-49-57-PM.png[] 
+
+image::1-4-2020-17-50-29-PM.png[] 
+
 === Spark
 
 ==== Job для загрузки в сильвер-слой.
@@ -288,6 +344,25 @@ object JsonProcessor extends App{
   val hiveInsertSql = sparkSession.sql("insert into odessawatch select * from viewOdessaWatch")
 
 }
+----
+
+==== Скрипт сабмита джоба в спарк
+
+[source, bash]
+----
+#!/bin/sh
+
+# There was problems with --packages org.apache.spark:spark-avro_2.12:2.4.4 \
+# So after a long time googling I found --packages org.apache.spark:spark-avro_2.11:2.4.3
+# https://issues.apache.org/jira/browse/SPARK-27623
+
+/spark/bin/spark-submit \
+  --packages org.apache.spark:spark-avro_2.11:2.4.3 \
+  --master local[*] \
+  --class org.kliusa.otusde201911.project.jsonprocessor.JsonProcessor \
+  /data/spark_local/jsonprocessor-assembly-1.jar \
+  hdfs://quickstart.cloudera:8020$FILEPATH \
+  hdfs://quickstart.cloudera:8020/out/bronze/weather2hive
 ----
 
 == Примечания
