@@ -153,6 +153,21 @@ image:
 их перцентиль и прочее. +
 Все это отлично визуализировано.
 
+== Содержимое проекта
+
+=== Streamsets
+
+=== Cloudera
+
+=== Spark
+
+==== Job для загрузки в сильвер-слой.
+
+[source, scala]
+----
+includee::jsonprocessor/src/main/scala/JsonProcessor.scala
+----
+
 == Примечания
 
 === Установка и разовая настройка
