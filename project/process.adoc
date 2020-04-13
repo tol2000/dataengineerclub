@@ -7,6 +7,29 @@
 
 == Постановка задачи
 
+Я решил создать проект - основу для построения хранения и анализа
+общедоступной информации.
+
+Цель проекта - построить максимально недорогую открытую систему
+для приема, хранения и анализа любой общедоступной информации
+из открытых (а, возможно, и закрытых) источников.
+
+Компоненты и решения, ввиду ограниченного срока разработки,
+решено использовать классические и известные мне с курсов.
+Более того, я использовал их docker-версии.
+
+Система должна основываться на свободных, желательно open-source,
+в крайнем случае недорогих, но эффективных и распространенных решениях.
+
+Система должна быть способна к расширению
+(добавление новых источников и приемников в хранилище под различные кейсы)
+и масштабированию (компоненты системы могут объединяться в кластера)
+
+При создании системы я старался придерживаться некоторых идеологий
+DevOps, в частности, All As A Code, что потом очень хорошо ложится
+в любую VCS вроде git, поэтому описание проекта, схема и документация
+в asciidoc+plantuml.
+
 === Стоимость
 
 Поскольку проект предназначен для использования в небольших
@@ -49,7 +72,7 @@
 
 === Схема проекта
 
-image:
+image:http://www.plantuml.com/plantuml/svg/bLLVQoH547_lJr7a7jJLF5mU0yfT54uXI6315oDBPwQJ7J8xlVRq9iOZi5cDV_0WU0ZwPBm3dvtSPSXSSfbyXUflP7LbHdSccpyPM7Qx_logVbM_tdcKMcdiQ103ld3xcEDRp00lt1XBzmFcRi_jOIP4kXabGsda03xMWw5EL6AxTYTMG9aBGhm3iLgtO3MOQADl8OoC2coa4_9OFVIEDMsj7anvH40WolIL39KH7mA-R5IdmwcROBO8-3jc-DgDtNTuWgUOVG1kdo8oFCUSFWNcW0NmESCpEfyG10KV-OFxaSmbu36Mn6L2vWjlm3UKW-VkUpAFVLKYMs0XL19M3ObORT29s_Va14nDoCTT-eb6h4SXpE4V7XzBBbZWARnhL6hXySfdxys1J873UgaUcK31WsK_fgLufE2fs1KYqLPLezFhZL01zE1ppzNzLBCzPhBdxXVCsU_sm0-6FYM-ndBU4oVwPNiEx2NYpKulwO3lGOZ7WTK6vXeLtwmcU4Z9P-uPdj3tAymeF_TdfgQ-iQFKZsoT1A8e-UzgFGLN_XdprOGI2Xfz1fz8As5PRYfEvOnU6AU-wbF1R6gKvvGx8QJ2CxqItGi7yE29ZaDAyrdJcOUKbUCnqyoetRDBeRW3HjcAr7RgqobnwWbgOODHGsrixo5yAQ3rN0UD-SD6x5StGo_S2thX6kXTSRN0chH1dyZrZ5ed0VPRXJgT9H_GwJIiy_Gq3FWd7h5Ufhe0Kio4D9ExYNVS0d28EQ-knEDQV7p_dYs2Q3BPRMwTAhDwZdovMkSjqLyLGshbHdsjdXYbagdbXgIuDPbwyBzOjGTysKkFHae-0FmLVrjDEfqlbB5H83iTnW_NQjILADcyLYmo2VhKm427Akw5s_rPc_t7tqmthikzvQdm_G6ttxehsRsNpLrUk--kDKeEkigcy3vqXz9iqdSQo5ZU9eALQAYMeqH1Dugtb5cMEyeq0bXAYv1EWxPbTC4woFZwls99UI7DK1UpcFz_osx_Pfsye93n7PHXvFP_kf0xCsNnkUv-7RCA05zMVrEVHbkgbW51t282YkXvl5dBdztelRViIyHQXZSi-CuBNJ8w-LPTNMZxJGjkZvkdPS2jcscyjgZuHwt6EQPfyb7LW1cY-bsRMHALepgng_u35s9NF599E1h4_m80[]
 
 == Реализация
 
