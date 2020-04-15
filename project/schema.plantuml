@@ -2,8 +2,6 @@
 
 skinparam ComponentStyle uml2
 
-
-
 centerheader
 = Тема проекта: Загрузка, хранение и анализ публично доступной информации
 endheader
