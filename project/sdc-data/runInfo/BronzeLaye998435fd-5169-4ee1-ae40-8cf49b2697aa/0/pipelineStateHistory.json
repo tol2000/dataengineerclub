@@ -3864,3 +3864,39 @@
   "nextRetryTimeStamp" : 0,
   "name" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa"
 }
+{
+  "pipelineId" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "STARTING",
+  "message" : null,
+  "timeStamp" : 1586953887038,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false,
+    "RUNTIME_PARAMETERS" : { },
+    "INTERCEPTOR_CONFIGS" : [ ]
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa"
+}
+{
+  "pipelineId" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa",
+  "rev" : "0",
+  "user" : "admin",
+  "status" : "RUNNING",
+  "message" : null,
+  "timeStamp" : 1586953887905,
+  "attributes" : {
+    "IS_REMOTE_PIPELINE" : false,
+    "RUNTIME_PARAMETERS" : { },
+    "INTERCEPTOR_CONFIGS" : [ ]
+  },
+  "executionMode" : "STANDALONE",
+  "metrics" : null,
+  "retryAttempt" : 0,
+  "nextRetryTimeStamp" : 0,
+  "name" : "BronzeLaye998435fd-5169-4ee1-ae40-8cf49b2697aa"
+}
