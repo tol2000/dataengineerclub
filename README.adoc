@@ -4,6 +4,20 @@
 
 == Выпускной проект по курсу Отуса Data Engineering
 
+=== Расположение
+
 Каталог проекта в этом репозитории - ./project
 
+=== Описание
+
 link:project/process.adoc[Описание проекта]
+
+=== Ссылки
+
+Презентация: https://drive.google.com/open?id=1iHA9oP6R0ZIB2F5tadL3tvchOAQGX73YOmeb1lMYtHA
+
+Видео демонстрации работы проекта: https://youtu.be/GWRed31XJI0
+
+https://plantuml.com/
+
+https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
