@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "MainOrchesecbdc306-9028-4cb8-9fef-a0aa9a5d4056",
+  "title" : "MainOrchestrator",
+  "description" : "",
+  "created" : 1586608614576,
+  "lastModified" : 1586772531193,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "b0b8caf9-ab16-426c-ba25-5a99f9a6a425",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "MainOrchesecbdc306-9028-4cb8-9fef-a0aa9a5d4056",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

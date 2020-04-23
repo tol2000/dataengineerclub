@@ -1,0 +1,30 @@
+{
+  "Shell_01" : {
+    "yPos" : 49,
+    "stageType" : "EXECUTOR",
+    "icon" : "shell.png",
+    "description" : "",
+    "label" : "SparkLocal",
+    "xPos" : 288
+  },
+  ":pipeline:" : {
+    "previewConfig" : {
+      "previewSource" : "CONFIGURED_SOURCE",
+      "batchSize" : "5",
+      "timeout" : 30000,
+      "writeToDestinations" : true,
+      "executeLifecycleEvents" : false,
+      "showHeader" : true,
+      "showFieldType" : true,
+      "rememberMe" : true
+    }
+  },
+  "RESTService_01" : {
+    "yPos" : 49,
+    "stageType" : "SOURCE",
+    "icon" : "api.png",
+    "description" : "",
+    "label" : "REST Служба для вызова спарка",
+    "xPos" : 59
+  }
+}

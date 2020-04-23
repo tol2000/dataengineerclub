@@ -1,0 +1,18 @@
+{
+  "pipelineId" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
+  "title" : "BronzeLayerSourceStream2HDFS",
+  "description" : "",
+  "created" : 1586369651979,
+  "lastModified" : 1586768439883,
+  "creator" : "admin",
+  "lastModifier" : "admin",
+  "lastRev" : "0",
+  "uuid" : "90b1ad5f-1ac7-42eb-ac23-69458bfe8e25",
+  "valid" : true,
+  "metadata" : {
+    "labels" : [ ]
+  },
+  "name" : "BronzeLaye487379fc-eab3-4ca4-bec2-52c57421a5ba",
+  "sdcVersion" : "3.14.0",
+  "sdcId" : "73c64506-6fa2-11ea-80c6-d162cc9dd014"
+}

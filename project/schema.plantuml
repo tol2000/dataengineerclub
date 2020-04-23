@@ -1,0 +1,82 @@
+@startuml Схема процесса
+
+skinparam ComponentStyle uml2
+
+centerheader
+= Тема проекта: Загрузка, хранение и анализ публично доступной информации
+endheader
+
+legend top left
+  Схема
+endlegend
+
+cloud "OpenWeatherMap (rest API)" as source #LightBlue {
+}
+
+Actor "Внешний\nПользователь" as extuser
+
+frame "Хранилище\nтипа Data Lake" as frame_dlstor {
+
+    component streamsets #Pink [
+        Streamsets
+    ]
+
+    component spark #Pink [
+        Spark
+    ]
+
+    database "СУБД клаудеры" as dbms_cloudera {
+        component hive #Pink [
+            Движок Хайв
+        ]
+        component impala #Pink [
+            Движок Импала
+        ]
+
+        database "HDFS" as hdfs {
+
+            frame "Сырые данные" as frame_dlstor_raw #LightGreen {
+                component bronze [
+                    Сырые данные
+                ]
+            }
+
+            frame "Обработанные данные" as frame_dlstor_stage #LightGray {
+                component dwh [
+                    Хранилище
+                    по Кимбаллу
+                ]
+            }
+        
+        }
+
+        frame "Витрины" as datamart #Gold {
+            frame "Бизнес-кейс OdessaWatch (следим за погодой в Одессе" as views_dm {
+                component report_1 [
+                    Отчет по изменению влажности в Одессе
+                ]
+                component report_other [
+                    Другие отчеты :)
+                ]
+            }
+        }
+
+    }
+
+}
+
+streamsets *-* spark : Оркестрация
+
+source --> streamsets
+streamsets --> bronze
+
+bronze --> spark
+spark --> hive
+hive --> dwh
+
+dwh --> impala
+impala --> datamart
+
+impala --> extuser
+
+@enduml

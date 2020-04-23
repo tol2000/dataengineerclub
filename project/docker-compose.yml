@@ -1,0 +1,57 @@
+version: "3.3"
+
+services:
+
+  # StreamSets container
+  sdc1:
+    build:
+      context: "."
+      # args:
+        # SDC_LIBS: streamsets-datacollector-apache-kafka_2_0-lib,streamsets-datacollector-google-cloud-lib
+    # environment:
+      # DIVOLTE_KAFKA_BROKER_LIST: kafka:9092
+    ports:
+      - 18630:18630
+    volumes:
+      - ./sdc-data:/data
+      - ./credentials:/opt/credentials
+      - ~/sdc-stagelibs:/opt/streamsets-datacollector-3.14.0/streamsets-libs
+      - ~/spark-2.4.4-bin-hadoop2.7:/spark
+
+  # Cloudera container
+  quickstart.cloudera:
+    image: cloudera/quickstart:latest
+    privileged: true
+    command: /usr/bin/docker-quickstart
+    #command: /media/shared_from_local/bat/autostart.sh
+    #command: /media/shared_from_local/bat/autostart.sh
+    ports:
+      - "8020:8020"   # HDFS 
+      - "8022:22"     # SSH
+      - "7180:7180"   # Cloudera Manager
+      - "8888:8888"   # Hue
+      - "11000:11000" # Oozie
+      - "50070:50070" # HDFS Rest Namenode
+      - "50075:50075" # HDFS Rest Datanode
+      - "2181:2181"   # Zookeeper
+      - "8088:8088"   # YARN Resource Manager
+      - "19888:19888" # MapReduce Job History
+      - "50030:50030" # MapReduce Job Tracker
+      - "8983:8983"   # Solr
+      - "16000:16000" # Sqoop Metastore
+      - "8042:8042"   # YARN Node Manager
+      - "8032:8032"   # YARN Resource Manager
+      - "60010:60010" # HBase Master
+      - "60030:60030" # HBase Region
+      - "9090:9090"   # HBase Thrift
+      - "8080:8080"   # HBase Rest
+      - "7077:7077"   # Spark Master
+      - "7078:7078"   # Spark Worker
+      - "10000:10000" # Hive jdbc
+      - "10002:10002" # Hive web interface
+      - "9083:9083"   # Hive metastore
+    tty: true
+    stdin_open: true
+    volumes: 
+      - ./shared_cloudera_quickstart:/media/shared_from_local
+      # - ~/cdh-var-lib:/var/lib

@@ -1,0 +1,1 @@
+["sbt.Task[scala.collection.immutable.Map[java.lang.String, scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]]",{"2.11.12":{"hashes":[["/home/tolic/gitrepo/github/dataengineerclub/project/jsonprocessor/src/main/scala/JsonProcessor.scala","04d314977ec2ff760cac4e2f003afb8a7ce00785"]],"lastModifiedTimes":[]}}]

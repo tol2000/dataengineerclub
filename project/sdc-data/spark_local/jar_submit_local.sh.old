@@ -1,0 +1,9 @@
+#!/bin/sh
+
+/spark/bin/spark-submit \
+  --packages org.apache.spark:spark-avro_2.12:2.4.4 \
+  --master local[*] \
+  --class org.kliusa.otusde201911.project.jsonprocessor.JsonProcessor \
+  /data/spark_local/jsonprocessor-assembly-1.jar \
+  hdfs://quickstart.cloudera:8020$FILEPATH \
+  hdfs://quickstart.cloudera:8020/out/bronze/weather2hive
