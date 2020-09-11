@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jsonprocessor.iml" filepath="$PROJECT_DIR$/.idea/modules/jsonprocessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsonprocessor [file:_home_tolic_gitrepo_github_dataengineerclub_project_jsonprocessor_].iml" filepath="$PROJECT_DIR$/jsonprocessor [file:_home_tolic_gitrepo_github_dataengineerclub_project_jsonprocessor_].iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jsonprocessor-build.iml" filepath="$PROJECT_DIR$/.idea/modules/jsonprocessor-build.iml" />
     </modules>
   </component>
